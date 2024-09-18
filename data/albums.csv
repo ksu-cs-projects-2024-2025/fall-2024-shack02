@@ -1,0 +1,306 @@
+index,artist_name,artist_id,album_id,album_name,release_date,total_tracks,album_type
+0,Abby Gundersen,5BlKoQLYxv24MSV5AD6i6q,6wtdoqQ2vTSTduaV8p4PAr,Sleep Comes Then I Wake,2020-03-10,10,album
+1,Abby Gundersen,5BlKoQLYxv24MSV5AD6i6q,1Z3D5hsl9uXPSq5EZeLWhL,Aurora,2015-09-01,9,album
+2,David Ramirez,4MBIFx8pthemIVuEJSgAxb,1U5fFAoh0MCDDge59UgFTw,Backslider,2021-03-12,7,album
+3,David Ramirez,4MBIFx8pthemIVuEJSgAxb,3RWnnxLBxt6PLTj0sXxv3o,My Love Is a Hurricane,2020-07-17,10,album
+4,David Ramirez,4MBIFx8pthemIVuEJSgAxb,23gCpxLndR6W4a0ZNDUBlg,We're Not Going Anywhere,2017-09-08,10,album
+5,David Ramirez,4MBIFx8pthemIVuEJSgAxb,3eI4JXB2jYDasGE9Fus6O0,Fables,2015-08-28,10,album
+6,David Ramirez,4MBIFx8pthemIVuEJSgAxb,5Hj7qZ7rPuueRCVYImsZVl,Apologies,2012-08-28,11,album
+7,David Ramirez,4MBIFx8pthemIVuEJSgAxb,1QDd5eTOMnuRnbEM1JOIM0,American Soil,2009-06-26,11,album
+8,Joshua James,0YLUOdFiedWIWBttlDAQeO,4h9Yaf0GJPA5Z9y8e3ezCf,"Forever in Life, for Now",2021-06-18,12,album
+9,Joshua James,0YLUOdFiedWIWBttlDAQeO,7trBccWdLVX1nHwJVtoJNv,Dreams of Karen,2020-09-22,8,album
+10,Joshua James,0YLUOdFiedWIWBttlDAQeO,6F7MYfVWFvsb0XVrcnAXTy,Joshua James & Nate Pyfer Discover Responsibility Through Fatherhood,2020-02-08,12,album
+11,Joshua James,0YLUOdFiedWIWBttlDAQeO,6uH81zfRqf8hxafbv2Z1aM,Magical Leaves Red White Black Heat,2019-12-24,9,album
+12,Joshua James,0YLUOdFiedWIWBttlDAQeO,4ItmWXeF6QGjyG32aZMgOX,My Spirit Sister,2017-04-07,10,album
+13,Joshua James,0YLUOdFiedWIWBttlDAQeO,4oXxPieaaMDRqgv6uVHdHj,"Well, Then, I'll Go to Hell",2013-11-12,9,album
+14,Joshua James,0YLUOdFiedWIWBttlDAQeO,3CUZa51GtWom4eKExObz1t,From the Top of Willamette Mountain,2012-11-06,11,album
+15,Joshua James,0YLUOdFiedWIWBttlDAQeO,1jy7EWW8qI5BCQsqaPXGvn,Build Me This,2009-09-22,13,album
+16,Joshua James,0YLUOdFiedWIWBttlDAQeO,1wJXSd8NQnqjpKbe3x9yVI,Build Me This (Bonus Track Version),2009,16,album
+17,Joshua James,0YLUOdFiedWIWBttlDAQeO,2Nke0quT81veIdGG65GJal,The Sun Is Always Brighter (Deluxe Edition),2008-06-03,13,album
+18,Joshua James,0YLUOdFiedWIWBttlDAQeO,1jo51blVrWFQYZtbxffYuj,Fields & Floods,2007-11-20,7,album
+19,Joshua James,0YLUOdFiedWIWBttlDAQeO,222HutTUce1KlGv3qSnwTI,B-Sides It's Dark Outside,2006-01-01,8,album
+20,Penny and Sparrow,65o6y7GtoXzchyiJB3r9Ur,4ruy6zMB9t2sKrNyK2B8zF,Olly Olly,2022-01-21,12,album
+21,Penny and Sparrow,65o6y7GtoXzchyiJB3r9Ur,7xwCaNuLiEx9EdcErw3lX3,Horse Color Two,2021-03-26,13,album
+22,Penny and Sparrow,65o6y7GtoXzchyiJB3r9Ur,5RoHxuOtNK8pxDVKtLgRSO,"Live in Texas, 2019",2020-08-07,19,album
+23,Penny and Sparrow,65o6y7GtoXzchyiJB3r9Ur,0ixOUcKraH7Y3tIV1MGoRo,Finch,2019-08-02,11,album
+24,Penny and Sparrow,65o6y7GtoXzchyiJB3r9Ur,1F3g88B97YjpzE2Pc6Rw1q,Wendigo,2017-09-01,14,album
+25,Penny and Sparrow,65o6y7GtoXzchyiJB3r9Ur,5sTk7csBMRu9jPsxnJkev3,Christmas Songs,2016-11-11,11,album
+26,Penny and Sparrow,65o6y7GtoXzchyiJB3r9Ur,4ECjQ3e329XWu16Q2PIbze,Let A Lover Drown You,2016-03-11,11,album
+27,Penny and Sparrow,65o6y7GtoXzchyiJB3r9Ur,1xmeNQbhSB4F10c68KRHzR,Struggle Pretty,2014-04-22,12,album
+28,Penny and Sparrow,65o6y7GtoXzchyiJB3r9Ur,2cVOSmXfC0wZBoj7TmpZl7,Tenboom,2013-01-08,10,album
+29,The Courage,4UXKGrZQMFfo9VvmMuaVOp,3xTSoyz5UpePnWTiCbvrYC,Fearful Bones,2010-09-11,11,album
+30,The Courage,4UXKGrZQMFfo9VvmMuaVOp,6f1Dbk5Gl4MGmWKSzFSSsj,The Art of Spiritual Warfare,2005-01-01,15,album
+31,Donovan Woods,4SOtk3HtPYKqxnVuxNBMti,2PP3lxuj6J2aWSF8kRfoRZ,Things Were Never Good If They're Not Good Now,2024-07-12,13,album
+32,Donovan Woods,4SOtk3HtPYKqxnVuxNBMti,27qq5JOb3LzZ91B3PSYZJj,Without People (Deluxe),2021-03-26,18,album
+33,Donovan Woods,4SOtk3HtPYKqxnVuxNBMti,4r9vIyMQT7a5iPBcHN9RNU,Without People,2020-11-06,14,album
+34,Donovan Woods,4SOtk3HtPYKqxnVuxNBMti,2FtRomdxFmbtSAx0MVzXTy,The Other Way,2019-05-03,12,album
+35,Donovan Woods,4SOtk3HtPYKqxnVuxNBMti,7N2zsLq0Nd5FQQEEZYzoq2,Both Ways,2018-04-20,12,album
+36,Donovan Woods,4SOtk3HtPYKqxnVuxNBMti,5vhqwNBBHK308FW24wIMOb,"Hard Settle, Ain't Troubled (Deluxe Edition)",2016-08-12,15,album
+37,Donovan Woods,4SOtk3HtPYKqxnVuxNBMti,5skD4KvE9DW8TRLKhh2Ibm,"Hard Settle, Ain't Troubled",2016-02-26,11,album
+38,Donovan Woods,4SOtk3HtPYKqxnVuxNBMti,2GJP9uqijsWCNXj62D0UNG,Don't Get Too Grand,2013-03-26,11,album
+39,Donovan Woods,4SOtk3HtPYKqxnVuxNBMti,4gyq2C0YusS2XACXZNP3EK,The Widowmaker,2011-09-27,12,album
+40,Donovan Woods,4SOtk3HtPYKqxnVuxNBMti,7Gcpxsufg9TMsRYaejZyJQ,The Hold Up,2009-03-03,9,album
+41,Glorietta,7xOKlpKHj8SkUgiVFA2LX7,6SmlOm6tHgxQ3Fr9Lxyhl5,Glorietta,2018-08-24,12,album
+42,Ruston Kelly,5zuqnTZOeJzI0N0yQ7XA7I,56ERlTGoY9RQ4wM65laAnG,"Weakness, Etc",2024-03-22,7,album
+43,Ruston Kelly,5zuqnTZOeJzI0N0yQ7XA7I,1jKvsyAQdJG05hNyiMwg8v,The Weakness,2023-04-07,12,album
+44,Ruston Kelly,5zuqnTZOeJzI0N0yQ7XA7I,0pILyYJr65rEAWnogtd8Xt,Shape & Destroy,2020-08-28,13,album
+45,Ruston Kelly,5zuqnTZOeJzI0N0yQ7XA7I,257DLarcvZQOIP9af3FNRe,Dirt Emo Vol. 1,2019-10-11,8,album
+46,Ruston Kelly,5zuqnTZOeJzI0N0yQ7XA7I,0HglC8wDUKL0VV5KI31bqU,Dying Star,2018-09-07,14,album
+47,Ruston Kelly,5zuqnTZOeJzI0N0yQ7XA7I,511U3WbETju8CKI0ycC8JD,Halloween,2017-04-07,10,album
+48,Peter Bradley Adams,0CdbG1eHVjqjkQsGoH2u1V,5swCwkecIl1ZafeyxJYbYk,A Face Like Mine,2017-04-21,9,album
+49,Peter Bradley Adams,0CdbG1eHVjqjkQsGoH2u1V,6nwxuBgg0CLgXa9YmtVRNU,The Mighty Storm,2014-02-04,11,album
+50,Peter Bradley Adams,0CdbG1eHVjqjkQsGoH2u1V,7CBDvmSVwUCjqzth8CkMVw,Between Us,2011-06-14,12,album
+51,Peter Bradley Adams,0CdbG1eHVjqjkQsGoH2u1V,3FIx5RraKVNWwI0fDpgdfr,Traces,2009-10-13,12,album
+52,Peter Bradley Adams,0CdbG1eHVjqjkQsGoH2u1V,0zRutLrFlSibd97Vgzk83K,Leavetaking,2008-08-05,9,album
+53,Peter Bradley Adams,0CdbG1eHVjqjkQsGoH2u1V,1szxwnS1wXsmmmAa4z7lFN,Gather Up,2006-08-01,11,album
+54,S. Carey,2LSJrlndCuTpdEluvYHc2E,0kiImzjohOce2DmKzymLju,Shadowlands,2023-09-15,10,album
+55,S. Carey,2LSJrlndCuTpdEluvYHc2E,3GnC2xEY4b6wowL2eBIwGc,Break Me Open,2022-04-22,10,album
+56,S. Carey,2LSJrlndCuTpdEluvYHc2E,5zOLes5VjZqy44W30zE6VJ,All We Grow (Ten Year Anniversary Edition),2020-12-04,10,album
+57,S. Carey,2LSJrlndCuTpdEluvYHc2E,4H1xbaXxVDmHnFQ5ifzyM4,Hundred Acres,2018-02-23,10,album
+58,S. Carey,2LSJrlndCuTpdEluvYHc2E,1vZXJuVIRT18sZjea6ME2H,Range of Light,2014-04-01,9,album
+59,S. Carey,2LSJrlndCuTpdEluvYHc2E,4anCdCJ7Qi4DKZ1nq9xMgO,All We Grow,2010-08-24,9,album
+60,William Fitzsimmons,41FEVJCBGidsJwbjq0KfgM,3smV8LQWBWbGLnuz4kDnnl,The Sparrow and the Crow (15th Anniversary Remastered Deluxe Version),2024-03-29,17,album
+61,William Fitzsimmons,41FEVJCBGidsJwbjq0KfgM,4KoIdStwTmI8yI4Hfyiy9l,Derivatives (Remastered Deluxe Version),2024-03-29,11,album
+62,William Fitzsimmons,41FEVJCBGidsJwbjq0KfgM,3ljuf74wokwKPpFCcVcCez,"Covers, Vol. 2",2023-08-11,11,album
+63,William Fitzsimmons,41FEVJCBGidsJwbjq0KfgM,0e1s7jQdJ0VsdzSnMXAPX9,"Covers, Vol. 1",2022-11-04,12,album
+64,William Fitzsimmons,41FEVJCBGidsJwbjq0KfgM,1bbtTBjRC0bp3CUOWkWyn4,No Promises: The Astronaut's Return,2021-12-10,13,album
+65,William Fitzsimmons,41FEVJCBGidsJwbjq0KfgM,5hDMcFWc9P1URGjOTyIm0F,Ready the Astronaut,2021-06-25,11,album
+66,William Fitzsimmons,41FEVJCBGidsJwbjq0KfgM,4nUqSWtzutOb5UAEiuc2se,Live from the Livestream,2020-07-17,16,album
+67,William Fitzsimmons,41FEVJCBGidsJwbjq0KfgM,1VcH2XGvHxh3TJIl3MZv1B,Mission Bell,2018-09-21,10,album
+68,William Fitzsimmons,41FEVJCBGidsJwbjq0KfgM,7AHwn79wgkp2HZa4knsqk5,William Fitzsimmons Live,2016-10-21,15,album
+69,William Fitzsimmons,41FEVJCBGidsJwbjq0KfgM,4m1DiXQMAS5LUZwgGvEAN7,Pittsburgh (Deluxe Version),2015-07-31,10,album
+70,William Fitzsimmons,41FEVJCBGidsJwbjq0KfgM,38drBD6ZkmTt1zKXNXbKG7,Lions,2014-02-18,13,album
+71,William Fitzsimmons,41FEVJCBGidsJwbjq0KfgM,3vo1qVlpjDqwmxMyLFdJ57,Gold In The Shadow (Deluxe Version),2011-12-20,24,album
+72,William Fitzsimmons,41FEVJCBGidsJwbjq0KfgM,4lOwl5byNIS9ifUHvqXVXN,Gold In The Shadow (Bonus Track Version),2011-12-20,14,album
+73,William Fitzsimmons,41FEVJCBGidsJwbjq0KfgM,4Dd7OQGnbrlcNFHD9rf9W4,Derivatives,2010-06-22,8,album
+74,William Fitzsimmons,41FEVJCBGidsJwbjq0KfgM,4knrEdIUccmV0VKmXRs2yz,Live from the Downtown Studios,2009-06-09,7,album
+75,William Fitzsimmons,41FEVJCBGidsJwbjq0KfgM,2DjhgnwjDunba78KGvCcoK,The Sparrow and the Crow,2008-10-29,13,album
+76,William Fitzsimmons,41FEVJCBGidsJwbjq0KfgM,4mNpxvAvj2ay7Vat4pfEFI,Goodnight,2006-01-01,13,album
+77,William Fitzsimmons,41FEVJCBGidsJwbjq0KfgM,3joyopCEilANS1PewNQh9A,Until When We Are Ghosts,2005-01-01,11,album
+78,The Milk Carton Kids,7fxtWEwKKrFaykKItspdYg,7tXYHXjFDzAtPIZoIoX2W6,I Only See the Moon,2023-05-19,10,album
+79,The Milk Carton Kids,7fxtWEwKKrFaykKItspdYg,2URAmWVraCITERP0FeuAvX,Live From Lincoln Theatre,2020-07-10,21,album
+80,The Milk Carton Kids,7fxtWEwKKrFaykKItspdYg,72jSY4ND11mZ9qeOmIsVJh,The Only Ones,2019-10-18,7,album
+81,The Milk Carton Kids,7fxtWEwKKrFaykKItspdYg,1BpQ1yTs26aKJg0aWqnzEq,All the Things That I Did and All the Things That I Didn't Do,2018-06-29,12,album
+82,The Milk Carton Kids,7fxtWEwKKrFaykKItspdYg,3fuTxCkeRpPjV4TeMpaplh,Monterey,2015-05-19,11,album
+83,The Milk Carton Kids,7fxtWEwKKrFaykKItspdYg,151a4bghgq5jgbaZt96p71,The Ash & Clay,2013-03-26,12,album
+84,The Milk Carton Kids,7fxtWEwKKrFaykKItspdYg,1FlNkbhrTnMma2VkDY6t9Q,Prologue,2011-07-19,10,album
+85,Kenneth Pattengale & Joey Ryan,7m8wSQRZkjgoPYXNPMRgVS,6l2ibwtZoHYKqW34Ao9j0c,Retrospect,2011-03-15,14,album
+86,Henry Jamison,2XdtmipGVPmA62ptDgX8QC,7zcCuIj4uZhrx1WfPfe9Gx,The Years,2022-04-29,10,album
+87,Henry Jamison,2XdtmipGVPmA62ptDgX8QC,33kQ6VPlEEAQTctQZQmd1b,Gloria Duplex,2019-02-08,12,album
+88,Henry Jamison,2XdtmipGVPmA62ptDgX8QC,6mG8sVZlEsKwNZeSq8sMpA,The Wilds,2017-10-27,12,album
+89,The Forest Rangers,46xMgypLHP8GNsYME3vRnV,2ETSCVMmmrWIH3XiGdkllR,Land Ho!,2015-07-10,11,album
+90,Bear's Den,0nJaMZM8paoA5HEUTUXPqi,6it3DQ6lEDqCUQxLQ9M9gp,Trying: Season 3 (Apple TV Original Series Soundtrack),2022-07-22,9,album
+91,Bear's Den,0nJaMZM8paoA5HEUTUXPqi,1tqkCIUs7aGktIJ2J5WKFz,Blue Hours,2022-05-13,10,album
+92,Bear's Den,0nJaMZM8paoA5HEUTUXPqi,280HhUm1OlCv6GIdK5lttt,Fragments,2020-09-18,12,album
+93,Bear's Den,0nJaMZM8paoA5HEUTUXPqi,4UGUJOgcTFGVA2ki2fFByI,So that you might hear me,2019-04-26,10,album
+94,Bear's Den,0nJaMZM8paoA5HEUTUXPqi,1vtqfo1hFADQ1yByWaFHzr,Red Earth & Pouring Rain,2016-07-22,12,album
+95,Bear's Den,0nJaMZM8paoA5HEUTUXPqi,0ltYG3e7gRFajew6GjT8oN,Islands (Deluxe),2015-10-09,20,album
+96,Bear's Den,0nJaMZM8paoA5HEUTUXPqi,15z9H7eEOCtB2Xq28SDWwp,Islands,2014-10-21,10,album
+97,Foy Vance,4bUqnkrDrb4f7rqmDR9yDu,2ci4NiuPs3XZu5tKfJfCHs,Joy of Nothing (Live From Belfast),2023-12-15,13,album
+98,Foy Vance,4bUqnkrDrb4f7rqmDR9yDu,3oM8N8qEv9DKuK7sKO5SWU,Joy of Nothing (Anniversary Edition),2023-08-18,13,album
+99,Foy Vance,4bUqnkrDrb4f7rqmDR9yDu,3F5AkblOp3Y0xzcJkjV2ZD,Signs of Life: Live From The Highlands,2022-09-08,13,album
+100,Foy Vance,4bUqnkrDrb4f7rqmDR9yDu,4MOkPB90s3AsnbjNmGJ5x2,Signs of Life,2021-09-10,13,album
+101,Foy Vance,4bUqnkrDrb4f7rqmDR9yDu,7EUz7CNunL7otFKbq9XRDv,Hope in The Highlands: Recorded Live From Dunvarlich,2020-12-18,22,album
+102,Foy Vance,4bUqnkrDrb4f7rqmDR9yDu,5DtQQgT9d9Ut0I5SoZYfPJ,To Memphis,2019-09-06,11,album
+103,Foy Vance,4bUqnkrDrb4f7rqmDR9yDu,7Llh51MCW3JF6e7A56E5qq,From Muscle Shoals,2019-06-28,10,album
+104,Foy Vance,4bUqnkrDrb4f7rqmDR9yDu,71UuAn7EGW4I0dNorJpd6p,Live In London,2017-12-15,21,album
+105,Foy Vance,4bUqnkrDrb4f7rqmDR9yDu,0njBaqTHPEL9qHsrT6NBVz,The Wild Swan,2016-05-13,12,album
+106,Foy Vance,4bUqnkrDrb4f7rqmDR9yDu,2WA4B5RorRArr8ow9MlQ3e,Live at Bangor Abbey,2014-01-01,16,album
+107,Foy Vance,4bUqnkrDrb4f7rqmDR9yDu,2NvXp1Yq7mslZYfZiRmGUq,Joy of Nothing,2013-01-01,10,album
+108,Foy Vance,4bUqnkrDrb4f7rqmDR9yDu,0Vy0pKZuZGoNDtiXfEg1YD,Hope,2007-07-02,15,album
+109,The Lone Bellow,7JFtD8KnbAADBBDleIMuH7,1fR26HG8zeZ3d6LZQZegYW,Live,2023-11-03,19,album
+110,The Lone Bellow,7JFtD8KnbAADBBDleIMuH7,6n4YCJFTvgie5UXX0ynTk9,Love Songs For Losers (Deluxe Edition),2023-06-09,15,album
+111,The Lone Bellow,7JFtD8KnbAADBBDleIMuH7,1InvtE9l0edXnOhz6ArUaB,Love Songs For Losers,2022-11-04,11,album
+112,The Lone Bellow,7JFtD8KnbAADBBDleIMuH7,3PdWMxAeIsZ8HBKEz4QbOM,Half Moon Light (Deluxe Edition),2021-05-14,21,album
+113,The Lone Bellow,7JFtD8KnbAADBBDleIMuH7,3fathhToVOitGhoR8SR5oQ,Half Moon Light,2020-02-07,15,album
+114,The Lone Bellow,7JFtD8KnbAADBBDleIMuH7,2membpJk8C37qn7D42BFad,The Restless,2018-10-05,7,album
+115,The Lone Bellow,7JFtD8KnbAADBBDleIMuH7,74FJWhrNj4yi9NoXzIioUZ,Walk into a Storm,2017-09-15,10,album
+116,The Lone Bellow,7JFtD8KnbAADBBDleIMuH7,5HU6Z7afYcN23XAegZ3EQA,Then Came the Morning,2015-01-26,13,album
+117,The Lone Bellow,7JFtD8KnbAADBBDleIMuH7,3inGHKOz7EFUwJPuSAPwZB,The Lone Bellow,2013-01-22,11,album
+118,Battleme,2VnNIlyX9iVtx1FYavvm90,0hhSbg6aCAgB7JIX9nDVT2,Cult Psychotica,2017-10-06,10,album
+119,Battleme,2VnNIlyX9iVtx1FYavvm90,3gNpeV25uyOA3Egj4aJqoa,Habitual Love Songs,2016-01-15,14,album
+120,Battleme,2VnNIlyX9iVtx1FYavvm90,4eo6cGWJya9xTC8LDTOcPs,Future Runs Magnetic,2014-03-11,12,album
+121,Battleme,2VnNIlyX9iVtx1FYavvm90,7HBoCrnz4cT2dFE5upiAp9,Battleme,2012-04-24,11,album
+122,Chris Embers,78YcYzYQFoC44mT1rL0dsB,37PPfrzqv796QI0NWu21VI,Love Only,2021-12-03,10,album
+123,Juri van Saal,4A2xXIV6Lb1Rn69X3sQanA,37L85L0vVVKXWfLTKhqOiB,One,2022-01-21,14,album
+124,Peter Lainson,3wk9WtW2Txz1ssUoAZuE1a,68S6nwz4stSgn3EJc8EIL3,Instrumental Stories,2006-10-16,12,album
+125,Peter Lainson,3wk9WtW2Txz1ssUoAZuE1a,0IP4CpshD7kieciXYCTzZy,The Wind and the Waves,2004-01-01,12,album
+126,The Highwomen,3iyG1duuxWpcuWa57VSeZ0,7sGTt1N5XMIQPCYHAnO1Pl,The Highwomen,2019-09-06,12,album
+127,Indigo Girls,4wM29TDTr3HI0qFY3KoSFG,4e2BgEu0aICMknl0LiE4nl,Look Long,2020-05-22,11,album
+128,Indigo Girls,4wM29TDTr3HI0qFY3KoSFG,7FjHnKO7bCoW9aujPsb01r,Indigo Girls Live With The University Of Colorado Symphony Orchestra,2018-06-29,22,album
+129,Indigo Girls,4wM29TDTr3HI0qFY3KoSFG,0euj6llNfFte5ZGl5hhquK,One Lost Day,2015-06-02,13,album
+130,Indigo Girls,4wM29TDTr3HI0qFY3KoSFG,6YS1kGbIrCDnY6sEzBKVgs,Beauty Queen Sister,2011-01-01,13,album
+131,Indigo Girls,4wM29TDTr3HI0qFY3KoSFG,7nzflJ4puQDKcE7lyp7QcH,Staring Down The Brilliant Dream,2010-01-01,31,album
+132,Indigo Girls,4wM29TDTr3HI0qFY3KoSFG,45acBSRzU6wh64ZHDOJaWF,Holly Happy Days,2010-01-01,12,album
+133,Indigo Girls,4wM29TDTr3HI0qFY3KoSFG,4y14q3UHya28ivvgQRwUnT,Poseidon And The Bitter Bug (Deluxe),2009-01-01,21,album
+134,Indigo Girls,4wM29TDTr3HI0qFY3KoSFG,6Ccouf71C9FiqBaqvSMgIg,Poseidon And The Bitter Bug,2009-01-01,10,album
+135,Indigo Girls,4wM29TDTr3HI0qFY3KoSFG,2lIj0GXwAExESKjaXCDDtP,Despite Our Differences,2006-01-01,19,album
+136,Indigo Girls,4wM29TDTr3HI0qFY3KoSFG,0cIdpOzceu2Lmzd1tipqqg,All That We Let In,2004-02-02,11,album
+137,Indigo Girls,4wM29TDTr3HI0qFY3KoSFG,4js1tRt2EzwZPAZFBEIOJp,Become You,2002-03-12,12,album
+138,Indigo Girls,4wM29TDTr3HI0qFY3KoSFG,7b723tokrD19bcvT1sjm6j,Come On Now Social,1999-09-06,12,album
+139,Indigo Girls,4wM29TDTr3HI0qFY3KoSFG,3oD7PqxjEBSzc7qE2xJteU,Shaming Of The Sun,1997-04-22,12,album
+140,Indigo Girls,4wM29TDTr3HI0qFY3KoSFG,4HZfjH0LgBHRsrxDAHoFOe,1200 Curfews,1995-10-10,27,album
+141,Indigo Girls,4wM29TDTr3HI0qFY3KoSFG,1X0bc0O18Dj5eqh0owcw21,Swamp Ophelia,1994-03-31,11,album
+142,Indigo Girls,4wM29TDTr3HI0qFY3KoSFG,7Bpm8RN7CWTEH2Os4vw3Po,Rites Of Passage (Expanded Edition),1992-06-03,15,album
+143,Indigo Girls,4wM29TDTr3HI0qFY3KoSFG,3jmmx4jRkul3POEhn1cgwF,"Back On The Bus, Y'All",1991-06-04,8,album
+144,Indigo Girls,4wM29TDTr3HI0qFY3KoSFG,1KpKdn4HLsD9OAN6GEYAIb,Nomads · Indians · Saints (Expanded Edition),1990-09-21,14,album
+145,Indigo Girls,4wM29TDTr3HI0qFY3KoSFG,5TumehzCsVW8nbz44vJP6X,Live - Reverse 1,1989-02-28,7,album
+146,Indigo Girls,4wM29TDTr3HI0qFY3KoSFG,1rkuKm5mDoauq9XKjRV94x,Indigo Girls (Expanded Edition),1989,12,album
+147,Indigo Girls,4wM29TDTr3HI0qFY3KoSFG,4aGD6GhW0VrvRXcwb8MDb3,Strange Fire (Expanded Edition),1987,12,album
+148,Patty Griffin,7tNLRmiAN8hpmFrbIHiHsy,50vXvAaF4U6k7n8OrfVLwF,Tape,2022-06-10,10,album
+149,Patty Griffin,7tNLRmiAN8hpmFrbIHiHsy,3ZbfpLDN1yP3JYlqb7K6w0,Patty Griffin,2019-03-08,13,album
+150,Patty Griffin,7tNLRmiAN8hpmFrbIHiHsy,5ISnw1aCUfzN5D3EVTQ77e,Servant of Love,2015-09-25,13,album
+151,Patty Griffin,7tNLRmiAN8hpmFrbIHiHsy,26U0Lv6Bzxu3GPBxRSyBu4,American Kid,2013-05-07,12,album
+152,Patty Griffin,7tNLRmiAN8hpmFrbIHiHsy,4uA8pkfX0FGkXOdY11eT84,Silver Bell,2012-01-01,14,album
+153,Patty Griffin,7tNLRmiAN8hpmFrbIHiHsy,2lZttozROJsM5KbD5gqSet,Downtown Church,2010-01-01,14,album
+154,Patty Griffin,7tNLRmiAN8hpmFrbIHiHsy,042VdplnIPVgQQsyM54LcV,Patty Griffin: Live from the Artists Den,2008-09-09,16,album
+155,Patty Griffin,7tNLRmiAN8hpmFrbIHiHsy,2x2dXgEz4l4jBEz25kvbs6,Children Running Through,2007-02-06,12,album
+156,Patty Griffin,7tNLRmiAN8hpmFrbIHiHsy,30PYTvoy3NWxgVIfMlhEOi,Impossible Dream,2004-04-20,11,album
+157,Patty Griffin,7tNLRmiAN8hpmFrbIHiHsy,5xKZp7KL3h9job6WYnLJ0w,A Kiss In Time,2003-10-14,12,album
+158,Patty Griffin,7tNLRmiAN8hpmFrbIHiHsy,0bpwJNSMStRM5shqRW6ro2,1000 Kisses,2002-04-09,10,album
+159,Patty Griffin,7tNLRmiAN8hpmFrbIHiHsy,7GWcXBH4yhDV2hgKOQ4kHd,Flaming Red,1998-01-01,13,album
+160,Patty Griffin,7tNLRmiAN8hpmFrbIHiHsy,4wKotVRbGtfTtDCCAShOTF,Living With Ghosts,1996-01-01,10,album
+161,The Secret Sisters,5fIZHCg2de8322HZodBDWL,7u6SrRvhJLkIc3TIhjgHRy,"Mind, Man, Medicine",2024-03-29,11,album
+162,The Secret Sisters,5fIZHCg2de8322HZodBDWL,2wNJUOEW2fJA1DpcYfnPEH,Saturn Return (Commentary),2020-09-18,20,album
+163,The Secret Sisters,5fIZHCg2de8322HZodBDWL,536F4ddnWYRRNtZfy7L980,Saturn Return,2020-02-28,10,album
+164,The Secret Sisters,5fIZHCg2de8322HZodBDWL,7BhjOA08mb0ui3Kw7iDIxY,You Don't Own Me Anymore,2017-06-09,12,album
+165,The Secret Sisters,5fIZHCg2de8322HZodBDWL,54ynikxYO1gVChnbhJIQm6,Put Your Needle Down (Deluxe),2014-08-04,14,album
+166,The Secret Sisters,5fIZHCg2de8322HZodBDWL,3pinz3pk3eno43xbwqWvok,Put Your Needle Down,2014-01-01,12,album
+167,The Secret Sisters,5fIZHCg2de8322HZodBDWL,4xuicwuqEAjIHe2awEubrI,The Secret Sisters,2010-01-01,11,album
+168,Amanda Shires,5yN0nwLpUCaZ2gr67bndCN,0pbY6xjZ528i0Ap0eZbW2x,Take It Like A Man,2022-07-29,11,album
+169,Amanda Shires,5yN0nwLpUCaZ2gr67bndCN,6ZAI9hpgCoNtxpF0cpup0G,For Christmas,2021-11-12,11,album
+170,Amanda Shires,5yN0nwLpUCaZ2gr67bndCN,52chGdpRUEAu29jmJsaMSR,Loving You,2021-08-01,10,album
+171,Amanda Shires,5yN0nwLpUCaZ2gr67bndCN,161jerzEynZ47m4SfxSVuW,To the Sunset,2018-08-03,10,album
+172,Amanda Shires,5yN0nwLpUCaZ2gr67bndCN,4xEbranbGAP1GfoRBsP4gV,My Piece of Land,2016-09-16,10,album
+173,Amanda Shires,5yN0nwLpUCaZ2gr67bndCN,6DVHMSBPHdJ42Okvp5QJ9X,Down Fell the Doves,2013-08-06,11,album
+174,Amanda Shires,5yN0nwLpUCaZ2gr67bndCN,18ZIySimHjPatRIdrtcGyo,Carrying Lightning,2011-05-03,12,album
+175,The Wailin' Jennys,331QVEZKK1yz5KhYiR2pBj,119HRNCY7xfA3R218gtspV,Fifteen,2017-10-27,9,album
+176,The Wailin' Jennys,331QVEZKK1yz5KhYiR2pBj,1scwNY73kR93PHMVdtTXnt,Bright Morning Stars,2011-02-08,13,album
+177,The Wailin' Jennys,331QVEZKK1yz5KhYiR2pBj,2TySNPqlOW3m8p0DzYAWzA,Live at the Mauch Chunk Opera House,2009-08-11,18,album
+178,The Wailin' Jennys,331QVEZKK1yz5KhYiR2pBj,7Ev56ItWJsYobRsthdWrkS,Firecracker,2006-06-06,13,album
+179,The Wailin' Jennys,331QVEZKK1yz5KhYiR2pBj,5x3Nva9X9Mjr15GI3YKaBr,40 Days,2004-01-02,13,album
+180,Natalie Hemby,32opPqLCT3sF24Aso7wTXw,6vf4IMJjuEUZiRCwvQOEHL,Pins And Needles,2021-10-08,11,album
+181,Natalie Hemby,32opPqLCT3sF24Aso7wTXw,24wTPEb0rJiR9RdVBv9EQA,Puxico,2017-01-13,9,album
+182,Ingrid Michaelson,2vm8GdHyrJh2O2MfbQFYG0,5jVmePSegX0x6PT1zUqcYo,For the Dreamers,2024-08-23,12,album
+183,Ingrid Michaelson,2vm8GdHyrJh2O2MfbQFYG0,63ujCmTJYeJBkHI3pPg7La,The Notebook (Original Broadway Cast Recording),2024-04-19,21,album
+184,Ingrid Michaelson,2vm8GdHyrJh2O2MfbQFYG0,0wfB1zTsdAIq2DoiXMzIKy,Tiny Beautiful Things (Original Series Soundtrack),2023-04-07,19,album
+185,Ingrid Michaelson,2vm8GdHyrJh2O2MfbQFYG0,3sT656zP6DcAYsylN4LdIK,"Slumberkins: Season 1, Vol. 1 (Apple Original Series Soundtrack)",2022-11-04,21,album
+186,Ingrid Michaelson,2vm8GdHyrJh2O2MfbQFYG0,0tm7TvcrD6xUUAZhisIUZJ,Ingrid Michaelson's Songs for the Season Deluxe Edition,2021-11-05,17,album
+187,Ingrid Michaelson,2vm8GdHyrJh2O2MfbQFYG0,60cFgoDpP3PXeMDjWCGwz6,Stranger Songs,2019-06-28,11,album
+188,Ingrid Michaelson,2vm8GdHyrJh2O2MfbQFYG0,0l6NEfclZMH1K33J4Tnb8J,Ingrid Michaelson's Songs For The Season,2018-10-26,12,album
+189,Ingrid Michaelson,2vm8GdHyrJh2O2MfbQFYG0,7CboNMoh7xPzZnL1rprGLV,It Doesn't Have To Make Sense,2016-08-26,10,album
+190,Ingrid Michaelson,2vm8GdHyrJh2O2MfbQFYG0,57DaYfdN2LQ34i5iRfFWch,Lights Out (Deluxe Edition),2014-04-15,20,album
+191,Ingrid Michaelson,2vm8GdHyrJh2O2MfbQFYG0,20vMfB4zgelkULugladUD3,Lights Out,2014-04-15,14,album
+192,Ingrid Michaelson,2vm8GdHyrJh2O2MfbQFYG0,3oFP50clZCAQy3bpI4vyNM,Human Again,2012-01-24,13,album
+193,Ingrid Michaelson,2vm8GdHyrJh2O2MfbQFYG0,2Zrr47sT8ZfA1y9c0wXmyz,Everybody,2009-08-25,12,album
+194,Ingrid Michaelson,2vm8GdHyrJh2O2MfbQFYG0,26OZ2w8TlwMUmA0GMpQL1U,Be OK,2008-10-14,11,album
+195,Ingrid Michaelson,2vm8GdHyrJh2O2MfbQFYG0,2115eAMeQ8neIN5PHWwz9Z,Girls And Boys,2007-05-16,12,album
+196,The Avett Brothers,196lKsA13K3keVXMDFK66q,3Z7vd5JXLArFxYz8PxT6Py,The Avett Brothers,2024-05-17,9,album
+197,The Avett Brothers,196lKsA13K3keVXMDFK66q,6qHVJFxoizJAdhB7CdbaV2,The Third Gleam,2020-08-28,8,album
+198,The Avett Brothers,196lKsA13K3keVXMDFK66q,0TlxSUyEa0YzcLrnXfqasZ,Closer Than Together,2019-10-04,13,album
+199,The Avett Brothers,196lKsA13K3keVXMDFK66q,6aMhaNYwh1OwoJnNrNbm6Q,True Sadness,2016-06-24,12,album
+200,The Avett Brothers,196lKsA13K3keVXMDFK66q,7LAIoQ4HJ82t3eNGkPK09S,Live Vol. Four,2015-12-18,14,album
+201,The Avett Brothers,196lKsA13K3keVXMDFK66q,35MwcSRwfjGmuUDtBBjbcp,Magpie And The Dandelion (Commentary Version),2013-10-13,10,album
+202,The Avett Brothers,196lKsA13K3keVXMDFK66q,1Ghk02nSbwlJ9uBqhztNEG,Magpie And The Dandelion (Deluxe),2013-01-01,15,album
+203,The Avett Brothers,196lKsA13K3keVXMDFK66q,35s4PRYklJmst9IiTuCK0S,Magpie And The Dandelion,2013-01-01,11,album
+204,The Avett Brothers,196lKsA13K3keVXMDFK66q,6Ltn6EJBY5yaYN53Yl5zcs,The Carpenter(Commentary Version),2012-01-01,12,album
+205,The Avett Brothers,196lKsA13K3keVXMDFK66q,3zvxtXSdWY2JHkKmoIG3OG,The Carpenter,2012-01-01,12,album
+206,The Avett Brothers,196lKsA13K3keVXMDFK66q,1YpBPjLH0uwrJnP6PYnps6,"Live, Vol. 3 (Live At Bojangles' Coliseum/2009)",2010-01-01,16,album
+207,The Avett Brothers,196lKsA13K3keVXMDFK66q,2PPFtYUnnqMYflIEn3b7ON,I And Love And You,2009-01-01,13,album
+208,The Avett Brothers,196lKsA13K3keVXMDFK66q,4qnTzXaGBJnb11UMPAILO0,The Second Gleam,2008-07-22,8,album
+209,The Avett Brothers,196lKsA13K3keVXMDFK66q,4pb5b6XKuzzh5CqPFOzptQ,Emotionalism (Bonus Track Version),2007-05-15,16,album
+210,The Avett Brothers,196lKsA13K3keVXMDFK66q,30dtZbxhsLXOdbvawtu4O7,Four Thieves Gone - The Robbinsville Sessions,2006,17,album
+211,The Avett Brothers,196lKsA13K3keVXMDFK66q,01F0o9VvKROvpbBnRBs7At,"Live, Volume 2",2005,17,album
+212,The Avett Brothers,196lKsA13K3keVXMDFK66q,3Qre72w4Yc9Ib2UeCgTaOK,Mignonette,2004-07-27,20,album
+213,The Avett Brothers,196lKsA13K3keVXMDFK66q,6PX7wnp1dKtAwHjbWrqD2x,A Carolina Jubilee,2003,15,album
+214,The Avett Brothers,196lKsA13K3keVXMDFK66q,4DUzDOvxkJbZNtYhKZqjod,Country Was,2002,8,album
+215,Grace Potter & The Nocturnals,23OknxGcY1i5xX1TRPilMj,2JcoZUEwztDoEKUiqd7Yk9,The Lion The Beast The Beat (Deluxe Edition),2012-01-01,15,album
+216,Grace Potter & The Nocturnals,23OknxGcY1i5xX1TRPilMj,0cl8bKAUDmexuyX1H0DHeo,The Lion The Beast The Beat,2012-01-01,11,album
+217,Grace Potter & The Nocturnals,23OknxGcY1i5xX1TRPilMj,24DTOqINfaO2aJFKws5xHp,Grace Potter & The Nocturnals,2010-01-01,13,album
+218,Grace Potter & The Nocturnals,23OknxGcY1i5xX1TRPilMj,1gy6e5QJy2wQHHNCfZGpzo,Live In Skowhegan,2008-01-01,6,album
+219,Grace Potter & The Nocturnals,23OknxGcY1i5xX1TRPilMj,2LyZtk8ocDxyqw8CLunluX,This Is Somewhere,2007-01-01,11,album
+220,Grace Potter & The Nocturnals,23OknxGcY1i5xX1TRPilMj,30b3ZKCE7CxRNumi4XojDD,Nothing But The Water,2005-01-01,12,album
+221,Jason Isbell,3Q8wgwyVVv0z4UEh1HB0KY,0iQFZRVuxmhW3vCoIsUtKX,Southeastern (10 Year Anniversary Edition),2023-09-29,36,album
+222,Mike Cooley,2EWc9JObJEzv9ob1hRXU6M,06DE9BgIXHSQWb45jaXcdc,Live at the Shoals Theatre,2021-06-04,25,album
+223,Jason Isbell,3Q8wgwyVVv0z4UEh1HB0KY,1foB2t5YmfC6PxIC31g5Cp,Something More Than Free,2015-07-17,11,album
+224,Jason Isbell,3Q8wgwyVVv0z4UEh1HB0KY,0f9YXFsnwFxaQbhksDKQZ9,Southeastern,2013-06-11,13,album
+225,Jason Isbell,3Q8wgwyVVv0z4UEh1HB0KY,50NgNfhIFQl4PkyhUfEyE1,Sirens of the Ditch (Deluxe Edition),2007-07-10,15,album
+226,Jason Isbell,3Q8wgwyVVv0z4UEh1HB0KY,5ur4PdRxlyyVwTg04DJIAK,Sirens Of The Ditch,2007-07-10,11,album
+227,Lake Street Dive,3nuc29fYGlQbIrwh4yrNWd,3iKSDbxfwlxClXYZ1ATo1R,Good Together,2024-06-21,11,album
+228,Lake Street Dive,3nuc29fYGlQbIrwh4yrNWd,2Zi7uv234eNZJfLPGUIkSD,Obviously,2021-03-12,12,album
+229,Lake Street Dive,3nuc29fYGlQbIrwh4yrNWd,1eWP4CbLwVsVuC44utXBOD,Free Yourself Up,2018-05-04,10,album
+230,Lake Street Dive,3nuc29fYGlQbIrwh4yrNWd,1pXxKrTopCyALgXX7h5tmX,Side Pony,2016-02-19,12,album
+231,Lake Street Dive,3nuc29fYGlQbIrwh4yrNWd,5I4L2Ka63C2NfLvW5ioPcd,Bad Self Portraits,2014-02-18,11,album
+232,Lake Street Dive,3nuc29fYGlQbIrwh4yrNWd,6C7ye354okMGTSqt2edlhq,Live at the Lizard Lounge,2011-08-22,12,album
+233,Lake Street Dive,3nuc29fYGlQbIrwh4yrNWd,1M0xsdtREIgtvp8rRgsWWZ,Lake Street Dive,2010,13,album
+234,Allison Russell,3JBmecDGXTll46ygrnGTM6,2rzetXorcdU2BH86aoqHmw,The Returner,2023-09-08,10,album
+235,Allison Russell,3JBmecDGXTll46ygrnGTM6,4R21oaKCstE2fMc4XkuVlw,Outside Child,2021-05-21,11,album
+236,Birds of Chicago,2nyv8yYjMSkvUr9OwEQhVf,7CBO8p3euEtKjFQ7QGhE1T,Love In Wartime,2018-05-04,11,album
+237,Birds of Chicago,2nyv8yYjMSkvUr9OwEQhVf,0glClA93W5ZOBM7TxcxNGc,American Flowers,2017-11-17,6,album
+238,Birds of Chicago,2nyv8yYjMSkvUr9OwEQhVf,3J17NOJOu12OGplCGBGJ7h,Real Midnight,2016-02-19,11,album
+239,Birds of Chicago,2nyv8yYjMSkvUr9OwEQhVf,6qHyC9r8jVqscYW1r58ssC,"Live From Space (Evanston, Illinois / June 28, 2013)",2013-12-05,17,album
+240,Birds of Chicago,2nyv8yYjMSkvUr9OwEQhVf,4G7jzycuWDjfjcFF9SAhr4,Birds Of Chicago,2012-10-01,12,album
+241,Po' Girl,3lmxgpaREsw2cXVm6SWmZf,7jUHc7Gid18NFUGCid6pp5,Follow Your Bliss,2010-06-01,14,album
+242,Po' Girl,3lmxgpaREsw2cXVm6SWmZf,7KyfhJBvsLjDJBYwVpockh,Deer In The Night,2009-05-09,15,album
+243,Sofia,2TcqsMo6bIuO4cqXbFOZw8,5Bc02rkFFL3Btb3zW5RJSt,No Shame,2007-01-01,14,album
+244,Lori McKenna,1OV5mEATxtVma7fleFaUyl,4HAguxbt5ZUYIvGDhi3m6u,1988 (Deluxe),2023-11-10,15,album
+245,Lori McKenna,1OV5mEATxtVma7fleFaUyl,2wHfMrmQ08JMxp2i5jCSrm,1988,2023-07-21,10,album
+246,Lori McKenna,1OV5mEATxtVma7fleFaUyl,34xmomKNR5tpBWAseLhmgX,The Balladeer,2020-07-24,10,album
+247,Lori McKenna,1OV5mEATxtVma7fleFaUyl,2Jv8rT6pudH0eIlgu90zKm,The Tree,2018-07-20,11,album
+248,Lori McKenna,1OV5mEATxtVma7fleFaUyl,61WR0KS7E4RJV6JC2TZ8Gk,The Bird & the Rifle,2016-07-29,10,album
+249,Lori McKenna,1OV5mEATxtVma7fleFaUyl,0nCbtAU3ojDJz83Cx0iD8y,Numbered Doors,2014-09-23,10,album
+250,Lori McKenna,1OV5mEATxtVma7fleFaUyl,2iPk21l3I6IgTaUdHbZEc5,Massachusetts,2013-04-23,12,album
+251,Lori McKenna,1OV5mEATxtVma7fleFaUyl,5IjKbb8lLZoJju8O1VB17w,Lorraine,2011-01-25,13,album
+252,Lori McKenna,1OV5mEATxtVma7fleFaUyl,6SCEY61OHCITmc6VWV3kWg,Unglamorous (Standard Version),2007-06-19,11,album
+253,Lori McKenna,1OV5mEATxtVma7fleFaUyl,4PiYGbRp3gd0E2sD3aIYdH,Bittertown (U.S. Release),2005-09-27,13,album
+254,Lori McKenna,1OV5mEATxtVma7fleFaUyl,25q1uI9UfjIkR3Q3bLwErY,The Kitchen Tapes,2003-01-01,12,album
+255,Lori McKenna,1OV5mEATxtVma7fleFaUyl,7mDMUxZi4tvEW6ymYubWNd,Pieces of Me,2001-11-20,11,album
+256,Lori McKenna,1OV5mEATxtVma7fleFaUyl,4gAlAxy5z3nTrAwnrNojch,Paper Wings & Halo,1999-09-07,13,album
+257,Ray LaMontagne,6DoH7ywD5BcQvjloe9OcIj,2p9oJBiFjBfz46rAa2lQ4x,Long Way Home,2024-08-16,9,album
+258,Ray LaMontagne,6DoH7ywD5BcQvjloe9OcIj,4yzBq7tSsGjnQS0GPmbWcE,MONOVISION,2020-06-26,10,album
+259,Ray LaMontagne,6DoH7ywD5BcQvjloe9OcIj,7dozbeo4NF2OyFayHPKI1f,Part Of The Light,2018-05-18,9,album
+260,Ray LaMontagne,6DoH7ywD5BcQvjloe9OcIj,4JVl5HHiI2SEgqvqTrBYyK,Ouroboros,2016-03-04,8,album
+261,Ray LaMontagne,6DoH7ywD5BcQvjloe9OcIj,0HtJKUCwLbioPhMPAlKONW,Supernova,2014-04-25,10,album
+262,Ray LaMontagne,6DoH7ywD5BcQvjloe9OcIj,7uDlfwN1xFTRvTffXYPHM9,God Willin' & The Creek Don't Rise (with The Pariah Dogs),2010-08-13,10,album
+263,Ray LaMontagne,6DoH7ywD5BcQvjloe9OcIj,7iMybHeeEiPQSEI0TG3pdo,Gossip In The Grain (Expanded Edition),2008-10-14,15,album
+264,Ray LaMontagne,6DoH7ywD5BcQvjloe9OcIj,2CbLBSlkvh2vR4JRLDRQso,Gossip In The Grain,2008-10-13,10,album
+265,Ray LaMontagne,6DoH7ywD5BcQvjloe9OcIj,6teArUjXEHY8nEbWiOf1Hq,Till The Sun Turns Black,2006-08-29,12,album
+266,Ray LaMontagne,6DoH7ywD5BcQvjloe9OcIj,5zCkbvYpwzg7JvMlcsxcbf,Live From Bonnaroo 2005,2006-03-07,6,album
+267,Ray LaMontagne,6DoH7ywD5BcQvjloe9OcIj,0YWVOgUZl59PurjohaioRw,Trouble,2004-08-15,10,album
+268,Lucius,1WrqUPWlHN5FXCRcQgrkas,5VHjoikiszEB5C5QWjYCMo,Wildewoman (The New Recordings) [Deluxe],2024-06-21,14,album
+269,Lucius,1WrqUPWlHN5FXCRcQgrkas,2qcm6QT6aSuOOmogeZaRoo,Wildewoman (The New Recordings),2024-05-31,13,album
+270,Lucius,1WrqUPWlHN5FXCRcQgrkas,23rODwWw3dylrLEzUW1tIw,Second Nature,2022-04-08,10,album
+271,Lucius,1WrqUPWlHN5FXCRcQgrkas,3y4k3cJW83i3KDSDJnPOX8,NUDES,2018-03-02,10,album
+272,Lucius,1WrqUPWlHN5FXCRcQgrkas,2ZPWnsulXJ6AwcJdNjQCU7,Good Grief (Expanded Edition),2016-03-12,17,album
+273,Lucius,1WrqUPWlHN5FXCRcQgrkas,4y03yD5SS8Ndis03p9eMLN,Good Grief,2016-03-11,11,album
+274,Lucius,1WrqUPWlHN5FXCRcQgrkas,1GsV4IG36xFOseehmAcerH,Wildewoman (Expanded Edition),2014-11-24,19,album
+275,Lucius,1WrqUPWlHN5FXCRcQgrkas,65Wk3Qzygf9cii16JpOVvk,Wildewoman,2013-10-15,11,album
+276,Jason Isbell and the 400 Unit,3Lg3FGwBxOGuefqekQzRUf,2gL0IM5SYhCxJebPaKdDkx,Weathervanes,2023-06-09,13,album
+277,Jason Isbell and the 400 Unit,3Lg3FGwBxOGuefqekQzRUf,2JGpezeVAwq7Jw2ua3EniV,Georgia Blue,2021-10-15,13,album
+278,Jason Isbell and the 400 Unit,3Lg3FGwBxOGuefqekQzRUf,5XIafkwTpyvL7jjLJx1xKz,Reunions,2020-05-15,10,album
+279,Jason Isbell and the 400 Unit,3Lg3FGwBxOGuefqekQzRUf,19652SxfYygBsLkqDhRUtw,Live from the Ryman,2018-10-19,13,album
+280,Jason Isbell and the 400 Unit,3Lg3FGwBxOGuefqekQzRUf,0gYLr4tpPpRrPg2WIS64jw,The Nashville Sound,2017-06-16,10,album
+281,Jason Isbell and the 400 Unit,3Lg3FGwBxOGuefqekQzRUf,52AoWmPSQWR1Ds20xoqC4l,Live from Alabama,2012-11-19,13,album
+282,Jason Isbell and the 400 Unit,3Lg3FGwBxOGuefqekQzRUf,2jJzPAzHCzSJAxrN3jNJmJ,Here We Rest,2011-04-12,11,album
+283,Jason Isbell and the 400 Unit,3Lg3FGwBxOGuefqekQzRUf,6WdpkBR26l19jEhFg4Zs8f,Jason Isbell and the 400 Unit,2009-02-17,12,album
+284,Jason Isbell and the 400 Unit,3Lg3FGwBxOGuefqekQzRUf,03DeaSUiP4Yq7zQhikqpWr,Live At Twist & Shout 11.16.07,2008-04-01,6,album
+285,Sara Bareilles,2Sqr0DXoaYABbjBo9HaMkM,5z6BFXI711HbSAXDjgOAHE,Into The Woods (2022 Broadway Cast Recording),2022-09-30,25,album
+286,Sara Bareilles,2Sqr0DXoaYABbjBo9HaMkM,1D8kRZizbtcWJWQ1LSygvE,Amidst the Chaos: Live from the Hollywood Bowl,2021-05-21,21,album
+287,Sara Bareilles,2Sqr0DXoaYABbjBo9HaMkM,52fzvqGSm991mT6pBgAS6g,More Love - Songs from Little Voice Season One,2020-09-04,10,album
+288,Sara Bareilles,2Sqr0DXoaYABbjBo9HaMkM,10xzW5XNPaJoCBKAIdjZYb,What's Not Inside: The Lost Songs from Waitress (Outtakes and Demos Recorded for the Broadway Musical),2019-08-16,7,album
+289,Sara Bareilles,2Sqr0DXoaYABbjBo9HaMkM,5x2sDapUIdq0qk1ezff3gm,Amidst the Chaos (Bonus Version),2019-05-10,13,album
+290,Sara Bareilles,2Sqr0DXoaYABbjBo9HaMkM,1s6codM2ZAB008t9GTyaEk,What's Inside: Songs from Waitress,2015-11-06,12,album
+291,Sara Bareilles,2Sqr0DXoaYABbjBo9HaMkM,0SwzCCHxBlXXXLPpqkjXaK,What's Inside: Songs from Waitress - Commentary,2015-11-03,12,album
+292,Sara Bareilles,2Sqr0DXoaYABbjBo9HaMkM,4HnmEIDtiegXuU4fzzhTy9,Sounds Like Me - Commentary,2015-11-02,8,album
+293,Sara Bareilles,2Sqr0DXoaYABbjBo9HaMkM,7L4ZgnQqEhCEsV9GnMeXtE,Brave Enough: Live at the Variety Playhouse,2013-10-22,13,album
+294,Sara Bareilles,2Sqr0DXoaYABbjBo9HaMkM,7lpbyGc4fHsQkBTsfWVBhp,The Blessed Unrest,2013-07-16,12,album
+295,Sara Bareilles,2Sqr0DXoaYABbjBo9HaMkM,627ukPRwYxyBREHxBq0vGJ,Kaleidoscope Heart,2010-09-07,13,album
+296,Sara Bareilles,2Sqr0DXoaYABbjBo9HaMkM,64QcWKPhmceNB4ULPq1l1o,Between The Lines: Sara Bareilles Live At The Fillmore,2008-10-28,12,album
+297,Sara Bareilles,2Sqr0DXoaYABbjBo9HaMkM,2Z9WUERfMjOgQ6ze9TcGbF,Little Voice,2007-07-03,12,album
+298,Sara Bareilles,2Sqr0DXoaYABbjBo9HaMkM,6I6LWiUlVb6UWYLN7KNU9W,Careful Confessions,2004-01-24,11,album
+299,Grace Potter,1PJVVIeS5Wu0wbZDhtC0Ht,39CJTcG6bVCFdqtHlKb8L6,Grace Potter's Road Trip,2024-04-18,15,album
+300,Grace Potter,1PJVVIeS5Wu0wbZDhtC0Ht,5LjmGiV7L4vzjS5F2cLPUf,Mother Road,2023-08-18,10,album
+301,Grace Potter,1PJVVIeS5Wu0wbZDhtC0Ht,1ZUZuW2fR7J5JscL8FHpSC,Daylight,2019-10-25,11,album
+302,Grace Potter,1PJVVIeS5Wu0wbZDhtC0Ht,6vH6hPl0Woh6Cp1EUbpYq7,Midnight,2015-01-01,12,album
+303,Yola,2gqMBdyddvN82dzZt4ZF14,1aF9Xjtg1d1wwsE4hRAkQV,Stand For Myself,2021-07-30,12,album
+304,Yola,2gqMBdyddvN82dzZt4ZF14,0XOpyZAAkGomyeXBSQcFiL,Walk Through Fire (Deluxe Edition),2019-12-06,14,album
