@@ -1,0 +1,32 @@
+
+			
+									<h5>Release Date: 23 July 2024</h5>
+				
+									<span style="font-weight: 400;">Neo4j 4.4.36 is a maintenance release with important fixes.</span>
+<h3><b>Kernel</b></h3>
+<ul>
+ 	<li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Improved the performance of Consistency Checker on stores with many labels</span></li>
+ 	<li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Update log message to error level when index recovery clean-up fails</span></li>
+</ul>
+<h3><b>Platform</b></h3>
+<ul>
+ 	<li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">set default locale of C.UTF-8</span></li>
+</ul>
+<h3><b>Security</b></h3>
+<ul>
+ 	<li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Update netty bom to 4.1.111 to address CVE-2024-29025</span></li>
+</ul>
+<h3><b>Bundled Packages:</b></h3>
+<ul>
+ 	<li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Cypher-Shell 4.4.36</span></li>
+ 	<li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">labs/apoc-4.4.0.30-core</span></li>
+ 	<li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">products/bloom-plugin-4.x-2.13.0</span></li>
+ 	<li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">products/neo4j-graph-data-science-2.6.5</span></li>
+ 	<li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">products/neo4j-ops-manager-agent-1.10.4</span></li>
+</ul>
+<pre><a href="https://support.neo4j.com/s/article/115013134648-Neo4j-Supported-Versions"><span style="font-weight: 400;">4.4 End of Support is November 30, 2025</span><span style="font-weight: 400;">
+</span><span style="font-weight: 400;">
+</span></a><a href="https://github.com/neo4j/neo4j/wiki/Neo4j-4.4-changelog"><span style="font-weight: 400;">4.4 Changelog</span><span style="font-weight: 400;">
+</span><span style="font-weight: 400;">
+</span></a><a href="https://neo4j.com/docs/operations-manual/4.4/"><span style="font-weight: 400;">4.4 Operations manual</span></a></pre>				
+					
