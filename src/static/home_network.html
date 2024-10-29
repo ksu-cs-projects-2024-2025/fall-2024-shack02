@@ -1,0 +1,222 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 600px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+             #loadingBar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width: 100%;
+                 height: 600px;
+                 background-color:rgba(200,200,200,0.8);
+                 -webkit-transition: all 0.5s ease;
+                 -moz-transition: all 0.5s ease;
+                 -ms-transition: all 0.5s ease;
+                 -o-transition: all 0.5s ease;
+                 transition: all 0.5s ease;
+                 opacity:1;
+             }
+
+             #bar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width:20px;
+                 height:20px;
+                 margin:auto auto auto auto;
+                 border-radius:11px;
+                 border:2px solid rgba(30,30,30,0.05);
+                 background: rgb(0, 173, 246); /* Old browsers */
+                 box-shadow: 2px 0px 4px rgba(0,0,0,0.4);
+             }
+
+             #border {
+                 position:absolute;
+                 top:10px;
+                 left:10px;
+                 width:500px;
+                 height:23px;
+                 margin:auto auto auto auto;
+                 box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+                 border-radius:10px;
+             }
+
+             #text {
+                 position:absolute;
+                 top:8px;
+                 left:530px;
+                 width:30px;
+                 height:50px;
+                 margin:auto auto auto auto;
+                 font-size:22px;
+                 color: #000000;
+             }
+
+             div.outerBorder {
+                 position:relative;
+                 top:400px;
+                 width:600px;
+                 height:44px;
+                 margin:auto auto auto auto;
+                 border:8px solid rgba(0,0,0,0.1);
+                 background: rgb(252,252,252); /* Old browsers */
+                 background: -moz-linear-gradient(top,  rgba(252,252,252,1) 0%, rgba(237,237,237,1) 100%); /* FF3.6+ */
+                 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(237,237,237,1))); /* Chrome,Safari4+ */
+                 background: -webkit-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Chrome10+,Safari5.1+ */
+                 background: -o-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Opera 11.10+ */
+                 background: -ms-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* IE10+ */
+                 background: linear-gradient(to bottom,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* W3C */
+                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+                 border-radius:72px;
+                 box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+             }
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+            <div id="loadingBar">
+              <div class="outerBorder">
+                <div id="text">0%</div>
+                <div id="border">
+                  <div id="bar"></div>
+                </div>
+              </div>
+            </div>
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"group": "artist", "id": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "Korn", "shape": "dot", "title": "Popularity: 77"}, {"group": "track", "id": "6Um6eK3ODYd8Our3PnJUEf", "label": "This Loss", "physics": false, "shape": "dot", "title": "Track number: 12"}, {"group": "album", "id": "6mWsWVsfWpoZ2d6uxm1ND1", "label": "The Nothing", "physics": false, "shape": "dot", "title": "Release date: 2019-09-13"}, {"group": "track", "id": "26It847QGg6qm5l4F40GhZ", "label": "Victimized", "physics": false, "shape": "dot", "title": "Track number: 10"}, {"group": "album", "id": "6TA5d51wosfWuZXyOKWzpG", "label": "The Paradigm Shift (Deluxe)", "physics": false, "shape": "dot", "title": "Release date: 2013-10-08"}, {"group": "track", "id": "0VUGGLcINsmJi3nc612KkL", "label": "Make Believe", "physics": false, "shape": "dot", "title": "Track number: 2"}, {"group": "album", "id": "1MqmDK2xw4isOPhiUb9eXO", "label": "Untouchables", "physics": false, "shape": "dot", "title": "Release date: 2002-06-11"}, {"group": "track", "id": "0mQ0VvgdC6nM6AfGEBFJzo", "label": "Forgotten", "physics": false, "shape": "dot", "title": "Track number: 1"}, {"group": "album", "id": "4fN6xfIrXPX8SMgcFU4A6h", "label": "Requiem Mass (Deluxe Edition)", "physics": false, "shape": "dot", "title": "Release date: 2023-02-03"}, {"group": "track", "id": "2PeLrcfqn5agneKc3S2HMu", "label": "Wicked (feat. Chino Moreno)", "physics": false, "shape": "dot", "title": "Track number: 10"}, {"group": "album", "id": "2b813fSxxzp9lcOfnLrrTH", "label": "Life Is Peachy", "physics": false, "shape": "dot", "title": "Release date: 1996-10-15"}, {"group": "track", "id": "4frc8rYiPP7oHmxEMh3LHR", "label": "Lost In The Grandeur", "physics": false, "shape": "dot", "title": "Track number: 4"}, {"group": "album", "id": "7J0BUlxogdpZAtuZnhomb0", "label": "Requiem", "physics": false, "shape": "dot", "title": "Release date: 2022-02-04"}, {"group": "track", "id": "3TZuUaGjEtyAiUM9iM89ff", "label": "Clown", "physics": false, "shape": "dot", "title": "Track number: 4"}, {"group": "album", "id": "7D3XFJlfZIkmGWqZXm2X8z", "label": "Korn", "physics": false, "shape": "dot", "title": "Release date: 1994-10-11"}, {"group": "track", "id": "25pAePMnGdeFVhMMUE2eKV", "label": "One More Time", "physics": false, "shape": "dot", "title": "Track number: 8"}, {"group": "track", "id": "1mGIbvbKtTqWSMLAEDA6tj", "label": "Blame", "physics": false, "shape": "dot", "title": "Track number: 3"}, {"group": "track", "id": "2f1BjAVy4k8B3pB4qBntHj", "label": "Alone I Break", "physics": false, "shape": "dot", "title": "Track number: 9"}, {"group": "track", "id": "5byIY9ua610voYx22KdLBm", "label": "Counting on Me", "physics": false, "shape": "dot", "title": "Track number: 3"}, {"group": "album", "id": "3487OYBtnRl82qA6tfyWco", "label": "Take A Look In The Mirror", "physics": false, "shape": "dot", "title": "Release date: 2003-11-19"}, {"group": "track", "id": "5G5mQxQYtYk5LhxxW1JmVD", "label": "Sing Sorrow", "physics": false, "shape": "dot", "title": "Track number: 14"}, {"group": "album", "id": "5gizwaBQyfZYTEb8zdL7Z6", "label": "Untitled (Deluxe)", "physics": false, "shape": "dot", "title": "Release date: 2023-07-28"}, {"group": "track", "id": "168vDJzoJapd4n0CJ1Nuql", "label": "Break Some Off", "physics": false, "shape": "dot", "title": "Track number: 2"}, {"group": "track", "id": "5TiaxTlSxqWDXsaQUkLkIl", "label": "Here to Stay - Live at CBGB", "physics": false, "shape": "dot", "title": "Track number: 6"}, {"group": "album", "id": "1OzMlpOy3QYFYrnM9YShH9", "label": "Live \u0026 Rare", "physics": false, "shape": "dot", "title": "Release date: 2006-04-28"}, {"group": "track", "id": "6B0VMeKtoTT3SAS4ekyAYF", "label": "Falling Away from Me - Live At MTV Studio, NYC, 2006", "physics": false, "shape": "dot", "title": "Track number: 4"}, {"group": "album", "id": "3IdmuALhor6bV32o4VVSFo", "label": "MTV Unplugged (Live)", "physics": false, "shape": "dot", "title": "Release date: 2007-03-05"}, {"group": "track", "id": "3CrRFQfOIek5ImjatYqfx0", "label": "H@rd3r", "physics": false, "shape": "dot", "title": "Track number: 11"}, {"group": "track", "id": "49jFWSRzl7YO93F0oVTko7", "label": "Wish I Wasn\u0027t Born Today", "physics": false, "shape": "dot", "title": "Track number: 12"}, {"group": "track", "id": "1mBZ8vwLiD8EpT0xr5XsvQ", "label": "Politics", "physics": false, "shape": "dot", "title": "Track number: 2"}, {"group": "album", "id": "2c7ynrgZP08xNtkJi9MhjF", "label": "See You On the Other Side", "physics": false, "shape": "dot", "title": "Release date: 2005-12-06"}, {"group": "track", "id": "3cWMX3FQBFEgtuyQFSftyl", "label": "Start The Healing", "physics": false, "shape": "dot", "title": "Track number: 3"}, {"group": "track", "id": "4RBDmhD5FXBU9gGVRxqtkQ", "label": "Throw Me Away", "physics": false, "shape": "dot", "title": "Track number: 6"}, {"group": "track", "id": "6wldBo9HFtco6CX9pbSuSC", "label": "Need To", "physics": false, "shape": "dot", "title": "Track number: 3"}, {"group": "track", "id": "4mMoQoqVLfAeRr5pjoEiaI", "label": "Paranoid and Aroused", "physics": false, "shape": "dot", "title": "Track number: 5"}, {"group": "track", "id": "3sSPUoL8XqcYApxbSVb25z", "label": "Move On", "physics": false, "shape": "dot", "title": "Track number: 5"}, {"group": "album", "id": "2WuADVcxasM1VvDfnwiACn", "label": "Korn III: Remember Who You Are (Special Edition)", "physics": false, "shape": "dot", "title": "Release date: 2010-07-09"}, {"group": "track", "id": "1VlW3owKPeiEtxMaHkq4Pv", "label": "Beat It Upright", "physics": false, "shape": "dot", "title": "Track number: 11"}, {"group": "track", "id": "54qrffnjkibki3wq1PlPkh", "label": "4U", "physics": false, "shape": "dot", "title": "Track number: 4"}, {"group": "album", "id": "5U0pevIOTrPoDsN8YsBCBh", "label": "Issues", "physics": false, "shape": "dot", "title": "Release date: 1999-11-09"}, {"group": "track", "id": "1LtzkrYvtgtAGYbYr1heQt", "label": "For No One", "physics": false, "shape": "dot", "title": "Track number: 12"}, {"group": "track", "id": "6B1uhU0w4fk7nNeylg41Xq", "label": "Liar", "physics": false, "shape": "dot", "title": "Track number: 11"}, {"group": "track", "id": "40jCPYWzUkcqwSL7EzUfDW", "label": "Oildale (Leave Me Alone)", "physics": false, "shape": "dot", "title": "Track number: 2"}, {"group": "track", "id": "6b9cpufJ83nrbJbxiN5uMD", "label": "Illuminati (feat. Excision and Downlink)", "physics": false, "shape": "dot", "title": "Track number: 5"}, {"group": "album", "id": "4a6B5VTaWSw0xRQsEtNX39", "label": "The Path of Totality", "physics": false, "shape": "dot", "title": "Release date: 2011-11-21"}, {"group": "track", "id": "7kVrQ79jg4nd1r6H9CrmIk", "label": "Faget", "physics": false, "shape": "dot", "title": "Track number: 6"}, {"group": "track", "id": "50oXqDFyjbuGLzdfCwYWRu", "label": "Wake Up", "physics": false, "shape": "dot", "title": "Track number: 8"}, {"group": "track", "id": "0bpZrtdbpFSB1jbXXPU7Lp", "label": "Hater", "physics": false, "shape": "dot", "title": "Track number: 12"}, {"group": "album", "id": "29QP2RwZwRY9mAYWmYcH3T", "label": "The Paradigm Shift (World Tour Edition)", "physics": false, "shape": "dot", "title": "Release date: 2014-07-15"}, {"group": "track", "id": "0SEgQsnclm7brY6kT4QTjt", "label": "Never Around", "physics": false, "shape": "dot", "title": "Track number: 9"}, {"group": "track", "id": "3nqFO8zihpUA6s3pyUMzZJ", "label": "Mass Hysteria", "physics": false, "shape": "dot", "title": "Track number: 6"}, {"group": "track", "id": "78HoIdDPqfWWAuRy7oNmq5", "label": "Hypocrites", "physics": false, "shape": "dot", "title": "Track number: 3"}, {"group": "track", "id": "3PgK8DK9jZSYR17OEUDjJb", "label": "Overture or Obituary", "physics": false, "shape": "dot", "title": "Track number: 15"}, {"group": "track", "id": "3eEf2haynTmhqQHyvUHrbr", "label": "Burn the Obedient (feat. Noisia)", "physics": false, "shape": "dot", "title": "Track number: 6"}, {"group": "album", "id": "3ARqpnmjMB5O8uihXOOxbW", "label": "The Path of Totality (Special Edition)", "physics": false, "shape": "dot", "title": "Release date: 2011-11-30"}, {"group": "track", "id": "3EhF7Oy09xthGyV4CluWdd", "label": "Bleeding Out (feat. Feed Me)", "physics": false, "shape": "dot", "title": "Track number: 11"}, {"group": "track", "id": "2B7Ip5UezkdaW31SWujvI7", "label": "Am I Going Crazy", "physics": false, "shape": "dot", "title": "Track number: 9"}, {"group": "track", "id": "5RW5hj17NQRutso3HxOMhB", "label": "Kill Mercy Within (feat. Noisia)", "physics": false, "shape": "dot", "title": "Track number: 2"}, {"group": "track", "id": "3o7TMr6RmIusYH7Kkg7ujR", "label": "Coming Undone", "physics": false, "shape": "dot", "title": "Track number: 9"}, {"group": "track", "id": "76MDRhVSAadTjDo9R5HELf", "label": "Killing", "physics": false, "shape": "dot", "title": "Track number: 11"}, {"group": "album", "id": "6uW0nLS4wNsobOLoHvUhAi", "label": "Untitled", "physics": false, "shape": "dot", "title": "Release date: 2007-07-31"}, {"group": "track", "id": "2epJOYKMo2XOXuc8Bk3Xwa", "label": "Hollow Life", "physics": false, "shape": "dot", "title": "Track number: 4"}, {"group": "track", "id": "2cun5UwgipBfm97fY8KDA0", "label": "Chaos Lives in Everything (feat. Skrillex)", "physics": false, "shape": "dot", "title": "Track number: 1"}, {"group": "track", "id": "4w22dIAwQmYAnbjhvs5dkp", "label": "Get Up! (feat. Skrillex)", "physics": false, "shape": "dot", "title": "Track number: 9"}, {"group": "track", "id": "5iAj5KZX76YhvbO2X8W8By", "label": "Lost", "physics": false, "shape": "dot", "title": "Track number: 3"}, {"group": "track", "id": "4TQMrjNglepW8qyG9WOhld", "label": "The Seduction of Indulgence", "physics": false, "shape": "dot", "title": "Track number: 6"}, {"group": "track", "id": "6Ot1jvIoVPAuGRKY8Qxue8", "label": "Divine", "physics": false, "shape": "dot", "title": "Track number: 5"}, {"group": "track", "id": "1WHcosWgvI6RraqBiINOqd", "label": "Start The Healing - Requiem Mass", "physics": false, "shape": "dot", "title": "Track number: 1"}, {"group": "track", "id": "0YDVWdAuSTqrFqpfEIugT1", "label": "Proud", "physics": false, "shape": "dot", "title": "Track number: 13"}, {"group": "track", "id": "2hfprXDHkcjKa2MQOhx1GA", "label": "The Hating", "physics": false, "shape": "dot", "title": "Track number: 4"}, {"group": "album", "id": "0UGqqYIWXAD1FgrDI1zOjh", "label": "The Serenity of Suffering", "physics": false, "shape": "dot", "title": "Release date: 2016-10-21"}, {"group": "track", "id": "5PgNUYXmICNOudPFWLIuw3", "label": "No Place to Hide", "physics": false, "shape": "dot", "title": "Track number: 9"}, {"group": "track", "id": "58K1gPYPfiS8mCxJKkgnfW", "label": "Let\u0027s Go (feat. Noisia)", "physics": false, "shape": "dot", "title": "Track number: 8"}, {"group": "track", "id": "3ESohZocQvwRDzedmk4fYi", "label": "Blind - Live at CBGB", "physics": false, "shape": "dot", "title": "Track number: 2"}, {"group": "track", "id": "1Ba8Xug4v3yg9k5CPX86OQ", "label": "Everything Falls Apart", "physics": false, "shape": "dot", "title": "Track number: 7"}, {"group": "track", "id": "2FwISmna7UfcIq1Ukpa5gc", "label": "Paranoid and Aroused", "physics": false, "shape": "dot", "title": "Track number: 6"}, {"group": "track", "id": "5PCKCffFrcyUvnhxJoPlK2", "label": "Rotting In Vain", "physics": false, "shape": "dot", "title": "Track number: 2"}, {"group": "track", "id": "5aQRJorDb0PRMywaLgtxZr", "label": "Mr. Rogers", "physics": false, "shape": "dot", "title": "Track number: 7"}, {"group": "track", "id": "3PpoBKcbnoGQudHGkwJA4C", "label": "The Darkness is Revealing", "physics": false, "shape": "dot", "title": "Track number: 4"}, {"group": "track", "id": "4Pe2Zj1524hC0JUQFzfCCh", "label": "Love Song", "physics": false, "shape": "dot", "title": "Track number: 7"}, {"group": "track", "id": "6AjIReRkWSPtWUtuD6g2XB", "label": "Get Up (Live from Moscow, 2014)", "physics": false, "shape": "dot", "title": "Track number: 17"}, {"group": "track", "id": "2u7nKGX3azSQ1OqFO8Aqp4", "label": "When Will This End", "physics": false, "shape": "dot", "title": "Track number: 13"}, {"group": "track", "id": "1wYXIhJXqlIAGS6sbzpTL6", "label": "Black Is the Soul", "physics": false, "shape": "dot", "title": "Track number: 3"}, {"group": "track", "id": "38E66O2MXMTy6h4BdwmwJ1", "label": "I Will Protect You", "physics": false, "shape": "dot", "title": "Track number: 13"}, {"group": "track", "id": "6bwuLPr45wsvbTjB0PGI65", "label": "Beg for Me", "physics": false, "shape": "dot", "title": "Track number: 5"}, {"group": "track", "id": "4J4RSwxdNA6tXNFpADDnzk", "label": "Hopeless And Beaten - Requiem Mass", "physics": false, "shape": "dot", "title": "Track number: 3"}, {"group": "track", "id": "5GNDXYy4NEzqa6uLMe3EtT", "label": "Die Another Day", "physics": false, "shape": "dot", "title": "Track number: 14"}, {"group": "track", "id": "3Vy1Nknw7cypFgWMTLTDp0", "label": "Let the Guilt Go", "physics": false, "shape": "dot", "title": "Track number: 7"}, {"group": "track", "id": "1TQ0yJXxWVGcPsOFoi069c", "label": "Lead the Parade", "physics": false, "shape": "dot", "title": "Track number: 6"}, {"group": "track", "id": "6iSx4zHDPleJswOfqRIAgr", "label": "Open Up", "physics": false, "shape": "dot", "title": "Track number: 8"}, {"group": "track", "id": "0h9qCOdRAlOA8IoAQOe5e9", "label": "My Gift to You", "physics": false, "shape": "dot", "title": "Track number: 13"}, {"group": "album", "id": "0gsiszk6JWYwAyGvaTTud4", "label": "Follow The Leader", "physics": false, "shape": "dot", "title": "Release date: 1998-08-18"}, {"group": "track", "id": "32Y1pIkuwcVbQxscFQR0FD", "label": "Got the Life - Live at CBGB", "physics": false, "shape": "dot", "title": "Track number: 5"}, {"group": "track", "id": "0xcF2mC6MktbXOT7kRiXoF", "label": "You\u0027ll Never Find Me", "physics": false, "shape": "dot", "title": "Track number: 3"}, {"group": "track", "id": "6nJPHXRpKYv2yqtalEjKy5", "label": "Got the Life", "physics": false, "shape": "dot", "title": "Track number: 3"}, {"group": "track", "id": "3yR6QIK5t05ZzJojA23QVj", "label": "No Way", "physics": false, "shape": "dot", "title": "Track number: 12"}, {"group": "track", "id": "3EhZiXAVPkfWSbgWZ7oDa4", "label": "Reclaim My Place", "physics": false, "shape": "dot", "title": "Track number: 9"}, {"group": "track", "id": "4CzNhEAJjxUqwwVE8SMK9X", "label": "Starting Over", "physics": false, "shape": "dot", "title": "Track number: 2"}, {"group": "track", "id": "7nqpIc8SeFgfcTxogNTqPQ", "label": "Another Brick in the Wall, Pt. 1, 2, 3 - Live at Projekt Revolution", "physics": false, "shape": "dot", "title": "Track number: 8"}, {"group": "track", "id": "264ph2nD91hAaVZvD0CG5j", "label": "Do What They Say", "physics": false, "shape": "dot", "title": "Track number: 7"}, {"group": "track", "id": "4fsB1tonZ8MRwwWHC3RU7w", "label": "Throw Me Away - Live At MTV Studio, NYC, 2006", "physics": false, "shape": "dot", "title": "Track number: 11"}, {"group": "track", "id": "6Jqy4pnuAV92XtnPk2n60c", "label": "Burn the Obedient (feat. Noisia)", "physics": false, "shape": "dot", "title": "Track number: 6"}, {"group": "track", "id": "32z3JFEOi75MKmoKPtcyl1", "label": "Sanctuary (feat. Downlink)", "physics": false, "shape": "dot", "title": "Track number: 7"}, {"group": "track", "id": "5nIhgfeYqP0CpotqdNgHwW", "label": "Fear Is a Place to Live", "physics": false, "shape": "dot", "title": "Track number: 4"}, {"group": "track", "id": "1pr9TZGOXeJUggIal1Wq3R", "label": "Blind", "physics": false, "shape": "dot", "title": "Track number: 1"}, {"group": "track", "id": "2kscFL4a77JEOLApHWA8o4", "label": "Way Too Far (feat. 12th Planet \u0026 Flinch)", "physics": false, "shape": "dot", "title": "Track number: 10"}, {"group": "track", "id": "0u7CQMyTFHFlNfqfjJ817Y", "label": "Hushabye", "physics": false, "shape": "dot", "title": "Track number: 12"}, {"group": "track", "id": "67ah6prOsDPr2UfkKnlwyX", "label": "K@#*%!", "physics": false, "shape": "dot", "title": "Track number: 8"}, {"group": "track", "id": "7yYvvOB7CuzdVldb6zOk1m", "label": "All In the Family (feat. Fred Durst)", "physics": false, "shape": "dot", "title": "Track number: 8"}, {"group": "track", "id": "66XEGt4an9ToODiOzqf5qv", "label": "Blind - Live [Explicit]", "physics": false, "shape": "dot", "title": "Track number: 14"}, {"group": "track", "id": "3AfajMb3XqqpE97TudO1ab", "label": "My Gift to You - Live at Woodstock \u002799", "physics": false, "shape": "dot", "title": "Track number: 10"}, {"group": "track", "id": "7JSkuWH5flEv9Qul4ee2R1", "label": "Are You Ready to Live?", "physics": false, "shape": "dot", "title": "Track number: 10"}, {"group": "track", "id": "04TNQIxccOTrhxCQwAPLkR", "label": "My Confession", "physics": false, "shape": "dot", "title": "Track number: 8"}, {"group": "track", "id": "25EgA1A1OZBRw25Mjyw08g", "label": "Get Up! (feat. Skrillex)", "physics": false, "shape": "dot", "title": "Track number: 9"}, {"group": "track", "id": "3IDtkNj1lE7nxNdYxVoEhr", "label": "Love and Luxury", "physics": false, "shape": "dot", "title": "Track number: 9"}, {"group": "track", "id": "3r2F9UftJAFykQyOcumuma", "label": "Uber-time", "physics": false, "shape": "dot", "title": "Track number: 1"}, {"group": "track", "id": "2xrM7gB6oFzxvCSGqvuVgq", "label": "Disconnect", "physics": false, "shape": "dot", "title": "Track number: 5"}, {"group": "track", "id": "0Xw322oYDGdU0b2Wals72x", "label": "Ever Be", "physics": false, "shape": "dot", "title": "Track number: 8"}, {"group": "track", "id": "0xgsyoVvRFSYvV5cdtYhX1", "label": "A.D.I.D.A.S.", "physics": false, "shape": "dot", "title": "Track number: 11"}, {"group": "track", "id": "0IQEb8COH2gimdm9n7bBK1", "label": "The End Begins", "physics": false, "shape": "dot", "title": "Track number: 1"}, {"group": "track", "id": "452Q1DpbgvxBGidPqYICcc", "label": "Gravity of Discomfort", "physics": false, "shape": "dot", "title": "Track number: 10"}]);
+                  edges = new vis.DataSet([{"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "6Um6eK3ODYd8Our3PnJUEf"}, {"from": "6mWsWVsfWpoZ2d6uxm1ND1", "label": "INCLUDES", "to": "6Um6eK3ODYd8Our3PnJUEf"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "26It847QGg6qm5l4F40GhZ"}, {"from": "6TA5d51wosfWuZXyOKWzpG", "label": "INCLUDES", "to": "26It847QGg6qm5l4F40GhZ"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "0VUGGLcINsmJi3nc612KkL"}, {"from": "1MqmDK2xw4isOPhiUb9eXO", "label": "INCLUDES", "to": "0VUGGLcINsmJi3nc612KkL"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "0mQ0VvgdC6nM6AfGEBFJzo"}, {"from": "4fN6xfIrXPX8SMgcFU4A6h", "label": "INCLUDES", "to": "0mQ0VvgdC6nM6AfGEBFJzo"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "2PeLrcfqn5agneKc3S2HMu"}, {"from": "2b813fSxxzp9lcOfnLrrTH", "label": "INCLUDES", "to": "2PeLrcfqn5agneKc3S2HMu"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "4frc8rYiPP7oHmxEMh3LHR"}, {"from": "7J0BUlxogdpZAtuZnhomb0", "label": "INCLUDES", "to": "4frc8rYiPP7oHmxEMh3LHR"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "3TZuUaGjEtyAiUM9iM89ff"}, {"from": "7D3XFJlfZIkmGWqZXm2X8z", "label": "INCLUDES", "to": "3TZuUaGjEtyAiUM9iM89ff"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "25pAePMnGdeFVhMMUE2eKV"}, {"from": "1MqmDK2xw4isOPhiUb9eXO", "label": "INCLUDES", "to": "25pAePMnGdeFVhMMUE2eKV"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "1mGIbvbKtTqWSMLAEDA6tj"}, {"from": "1MqmDK2xw4isOPhiUb9eXO", "label": "INCLUDES", "to": "1mGIbvbKtTqWSMLAEDA6tj"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "2f1BjAVy4k8B3pB4qBntHj"}, {"from": "1MqmDK2xw4isOPhiUb9eXO", "label": "INCLUDES", "to": "2f1BjAVy4k8B3pB4qBntHj"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "5byIY9ua610voYx22KdLBm"}, {"from": "3487OYBtnRl82qA6tfyWco", "label": "INCLUDES", "to": "5byIY9ua610voYx22KdLBm"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "5G5mQxQYtYk5LhxxW1JmVD"}, {"from": "5gizwaBQyfZYTEb8zdL7Z6", "label": "INCLUDES", "to": "5G5mQxQYtYk5LhxxW1JmVD"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "168vDJzoJapd4n0CJ1Nuql"}, {"from": "3487OYBtnRl82qA6tfyWco", "label": "INCLUDES", "to": "168vDJzoJapd4n0CJ1Nuql"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "5TiaxTlSxqWDXsaQUkLkIl"}, {"from": "1OzMlpOy3QYFYrnM9YShH9", "label": "INCLUDES", "to": "5TiaxTlSxqWDXsaQUkLkIl"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "6B0VMeKtoTT3SAS4ekyAYF"}, {"from": "3IdmuALhor6bV32o4VVSFo", "label": "INCLUDES", "to": "6B0VMeKtoTT3SAS4ekyAYF"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "3CrRFQfOIek5ImjatYqfx0"}, {"from": "6mWsWVsfWpoZ2d6uxm1ND1", "label": "INCLUDES", "to": "3CrRFQfOIek5ImjatYqfx0"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "49jFWSRzl7YO93F0oVTko7"}, {"from": "6TA5d51wosfWuZXyOKWzpG", "label": "INCLUDES", "to": "49jFWSRzl7YO93F0oVTko7"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "1mBZ8vwLiD8EpT0xr5XsvQ"}, {"from": "2c7ynrgZP08xNtkJi9MhjF", "label": "INCLUDES", "to": "1mBZ8vwLiD8EpT0xr5XsvQ"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "3cWMX3FQBFEgtuyQFSftyl"}, {"from": "4fN6xfIrXPX8SMgcFU4A6h", "label": "INCLUDES", "to": "3cWMX3FQBFEgtuyQFSftyl"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "4RBDmhD5FXBU9gGVRxqtkQ"}, {"from": "2c7ynrgZP08xNtkJi9MhjF", "label": "INCLUDES", "to": "4RBDmhD5FXBU9gGVRxqtkQ"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "6wldBo9HFtco6CX9pbSuSC"}, {"from": "7D3XFJlfZIkmGWqZXm2X8z", "label": "INCLUDES", "to": "6wldBo9HFtco6CX9pbSuSC"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "4mMoQoqVLfAeRr5pjoEiaI"}, {"from": "6TA5d51wosfWuZXyOKWzpG", "label": "INCLUDES", "to": "4mMoQoqVLfAeRr5pjoEiaI"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "3sSPUoL8XqcYApxbSVb25z"}, {"from": "2WuADVcxasM1VvDfnwiACn", "label": "INCLUDES", "to": "3sSPUoL8XqcYApxbSVb25z"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "1VlW3owKPeiEtxMaHkq4Pv"}, {"from": "1MqmDK2xw4isOPhiUb9eXO", "label": "INCLUDES", "to": "1VlW3owKPeiEtxMaHkq4Pv"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "54qrffnjkibki3wq1PlPkh"}, {"from": "5U0pevIOTrPoDsN8YsBCBh", "label": "INCLUDES", "to": "54qrffnjkibki3wq1PlPkh"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "1LtzkrYvtgtAGYbYr1heQt"}, {"from": "2c7ynrgZP08xNtkJi9MhjF", "label": "INCLUDES", "to": "1LtzkrYvtgtAGYbYr1heQt"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "6B1uhU0w4fk7nNeylg41Xq"}, {"from": "2c7ynrgZP08xNtkJi9MhjF", "label": "INCLUDES", "to": "6B1uhU0w4fk7nNeylg41Xq"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "40jCPYWzUkcqwSL7EzUfDW"}, {"from": "2WuADVcxasM1VvDfnwiACn", "label": "INCLUDES", "to": "40jCPYWzUkcqwSL7EzUfDW"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "6b9cpufJ83nrbJbxiN5uMD"}, {"from": "4a6B5VTaWSw0xRQsEtNX39", "label": "INCLUDES", "to": "6b9cpufJ83nrbJbxiN5uMD"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "7kVrQ79jg4nd1r6H9CrmIk"}, {"from": "7D3XFJlfZIkmGWqZXm2X8z", "label": "INCLUDES", "to": "7kVrQ79jg4nd1r6H9CrmIk"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "50oXqDFyjbuGLzdfCwYWRu"}, {"from": "5U0pevIOTrPoDsN8YsBCBh", "label": "INCLUDES", "to": "50oXqDFyjbuGLzdfCwYWRu"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "0bpZrtdbpFSB1jbXXPU7Lp"}, {"from": "29QP2RwZwRY9mAYWmYcH3T", "label": "INCLUDES", "to": "0bpZrtdbpFSB1jbXXPU7Lp"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "0SEgQsnclm7brY6kT4QTjt"}, {"from": "2WuADVcxasM1VvDfnwiACn", "label": "INCLUDES", "to": "0SEgQsnclm7brY6kT4QTjt"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "3nqFO8zihpUA6s3pyUMzZJ"}, {"from": "6TA5d51wosfWuZXyOKWzpG", "label": "INCLUDES", "to": "3nqFO8zihpUA6s3pyUMzZJ"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "78HoIdDPqfWWAuRy7oNmq5"}, {"from": "2c7ynrgZP08xNtkJi9MhjF", "label": "INCLUDES", "to": "78HoIdDPqfWWAuRy7oNmq5"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "3PgK8DK9jZSYR17OEUDjJb"}, {"from": "5gizwaBQyfZYTEb8zdL7Z6", "label": "INCLUDES", "to": "3PgK8DK9jZSYR17OEUDjJb"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "3eEf2haynTmhqQHyvUHrbr"}, {"from": "3ARqpnmjMB5O8uihXOOxbW", "label": "INCLUDES", "to": "3eEf2haynTmhqQHyvUHrbr"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "3EhF7Oy09xthGyV4CluWdd"}, {"from": "3ARqpnmjMB5O8uihXOOxbW", "label": "INCLUDES", "to": "3EhF7Oy09xthGyV4CluWdd"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "2B7Ip5UezkdaW31SWujvI7"}, {"from": "5U0pevIOTrPoDsN8YsBCBh", "label": "INCLUDES", "to": "2B7Ip5UezkdaW31SWujvI7"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "5RW5hj17NQRutso3HxOMhB"}, {"from": "3ARqpnmjMB5O8uihXOOxbW", "label": "INCLUDES", "to": "5RW5hj17NQRutso3HxOMhB"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "3o7TMr6RmIusYH7Kkg7ujR"}, {"from": "2c7ynrgZP08xNtkJi9MhjF", "label": "INCLUDES", "to": "3o7TMr6RmIusYH7Kkg7ujR"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "76MDRhVSAadTjDo9R5HELf"}, {"from": "6uW0nLS4wNsobOLoHvUhAi", "label": "INCLUDES", "to": "76MDRhVSAadTjDo9R5HELf"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "2epJOYKMo2XOXuc8Bk3Xwa"}, {"from": "1MqmDK2xw4isOPhiUb9eXO", "label": "INCLUDES", "to": "2epJOYKMo2XOXuc8Bk3Xwa"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "2cun5UwgipBfm97fY8KDA0"}, {"from": "3ARqpnmjMB5O8uihXOOxbW", "label": "INCLUDES", "to": "2cun5UwgipBfm97fY8KDA0"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "4w22dIAwQmYAnbjhvs5dkp"}, {"from": "4a6B5VTaWSw0xRQsEtNX39", "label": "INCLUDES", "to": "4w22dIAwQmYAnbjhvs5dkp"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "5iAj5KZX76YhvbO2X8W8By"}, {"from": "2b813fSxxzp9lcOfnLrrTH", "label": "INCLUDES", "to": "5iAj5KZX76YhvbO2X8W8By"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "4TQMrjNglepW8qyG9WOhld"}, {"from": "6mWsWVsfWpoZ2d6uxm1ND1", "label": "INCLUDES", "to": "4TQMrjNglepW8qyG9WOhld"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "6Ot1jvIoVPAuGRKY8Qxue8"}, {"from": "7D3XFJlfZIkmGWqZXm2X8z", "label": "INCLUDES", "to": "6Ot1jvIoVPAuGRKY8Qxue8"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "1WHcosWgvI6RraqBiINOqd"}, {"from": "4fN6xfIrXPX8SMgcFU4A6h", "label": "INCLUDES", "to": "1WHcosWgvI6RraqBiINOqd"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "0YDVWdAuSTqrFqpfEIugT1"}, {"from": "1OzMlpOy3QYFYrnM9YShH9", "label": "INCLUDES", "to": "0YDVWdAuSTqrFqpfEIugT1"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "2hfprXDHkcjKa2MQOhx1GA"}, {"from": "0UGqqYIWXAD1FgrDI1zOjh", "label": "INCLUDES", "to": "2hfprXDHkcjKa2MQOhx1GA"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "5PgNUYXmICNOudPFWLIuw3"}, {"from": "2b813fSxxzp9lcOfnLrrTH", "label": "INCLUDES", "to": "5PgNUYXmICNOudPFWLIuw3"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "58K1gPYPfiS8mCxJKkgnfW"}, {"from": "4a6B5VTaWSw0xRQsEtNX39", "label": "INCLUDES", "to": "58K1gPYPfiS8mCxJKkgnfW"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "3ESohZocQvwRDzedmk4fYi"}, {"from": "1OzMlpOy3QYFYrnM9YShH9", "label": "INCLUDES", "to": "3ESohZocQvwRDzedmk4fYi"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "1Ba8Xug4v3yg9k5CPX86OQ"}, {"from": "0UGqqYIWXAD1FgrDI1zOjh", "label": "INCLUDES", "to": "1Ba8Xug4v3yg9k5CPX86OQ"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "2FwISmna7UfcIq1Ukpa5gc"}, {"from": "29QP2RwZwRY9mAYWmYcH3T", "label": "INCLUDES", "to": "2FwISmna7UfcIq1Ukpa5gc"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "5PCKCffFrcyUvnhxJoPlK2"}, {"from": "0UGqqYIWXAD1FgrDI1zOjh", "label": "INCLUDES", "to": "5PCKCffFrcyUvnhxJoPlK2"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "5aQRJorDb0PRMywaLgtxZr"}, {"from": "2b813fSxxzp9lcOfnLrrTH", "label": "INCLUDES", "to": "5aQRJorDb0PRMywaLgtxZr"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "3PpoBKcbnoGQudHGkwJA4C"}, {"from": "6mWsWVsfWpoZ2d6uxm1ND1", "label": "INCLUDES", "to": "3PpoBKcbnoGQudHGkwJA4C"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "4Pe2Zj1524hC0JUQFzfCCh"}, {"from": "2c7ynrgZP08xNtkJi9MhjF", "label": "INCLUDES", "to": "4Pe2Zj1524hC0JUQFzfCCh"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "6AjIReRkWSPtWUtuD6g2XB"}, {"from": "29QP2RwZwRY9mAYWmYcH3T", "label": "INCLUDES", "to": "6AjIReRkWSPtWUtuD6g2XB"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "2u7nKGX3azSQ1OqFO8Aqp4"}, {"from": "3487OYBtnRl82qA6tfyWco", "label": "INCLUDES", "to": "2u7nKGX3azSQ1OqFO8Aqp4"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "1wYXIhJXqlIAGS6sbzpTL6"}, {"from": "0UGqqYIWXAD1FgrDI1zOjh", "label": "INCLUDES", "to": "1wYXIhJXqlIAGS6sbzpTL6"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "38E66O2MXMTy6h4BdwmwJ1"}, {"from": "5gizwaBQyfZYTEb8zdL7Z6", "label": "INCLUDES", "to": "38E66O2MXMTy6h4BdwmwJ1"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "6bwuLPr45wsvbTjB0PGI65"}, {"from": "5U0pevIOTrPoDsN8YsBCBh", "label": "INCLUDES", "to": "6bwuLPr45wsvbTjB0PGI65"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "4J4RSwxdNA6tXNFpADDnzk"}, {"from": "4fN6xfIrXPX8SMgcFU4A6h", "label": "INCLUDES", "to": "4J4RSwxdNA6tXNFpADDnzk"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "5GNDXYy4NEzqa6uLMe3EtT"}, {"from": "29QP2RwZwRY9mAYWmYcH3T", "label": "INCLUDES", "to": "5GNDXYy4NEzqa6uLMe3EtT"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "3Vy1Nknw7cypFgWMTLTDp0"}, {"from": "2WuADVcxasM1VvDfnwiACn", "label": "INCLUDES", "to": "3Vy1Nknw7cypFgWMTLTDp0"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "1TQ0yJXxWVGcPsOFoi069c"}, {"from": "2WuADVcxasM1VvDfnwiACn", "label": "INCLUDES", "to": "1TQ0yJXxWVGcPsOFoi069c"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "6iSx4zHDPleJswOfqRIAgr"}, {"from": "2c7ynrgZP08xNtkJi9MhjF", "label": "INCLUDES", "to": "6iSx4zHDPleJswOfqRIAgr"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "0h9qCOdRAlOA8IoAQOe5e9"}, {"from": "0gsiszk6JWYwAyGvaTTud4", "label": "INCLUDES", "to": "0h9qCOdRAlOA8IoAQOe5e9"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "32Y1pIkuwcVbQxscFQR0FD"}, {"from": "1OzMlpOy3QYFYrnM9YShH9", "label": "INCLUDES", "to": "32Y1pIkuwcVbQxscFQR0FD"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "0xcF2mC6MktbXOT7kRiXoF"}, {"from": "6mWsWVsfWpoZ2d6uxm1ND1", "label": "INCLUDES", "to": "0xcF2mC6MktbXOT7kRiXoF"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "6nJPHXRpKYv2yqtalEjKy5"}, {"from": "0gsiszk6JWYwAyGvaTTud4", "label": "INCLUDES", "to": "6nJPHXRpKYv2yqtalEjKy5"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "3yR6QIK5t05ZzJojA23QVj"}, {"from": "5U0pevIOTrPoDsN8YsBCBh", "label": "INCLUDES", "to": "3yR6QIK5t05ZzJojA23QVj"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "3EhZiXAVPkfWSbgWZ7oDa4"}, {"from": "0gsiszk6JWYwAyGvaTTud4", "label": "INCLUDES", "to": "3EhZiXAVPkfWSbgWZ7oDa4"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "4CzNhEAJjxUqwwVE8SMK9X"}, {"from": "5gizwaBQyfZYTEb8zdL7Z6", "label": "INCLUDES", "to": "4CzNhEAJjxUqwwVE8SMK9X"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "7nqpIc8SeFgfcTxogNTqPQ"}, {"from": "1OzMlpOy3QYFYrnM9YShH9", "label": "INCLUDES", "to": "7nqpIc8SeFgfcTxogNTqPQ"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "264ph2nD91hAaVZvD0CG5j"}, {"from": "6uW0nLS4wNsobOLoHvUhAi", "label": "INCLUDES", "to": "264ph2nD91hAaVZvD0CG5j"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "4fsB1tonZ8MRwwWHC3RU7w"}, {"from": "3IdmuALhor6bV32o4VVSFo", "label": "INCLUDES", "to": "4fsB1tonZ8MRwwWHC3RU7w"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "6Jqy4pnuAV92XtnPk2n60c"}, {"from": "4a6B5VTaWSw0xRQsEtNX39", "label": "INCLUDES", "to": "6Jqy4pnuAV92XtnPk2n60c"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "32z3JFEOi75MKmoKPtcyl1"}, {"from": "4a6B5VTaWSw0xRQsEtNX39", "label": "INCLUDES", "to": "32z3JFEOi75MKmoKPtcyl1"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "5nIhgfeYqP0CpotqdNgHwW"}, {"from": "2WuADVcxasM1VvDfnwiACn", "label": "INCLUDES", "to": "5nIhgfeYqP0CpotqdNgHwW"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "1pr9TZGOXeJUggIal1Wq3R"}, {"from": "7D3XFJlfZIkmGWqZXm2X8z", "label": "INCLUDES", "to": "1pr9TZGOXeJUggIal1Wq3R"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "2kscFL4a77JEOLApHWA8o4"}, {"from": "4a6B5VTaWSw0xRQsEtNX39", "label": "INCLUDES", "to": "2kscFL4a77JEOLApHWA8o4"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "0u7CQMyTFHFlNfqfjJ817Y"}, {"from": "6uW0nLS4wNsobOLoHvUhAi", "label": "INCLUDES", "to": "0u7CQMyTFHFlNfqfjJ817Y"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "67ah6prOsDPr2UfkKnlwyX"}, {"from": "2b813fSxxzp9lcOfnLrrTH", "label": "INCLUDES", "to": "67ah6prOsDPr2UfkKnlwyX"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "7yYvvOB7CuzdVldb6zOk1m"}, {"from": "0gsiszk6JWYwAyGvaTTud4", "label": "INCLUDES", "to": "7yYvvOB7CuzdVldb6zOk1m"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "66XEGt4an9ToODiOzqf5qv"}, {"from": "2WuADVcxasM1VvDfnwiACn", "label": "INCLUDES", "to": "66XEGt4an9ToODiOzqf5qv"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "3AfajMb3XqqpE97TudO1ab"}, {"from": "1OzMlpOy3QYFYrnM9YShH9", "label": "INCLUDES", "to": "3AfajMb3XqqpE97TudO1ab"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "7JSkuWH5flEv9Qul4ee2R1"}, {"from": "2WuADVcxasM1VvDfnwiACn", "label": "INCLUDES", "to": "7JSkuWH5flEv9Qul4ee2R1"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "04TNQIxccOTrhxCQwAPLkR"}, {"from": "4fN6xfIrXPX8SMgcFU4A6h", "label": "INCLUDES", "to": "04TNQIxccOTrhxCQwAPLkR"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "25EgA1A1OZBRw25Mjyw08g"}, {"from": "3ARqpnmjMB5O8uihXOOxbW", "label": "INCLUDES", "to": "25EgA1A1OZBRw25Mjyw08g"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "3IDtkNj1lE7nxNdYxVoEhr"}, {"from": "6uW0nLS4wNsobOLoHvUhAi", "label": "INCLUDES", "to": "3IDtkNj1lE7nxNdYxVoEhr"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "3r2F9UftJAFykQyOcumuma"}, {"from": "2WuADVcxasM1VvDfnwiACn", "label": "INCLUDES", "to": "3r2F9UftJAFykQyOcumuma"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "2xrM7gB6oFzxvCSGqvuVgq"}, {"from": "4fN6xfIrXPX8SMgcFU4A6h", "label": "INCLUDES", "to": "2xrM7gB6oFzxvCSGqvuVgq"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "0Xw322oYDGdU0b2Wals72x"}, {"from": "5gizwaBQyfZYTEb8zdL7Z6", "label": "INCLUDES", "to": "0Xw322oYDGdU0b2Wals72x"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "0xgsyoVvRFSYvV5cdtYhX1"}, {"from": "2b813fSxxzp9lcOfnLrrTH", "label": "INCLUDES", "to": "0xgsyoVvRFSYvV5cdtYhX1"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "0IQEb8COH2gimdm9n7bBK1"}, {"from": "6mWsWVsfWpoZ2d6uxm1ND1", "label": "INCLUDES", "to": "0IQEb8COH2gimdm9n7bBK1"}, {"from": "3RNrq3jvMZxD9ZyoOZbQOD", "label": "CREATED", "to": "452Q1DpbgvxBGidPqYICcc"}, {"from": "6mWsWVsfWpoZ2d6uxm1ND1", "label": "INCLUDES", "to": "452Q1DpbgvxBGidPqYICcc"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"nodes": {"borderWidth": 2, "borderWidthSelected": 4, "color": {"highlight": {"border": "black", "background": "orange"}}}, "edges": {"color": {"inherit": true}, "smooth": {"type": "continuous"}}, "interaction": {"hover": true, "navigationButtons": true, "multiselect": true}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+                      network.on("stabilizationProgress", function(params) {
+                          document.getElementById('loadingBar').removeAttribute("style");
+                          var maxWidth = 496;
+                          var minWidth = 20;
+                          var widthFactor = params.iterations/params.total;
+                          var width = Math.max(minWidth,maxWidth * widthFactor);
+                          document.getElementById('bar').style.width = width + 'px';
+                          document.getElementById('text').innerHTML = Math.round(widthFactor*100) + '%';
+                      });
+                      network.once("stabilizationIterationsDone", function() {
+                          document.getElementById('text').innerHTML = '100%';
+                          document.getElementById('bar').style.width = '496px';
+                          document.getElementById('loadingBar').style.opacity = 0;
+                          // really clean the dom element
+                          setTimeout(function () {document.getElementById('loadingBar').style.display = 'none';}, 500);
+                      });
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,222 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 600px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+             #loadingBar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width: 100%;
+                 height: 600px;
+                 background-color:rgba(200,200,200,0.8);
+                 -webkit-transition: all 0.5s ease;
+                 -moz-transition: all 0.5s ease;
+                 -ms-transition: all 0.5s ease;
+                 -o-transition: all 0.5s ease;
+                 transition: all 0.5s ease;
+                 opacity:1;
+             }
+
+             #bar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width:20px;
+                 height:20px;
+                 margin:auto auto auto auto;
+                 border-radius:11px;
+                 border:2px solid rgba(30,30,30,0.05);
+                 background: rgb(0, 173, 246); /* Old browsers */
+                 box-shadow: 2px 0px 4px rgba(0,0,0,0.4);
+             }
+
+             #border {
+                 position:absolute;
+                 top:10px;
+                 left:10px;
+                 width:500px;
+                 height:23px;
+                 margin:auto auto auto auto;
+                 box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+                 border-radius:10px;
+             }
+
+             #text {
+                 position:absolute;
+                 top:8px;
+                 left:530px;
+                 width:30px;
+                 height:50px;
+                 margin:auto auto auto auto;
+                 font-size:22px;
+                 color: #000000;
+             }
+
+             div.outerBorder {
+                 position:relative;
+                 top:400px;
+                 width:600px;
+                 height:44px;
+                 margin:auto auto auto auto;
+                 border:8px solid rgba(0,0,0,0.1);
+                 background: rgb(252,252,252); /* Old browsers */
+                 background: -moz-linear-gradient(top,  rgba(252,252,252,1) 0%, rgba(237,237,237,1) 100%); /* FF3.6+ */
+                 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(237,237,237,1))); /* Chrome,Safari4+ */
+                 background: -webkit-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Chrome10+,Safari5.1+ */
+                 background: -o-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Opera 11.10+ */
+                 background: -ms-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* IE10+ */
+                 background: linear-gradient(to bottom,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* W3C */
+                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+                 border-radius:72px;
+                 box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+             }
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+            <div id="loadingBar">
+              <div class="outerBorder">
+                <div id="text">0%</div>
+                <div id="border">
+                  <div id="bar"></div>
+                </div>
+              </div>
+            </div>
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"group": "artist", "id": "3Lg3FGwBxOGuefqekQzRUf", "label": "Jason Isbell and the 400 Unit", "shape": "dot", "title": "Popularity: 55"}, {"group": "track", "id": "250RLekaiL1q9qZer975Eg", "label": "If We Were Vampires", "physics": false, "shape": "dot", "title": "Track number: 5"}, {"group": "track", "id": "2OuQDtB3piyFsPC8qy0sRm", "label": "Flagship - Live", "physics": false, "shape": "dot", "title": "Track number: 4"}, {"group": "track", "id": "3nuVsL4Ue5n6FGhl1Tj3L4", "label": "Volunteer", "physics": false, "shape": "dot", "title": "Track number: 9"}, {"group": "track", "id": "5ZlJFhFdiAmsOMXifcIn2s", "label": "No Choice in the Matter", "physics": false, "shape": "dot", "title": "Track number: 7"}, {"group": "track", "id": "638Rq9oaSmnZQBHbDvF1yt", "label": "Elephant - Live", "physics": false, "shape": "dot", "title": "Track number: 8"}, {"group": "track", "id": "1bJlMEJfL9sLcICFM7yCJA", "label": "Go It Alone", "physics": false, "shape": "dot", "title": "Track number: 2"}, {"group": "track", "id": "6wz5dM3c7Ax2pkODQG6rYN", "label": "Something to Love", "physics": false, "shape": "dot", "title": "Track number: 10"}, {"group": "track", "id": "7wjpKrXrNR8bdYFkscdCI4", "label": "Cigarettes and Wine", "physics": false, "shape": "dot", "title": "Track number: 4"}, {"group": "track", "id": "0ucTf4ncdfziqlynsmZQts", "label": "Seven-Mile Island", "physics": false, "shape": "dot", "title": "Track number: 1"}, {"group": "track", "id": "5PNG3YPxlg6IBpRqX5blRF", "label": "Sunstroke", "physics": false, "shape": "dot", "title": "Track number: 2"}, {"group": "track", "id": "08MI7gu016yuiQ9LOJJ1iU", "label": "Streetlights", "physics": false, "shape": "dot", "title": "Track number: 9"}, {"group": "track", "id": "6UOnE8VcMBzp5kcwFKpMRm", "label": "Codeine", "physics": false, "shape": "dot", "title": "Track number: 4"}, {"group": "track", "id": "7BDlkFUZNto9DCqOCGeDbY", "label": "Tour of Duty - Live", "physics": false, "shape": "dot", "title": "Track number: 1"}, {"group": "track", "id": "5DwPd8gcyFMvKTAT5HxRvA", "label": "The Ballad of Nobeard", "physics": false, "shape": "dot", "title": "Track number: 7"}, {"group": "track", "id": "3t8IB18uEO2pebnfLUv7B0", "label": "What\u0027ve I Done to Help", "physics": false, "shape": "dot", "title": "Track number: 1"}, {"group": "track", "id": "33UcRp7H7NbPK6XVaOQOF2", "label": "White Beretta", "physics": false, "shape": "dot", "title": "Track number: 11"}, {"group": "track", "id": "0rNM8dIliSXJ1DhcAdYah3", "label": "Nightswimming", "physics": false, "shape": "dot", "title": "Track number: 1"}, {"group": "track", "id": "02WpEtFKlhMaTGMr2LAFf2", "label": "Chaos and Clothes", "physics": false, "shape": "dot", "title": "Track number: 8"}, {"group": "track", "id": "0kPEGY36WriQTAawAk2HNL", "label": "When My Baby\u0027s Beside Me", "physics": false, "shape": "dot", "title": "Track number: 11"}, {"group": "track", "id": "49DbDeFUQAqkpTCuHhlHi2", "label": "Honeysuckle Blue", "physics": false, "shape": "dot", "title": "Track number: 2"}, {"group": "track", "id": "0kdXHcBaRpg2o9mSRRS8P4", "label": "Outfit - Live", "physics": false, "shape": "dot", "title": "Track number: 8"}, {"group": "track", "id": "1yNRaOhlaWCFDkzvtakuGL", "label": "We\u0027ve Met", "physics": false, "shape": "dot", "title": "Track number: 3"}, {"group": "track", "id": "0DrRMBY6eTIS3EuH3gqvlZ", "label": "Last of My Kind - Live", "physics": false, "shape": "dot", "title": "Track number: 10"}, {"group": "track", "id": "4YtvmIkKHaSBOv1VPmZf6p", "label": "Be Afraid", "physics": false, "shape": "dot", "title": "Track number: 7"}, {"group": "track", "id": "4uIF8AvLCSXynJILuTwiR8", "label": "Letting You Go", "physics": false, "shape": "dot", "title": "Track number: 10"}, {"group": "track", "id": "14YciJfXopRaAd9T9A6YtV", "label": "In a Razor Town - Live", "physics": false, "shape": "dot", "title": "Track number: 6"}, {"group": "track", "id": "5Y64dlOpIVtwtXY250EwhF", "label": "Heart on a String - Live", "physics": false, "shape": "dot", "title": "Track number: 4"}, {"group": "track", "id": "5hDAY1RB1ulA1nDVCxyCaO", "label": "Cross Bones Style", "physics": false, "shape": "dot", "title": "Track number: 4"}, {"group": "track", "id": "6Y3FrPW4QND1a4SvHkoNBq", "label": "Alabama Pines - Live", "physics": false, "shape": "dot", "title": "Track number: 7"}, {"group": "track", "id": "2wNx4SZqgRvR8AQZrghV7W", "label": "It Gets Easier", "physics": false, "shape": "dot", "title": "Track number: 9"}, {"group": "track", "id": "6n2mctnAGWCV9EowOhudoS", "label": "Driver 8", "physics": false, "shape": "dot", "title": "Track number: 13"}, {"group": "track", "id": "7ytmP9RxaNoJIOdUfvdKpg", "label": "Good", "physics": false, "shape": "dot", "title": "Track number: 3"}, {"group": "track", "id": "6BzU6BMqMd4qelkWTjLwKy", "label": "Only Children", "physics": false, "shape": "dot", "title": "Track number: 3"}, {"group": "track", "id": "4ABeiTbfMPzISpIeehvxRg", "label": "Strawberry Woman", "physics": false, "shape": "dot", "title": "Track number: 3"}, {"group": "track", "id": "5CfGXaEPnhwqAlhX2PJmy4", "label": "It\u0027s a Man\u0027s, Man\u2019s, Man\u2019s World", "physics": false, "shape": "dot", "title": "Track number: 3"}, {"group": "track", "id": "26HDAFjCwSlyrJNeP8mex9", "label": "If We Were Vampires - Live", "physics": false, "shape": "dot", "title": "Track number: 13"}, {"group": "track", "id": "34iyLArMU5rUnNQD1Su2yn", "label": "Super 8 - Live", "physics": false, "shape": "dot", "title": "Track number: 12"}, {"group": "track", "id": "73EGhSHgQSGxh8HWi7Q7KN", "label": "Soldiers Get Strange", "physics": false, "shape": "dot", "title": "Track number: 8"}, {"group": "track", "id": "0bQfIqi9tsx9n18RYpMf2z", "label": "Something More Than Free - Live", "physics": false, "shape": "dot", "title": "Track number: 6"}, {"group": "track", "id": "5fZFlkILCysGB3QV7fnrqK", "label": "Coda", "physics": false, "shape": "dot", "title": "Track number: 12"}, {"group": "track", "id": "0p74DaG01XQSckBhWBYBTF", "label": "River", "physics": false, "shape": "dot", "title": "Track number: 6"}, {"group": "track", "id": "7dx89qwDr5ZqUqtkF6xmRd", "label": "However Long", "physics": false, "shape": "dot", "title": "Track number: 5"}, {"group": "track", "id": "6ceyCwpzXdySTqM8wD3Afk", "label": "Save It for Sunday", "physics": false, "shape": "dot", "title": "Track number: 10"}, {"group": "track", "id": "0AQiHddIy3u7BmIODHfTNv", "label": "White Man\u0027s World - Live", "physics": false, "shape": "dot", "title": "Track number: 3"}, {"group": "track", "id": "4EwXbhNj6JApo3R9b6uciW", "label": "Hope the High Road - Live", "physics": false, "shape": "dot", "title": "Track number: 1"}, {"group": "track", "id": "7AORc7CyNQ3Xj8y3cMcnFt", "label": "Tour of Duty", "physics": false, "shape": "dot", "title": "Track number: 11"}, {"group": "track", "id": "0y6gC61Hl3gUmSZ0ZuoiUF", "label": "Vestavia Hills", "physics": false, "shape": "dot", "title": "Track number: 10"}, {"group": "track", "id": "1HxCRbIQA67Hzs4Z1aIPZ2", "label": "Goddamn Lonely Love - Live", "physics": false, "shape": "dot", "title": "Track number: 2"}, {"group": "track", "id": "7LQWSJaHKYMSGmffJSujdu", "label": "Middle of the Morning", "physics": false, "shape": "dot", "title": "Track number: 4"}, {"group": "track", "id": "68e67Lj1AjUxGWaFOLFg6o", "label": "Like a Hurricane - Live", "physics": false, "shape": "dot", "title": "Track number: 13"}, {"group": "track", "id": "3Lwog5cH3ayw0xzddEEdal", "label": "Hurricanes and Hand Grenades - Live", "physics": false, "shape": "dot", "title": "Track number: 3"}, {"group": "track", "id": "5zPSx48xd1qETuuk0dAt39", "label": "Reverse", "physics": false, "shape": "dot", "title": "Track number: 9"}, {"group": "track", "id": "4LUT5CgkBcMbUYGlBxCUHS", "label": "The Blue", "physics": false, "shape": "dot", "title": "Track number: 6"}, {"group": "track", "id": "7rgoqTbHoRhxzdpasCLjuQ", "label": "Kid Fears", "physics": false, "shape": "dot", "title": "Track number: 8"}, {"group": "track", "id": "4QsXlCYFMNpVUzSR9UwWup", "label": "When We Were Close", "physics": false, "shape": "dot", "title": "Track number: 8"}, {"group": "track", "id": "4nLc4sEvpD7tnfsqJDILE0", "label": "Molotov", "physics": false, "shape": "dot", "title": "Track number: 7"}, {"group": "track", "id": "3IU8RK6qWHwPgcxivj1VID", "label": "I\u0027ve Been Loving You Too Long", "physics": false, "shape": "dot", "title": "Track number: 6"}, {"group": "track", "id": "269nCigUyT3TlSR0kUNAVO", "label": "The Last Song I Will Write", "physics": false, "shape": "dot", "title": "Track number: 10"}, {"group": "track", "id": "3bpEY6DKZRa8oczoOnHYQQ", "label": "Danko/Manuel - Live", "physics": false, "shape": "dot", "title": "Track number: 4"}, {"group": "track", "id": "6SFwyQSS9rh3XZ8SAJLR2G", "label": "Cigarettes and Wine - Live", "physics": false, "shape": "dot", "title": "Track number: 9"}, {"group": "track", "id": "1AI3MduL3CSvxrIaADHdl8", "label": "Miles", "physics": false, "shape": "dot", "title": "Track number: 13"}, {"group": "track", "id": "68wI8QNqMeIraj7Ix16hS3", "label": "Dreamsicle", "physics": false, "shape": "dot", "title": "Track number: 2"}, {"group": "track", "id": "4a4BMIyZITLhpr8DEeMANp", "label": "Daisy Mae", "physics": false, "shape": "dot", "title": "Track number: 6"}, {"group": "track", "id": "4aFguJzpSvDaSVBGu3e4Jc", "label": "White Man\u0027s World", "physics": false, "shape": "dot", "title": "Track number: 4"}, {"group": "track", "id": "7pcI3En42dUc6HV6XmhbGx", "label": "Death Wish", "physics": false, "shape": "dot", "title": "Track number: 1"}, {"group": "track", "id": "6B14xfqJG4JCzf0gaFkQ21", "label": "This Ain\u0027t It", "physics": false, "shape": "dot", "title": "Track number: 12"}, {"group": "track", "id": "2nQw3I7x5jbekpIHpLahQv", "label": "Flying over Water - Live", "physics": false, "shape": "dot", "title": "Track number: 9"}, {"group": "track", "id": "4NsQj7FUSoKprUhkIPbIm2", "label": "St. Peter\u0027s Autograph", "physics": false, "shape": "dot", "title": "Track number: 8"}, {"group": "track", "id": "17JauV7NyUrllejgZRYrlt", "label": "Goddamn Lonely Love - Live", "physics": false, "shape": "dot", "title": "Track number: 3"}, {"group": "track", "id": "26C3EjXm3Zu6MA3SkpOBZH", "label": "Running with Our Eyes Closed", "physics": false, "shape": "dot", "title": "Track number: 5"}, {"group": "track", "id": "5cckiHiVPWug7GjVeicYc0", "label": "In Memory of Elizabeth Reed", "physics": false, "shape": "dot", "title": "Track number: 11"}, {"group": "track", "id": "7r5X8KL8y0CpZZErtmOmNo", "label": "Hope the High Road", "physics": false, "shape": "dot", "title": "Track number: 9"}, {"group": "track", "id": "6NEnPyVS7opzxuT4f54V1y", "label": "Tupelo", "physics": false, "shape": "dot", "title": "Track number: 3"}, {"group": "track", "id": "3RPFCcKoYtb8bYygkNodiC", "label": "Never Could Believe", "physics": false, "shape": "dot", "title": "Track number: 8"}, {"group": "track", "id": "4v3PrevtfNmAEK3nI75O1y", "label": "I\u0027m Through", "physics": false, "shape": "dot", "title": "Track number: 12"}, {"group": "track", "id": "1wbZFwcyOmBhF4Fm2bYuPw", "label": "24 Frames - Live", "physics": false, "shape": "dot", "title": "Track number: 2"}, {"group": "track", "id": "5kIAr777wX9wvEC0aVEleQ", "label": "Cumberland Gap", "physics": false, "shape": "dot", "title": "Track number: 2"}, {"group": "track", "id": "36e7JUxXMV4mO4ZJWjBuSa", "label": "Last of My Kind", "physics": false, "shape": "dot", "title": "Track number: 1"}, {"group": "track", "id": "5ZleKPxxfpRr8rKhEBnEQi", "label": "Overseas", "physics": false, "shape": "dot", "title": "Track number: 4"}, {"group": "track", "id": "781PzPhRJv6fr0rVGF6dQ7", "label": "The Blue - Live", "physics": false, "shape": "dot", "title": "Track number: 11"}, {"group": "track", "id": "1Tf49ilCMmzkhoyI2uJZSV", "label": "King of Oklahoma", "physics": false, "shape": "dot", "title": "Track number: 2"}, {"group": "track", "id": "3DXGP7NK1bYPlGo1nw3cnW", "label": "Heart on a String", "physics": false, "shape": "dot", "title": "Track number: 9"}, {"group": "track", "id": "4krzKsaIXGglmeACrq9GZF", "label": "Save the World", "physics": false, "shape": "dot", "title": "Track number: 5"}, {"group": "track", "id": "59VfdBWX4C9DG0JSixi2sx", "label": "Outfit - Live", "physics": false, "shape": "dot", "title": "Track number: 5"}, {"group": "track", "id": "4KLdGUJxGCPXsWZ69ugIiO", "label": "Sometimes Salvation", "physics": false, "shape": "dot", "title": "Track number: 7"}, {"group": "track", "id": "30xTTsQlMrkhisyvxzEIpX", "label": "Cast Iron Skillet", "physics": false, "shape": "dot", "title": "Track number: 7"}, {"group": "track", "id": "2hpSDYFWIKZVfdfBsZ0mRJ", "label": "The Truth", "physics": false, "shape": "dot", "title": "Track number: 5"}, {"group": "track", "id": "5AU9W5LwZAnnRaoJ0v8bz8", "label": "TVA - Live", "physics": false, "shape": "dot", "title": "Track number: 10"}, {"group": "track", "id": "0uxv5wfkJ18i11Wp1bDoId", "label": "Dress Blues - Live", "physics": false, "shape": "dot", "title": "Track number: 12"}, {"group": "track", "id": "4KSnb7Qq0diyAu9ncxsfJA", "label": "Into the Mystic - Live", "physics": false, "shape": "dot", "title": "Track number: 6"}, {"group": "track", "id": "4Sy0ERn6xP83oQsA7G9cmh", "label": "Anxiety", "physics": false, "shape": "dot", "title": "Track number: 6"}, {"group": "track", "id": "2vq1ldxQXNtt4bQJDZvez1", "label": "Grown - Live", "physics": false, "shape": "dot", "title": "Track number: 1"}, {"group": "track", "id": "27VAi9SsvAQhS7LeQSi349", "label": "The Life You Chose - Live", "physics": false, "shape": "dot", "title": "Track number: 7"}, {"group": "track", "id": "5fCxzWbeRJgqvKhOGwO8my", "label": "Cover Me Up - Live", "physics": false, "shape": "dot", "title": "Track number: 11"}, {"group": "track", "id": "4mBYupeEa1e5Ep2HU7xToZ", "label": "Alabama Pines", "physics": false, "shape": "dot", "title": "Track number: 1"}, {"group": "track", "id": "32S9dgYdOPDGWQy6Y8SXC5", "label": "Cumberland Gap - Live", "physics": false, "shape": "dot", "title": "Track number: 5"}, {"group": "track", "id": "1N4WUPXtC9LYu5tpnsXYBj", "label": "Stopping By", "physics": false, "shape": "dot", "title": "Track number: 5"}, {"group": "track", "id": "4BmmZ59okdXzw4Jr6kvbuA", "label": "If You Insist", "physics": false, "shape": "dot", "title": "Track number: 6"}, {"group": "track", "id": "7A1dkV9p6d9IH2NiV5yCsQ", "label": "Decoration Day - Live", "physics": false, "shape": "dot", "title": "Track number: 2"}, {"group": "track", "id": "7mIIipDGDfrjx0W2D5qaox", "label": "Midnight Train to Georgia", "physics": false, "shape": "dot", "title": "Track number: 10"}]);
+                  edges = new vis.DataSet([{"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "250RLekaiL1q9qZer975Eg"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "2OuQDtB3piyFsPC8qy0sRm"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "3nuVsL4Ue5n6FGhl1Tj3L4"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "5ZlJFhFdiAmsOMXifcIn2s"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "638Rq9oaSmnZQBHbDvF1yt"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "1bJlMEJfL9sLcICFM7yCJA"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "6wz5dM3c7Ax2pkODQG6rYN"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "7wjpKrXrNR8bdYFkscdCI4"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "0ucTf4ncdfziqlynsmZQts"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "5PNG3YPxlg6IBpRqX5blRF"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "08MI7gu016yuiQ9LOJJ1iU"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "6UOnE8VcMBzp5kcwFKpMRm"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "7BDlkFUZNto9DCqOCGeDbY"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "5DwPd8gcyFMvKTAT5HxRvA"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "3t8IB18uEO2pebnfLUv7B0"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "33UcRp7H7NbPK6XVaOQOF2"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "0rNM8dIliSXJ1DhcAdYah3"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "02WpEtFKlhMaTGMr2LAFf2"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "0kPEGY36WriQTAawAk2HNL"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "49DbDeFUQAqkpTCuHhlHi2"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "0kdXHcBaRpg2o9mSRRS8P4"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "1yNRaOhlaWCFDkzvtakuGL"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "0DrRMBY6eTIS3EuH3gqvlZ"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "4YtvmIkKHaSBOv1VPmZf6p"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "4uIF8AvLCSXynJILuTwiR8"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "14YciJfXopRaAd9T9A6YtV"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "5Y64dlOpIVtwtXY250EwhF"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "5hDAY1RB1ulA1nDVCxyCaO"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "6Y3FrPW4QND1a4SvHkoNBq"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "2wNx4SZqgRvR8AQZrghV7W"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "6n2mctnAGWCV9EowOhudoS"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "7ytmP9RxaNoJIOdUfvdKpg"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "6BzU6BMqMd4qelkWTjLwKy"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "4ABeiTbfMPzISpIeehvxRg"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "5CfGXaEPnhwqAlhX2PJmy4"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "26HDAFjCwSlyrJNeP8mex9"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "34iyLArMU5rUnNQD1Su2yn"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "73EGhSHgQSGxh8HWi7Q7KN"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "0bQfIqi9tsx9n18RYpMf2z"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "5fZFlkILCysGB3QV7fnrqK"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "0p74DaG01XQSckBhWBYBTF"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "7dx89qwDr5ZqUqtkF6xmRd"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "6ceyCwpzXdySTqM8wD3Afk"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "0AQiHddIy3u7BmIODHfTNv"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "4EwXbhNj6JApo3R9b6uciW"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "7AORc7CyNQ3Xj8y3cMcnFt"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "0y6gC61Hl3gUmSZ0ZuoiUF"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "1HxCRbIQA67Hzs4Z1aIPZ2"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "7LQWSJaHKYMSGmffJSujdu"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "68e67Lj1AjUxGWaFOLFg6o"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "3Lwog5cH3ayw0xzddEEdal"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "5zPSx48xd1qETuuk0dAt39"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "4LUT5CgkBcMbUYGlBxCUHS"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "7rgoqTbHoRhxzdpasCLjuQ"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "4QsXlCYFMNpVUzSR9UwWup"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "4nLc4sEvpD7tnfsqJDILE0"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "3IU8RK6qWHwPgcxivj1VID"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "269nCigUyT3TlSR0kUNAVO"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "3bpEY6DKZRa8oczoOnHYQQ"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "6SFwyQSS9rh3XZ8SAJLR2G"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "1AI3MduL3CSvxrIaADHdl8"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "68wI8QNqMeIraj7Ix16hS3"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "4a4BMIyZITLhpr8DEeMANp"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "4aFguJzpSvDaSVBGu3e4Jc"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "7pcI3En42dUc6HV6XmhbGx"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "6B14xfqJG4JCzf0gaFkQ21"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "2nQw3I7x5jbekpIHpLahQv"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "4NsQj7FUSoKprUhkIPbIm2"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "17JauV7NyUrllejgZRYrlt"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "26C3EjXm3Zu6MA3SkpOBZH"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "5cckiHiVPWug7GjVeicYc0"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "7r5X8KL8y0CpZZErtmOmNo"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "6NEnPyVS7opzxuT4f54V1y"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "3RPFCcKoYtb8bYygkNodiC"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "4v3PrevtfNmAEK3nI75O1y"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "1wbZFwcyOmBhF4Fm2bYuPw"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "5kIAr777wX9wvEC0aVEleQ"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "36e7JUxXMV4mO4ZJWjBuSa"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "5ZleKPxxfpRr8rKhEBnEQi"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "781PzPhRJv6fr0rVGF6dQ7"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "1Tf49ilCMmzkhoyI2uJZSV"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "3DXGP7NK1bYPlGo1nw3cnW"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "4krzKsaIXGglmeACrq9GZF"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "59VfdBWX4C9DG0JSixi2sx"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "4KLdGUJxGCPXsWZ69ugIiO"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "30xTTsQlMrkhisyvxzEIpX"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "2hpSDYFWIKZVfdfBsZ0mRJ"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "5AU9W5LwZAnnRaoJ0v8bz8"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "0uxv5wfkJ18i11Wp1bDoId"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "4KSnb7Qq0diyAu9ncxsfJA"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "4Sy0ERn6xP83oQsA7G9cmh"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "2vq1ldxQXNtt4bQJDZvez1"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "27VAi9SsvAQhS7LeQSi349"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "5fCxzWbeRJgqvKhOGwO8my"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "4mBYupeEa1e5Ep2HU7xToZ"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "32S9dgYdOPDGWQy6Y8SXC5"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "1N4WUPXtC9LYu5tpnsXYBj"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "4BmmZ59okdXzw4Jr6kvbuA"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "7A1dkV9p6d9IH2NiV5yCsQ"}, {"from": "3Lg3FGwBxOGuefqekQzRUf", "label": "CREATED", "to": "7mIIipDGDfrjx0W2D5qaox"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"nodes": {"borderWidth": 2, "borderWidthSelected": 4, "color": {"highlight": {"border": "black", "background": "orange"}}}, "edges": {"color": {"inherit": true}, "smooth": {"type": "continuous"}}, "interaction": {"hover": true, "navigationButtons": true, "multiselect": true}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+                      network.on("stabilizationProgress", function(params) {
+                          document.getElementById('loadingBar').removeAttribute("style");
+                          var maxWidth = 496;
+                          var minWidth = 20;
+                          var widthFactor = params.iterations/params.total;
+                          var width = Math.max(minWidth,maxWidth * widthFactor);
+                          document.getElementById('bar').style.width = width + 'px';
+                          document.getElementById('text').innerHTML = Math.round(widthFactor*100) + '%';
+                      });
+                      network.once("stabilizationIterationsDone", function() {
+                          document.getElementById('text').innerHTML = '100%';
+                          document.getElementById('bar').style.width = '496px';
+                          document.getElementById('loadingBar').style.opacity = 0;
+                          // really clean the dom element
+                          setTimeout(function () {document.getElementById('loadingBar').style.display = 'none';}, 500);
+                      });
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
