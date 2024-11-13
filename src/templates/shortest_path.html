@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Artist to Artist Pathfinding</title>
+</head>
+<body>
+    <h1>Artist to Artist Pathfinding</h1>
+    <div id="mynetwork" style="width: 100%; height: 600px;">
+        <iframe src="{{ url_for('static', filename='shortest_path_network.html') }}" width="100%" height="100%" frameborder="0"></iframe>
+    </div>
+    <h2>Select Artist</h2>
+    <form method="POST">
+        <label for="dropdown1">Artist 1: </label>
+        <select name="artist_1_dropdown" id="artist_1_dropdown" onchange="updateSecondDropdown()">
+            {% for artist in artist_options %}
+                <option value = "{{ artist }}" {% if artist == selected_artist %}selected{% endif %}>{{ artist }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="dropdown">Artist 2: </label>
+        <select name="artist_2_dropdown" id="artist_2_dropdown">
+            {% for artist in artist_options %}
+                <option value = "{{ artist }}" {% if artist == selected_artist %}selected{% endif %}>{{ artist }}</option>
+            {% endfor %}
+        </select>
+        <script>
+            function updateSecondDropDown() {
+                const artist_1_dropdown = document.getElementById('artist_1_dropdown');
+                const artist_2_dropdown = document.getElementById('artist_2_dropdown');
+                const selected_artist_1 = artist_1_dropdown.value;
+                
+                for (let option of artist_2_dropdown.options){
+                    option.disabled = false;
+                }
+
+                if (selected_artist_1) {
+                    for (let option of artist_2_dropdown.options){
+                        if(option.value === selected_artist_1) {
+                            option.disabled = true;
+                        }
+                    }
+                }
+
+            }
+            document.getElementById('artist_1_dropdown').addEventListener('change', updateSecondDropdown);
+            document.addEventListener('DOMContentLoaded', (event) => {updateSecondDropdown();});
+        </script>
+        <button type ="submit">Submit</button>
+    </form>
+    {% if selected_artist %}
+        <p>You selected: {{ selected_artist }}</p>
+    {% endif %}
+</body>
+</html>
