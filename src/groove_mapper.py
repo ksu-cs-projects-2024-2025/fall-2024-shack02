@@ -34,6 +34,11 @@ class GrooveMapper():
     @self.app.post('/shortest_path')
     def shortest_path():
        return self.shortest_path()
+    
+    @self.app.route('/genre_overlap')
+    @self.app.post('/genre_overlap')
+    def genre_overlap():
+       return self.genre_overlap()
 
   #Defines the homepage and orchestrates the base query
   def home(self):
@@ -46,7 +51,7 @@ class GrooveMapper():
       return render_template("about.html", title="About")
 
   def essential_song(self):
-      artist_options = self.query.get_artists()
+      artist_options = self.query.get_named_values("Artist")
       selected_artist = None
       if request.method == "POST":
         selected_artist = request.form.get("artist_dropdown")
@@ -56,7 +61,7 @@ class GrooveMapper():
       return render_template("essential_song.html", title="Essential Song", artist_options=artist_options)
   
   def shortest_path(self):
-    artist_options = self.query.get_artists()
+    artist_options = self.query.get_named_values("Artist")
     if request.method == "POST":
         artist_1 = request.form.get("artist_1_dropdown")
         artist_2 = request.form.get("artist_2_dropdown")
@@ -64,6 +69,17 @@ class GrooveMapper():
         self.visualizer.create_shortest_path_network(graph_data)
 
     return render_template("shortest_path.html", title ="Artist to Artist Pathfinding", artist_options=artist_options)
+
+  def genre_overlap(self):
+    genre_options = self.query.get_named_values("Genre")
+    if request.method == "POST":
+       genre_1 = request.form.get("genre_dropdown_1")
+       genre_2 = request.form.get("genre_dropdown_2")
+       graph_data = self.query.genre_overlap(genre_1,genre_2)
+       self.visualizer.create_genre_overlap_graph(graph_data)
+
+    return render_template("genre_overlap.html", title="Genre Overlap Graph", genre_options = genre_options)
+
 
   def run(self):
       self.app.run(debug=True, host='127.0.0.1', port=5001)

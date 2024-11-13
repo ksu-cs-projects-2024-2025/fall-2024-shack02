@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 600px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"group": "Track", "id": "1IcCiEIz2e98isyYatIjuP", "label": "The D Bag Rag", "physics": false, "shape": "dot", "title": "Track number: 11"}, {"group": "Genre", "id": " north carolina indie", "label": " north carolina indie", "physics": false, "shape": "dot", "title": " north carolina indie"}, {"group": "Track", "id": "73IEgQKzdaHtaHQFKiRTEP", "label": "Locked Up", "physics": false, "shape": "dot", "title": "Track number: 12"}, {"group": "Track", "id": "0VWnF27xOG6nSsczlTyt4G", "label": "The Once And Future Carpenter - Commentary", "physics": false, "shape": "dot", "title": "Track number: 1"}, {"group": "Track", "id": "0wilePbRv6Tuinqn4hthd6", "label": "Closing Night", "physics": false, "shape": "dot", "title": "Track number: 8"}, {"group": "Track", "id": "69hfy6phB2uFR9hHD8dWsr", "label": "Day That Marvin Gaye Died", "physics": false, "shape": "dot", "title": "Track number: 13"}, {"group": "Track", "id": "0Y8HpMhLQV2GlRBvpbeiq3", "label": "Another Is Waiting", "physics": false, "shape": "dot", "title": "Track number: 4"}, {"group": "Track", "id": "0tK364wBUCSeE8ysRRMutW", "label": "My Losing Bet", "physics": false, "shape": "dot", "title": "Track number: 5"}, {"group": "Track", "id": "48Jzk86z2hPYCmrMgQ8v4d", "label": "Good To You - Commentary Version", "physics": false, "shape": "dot", "title": "Track number: 5"}, {"group": "Track", "id": "2ARJQ2yUfQ0Y8ZHbNyV8bD", "label": "The Fall", "physics": false, "shape": "dot", "title": "Track number: 11"}, {"group": "Track", "id": "0vSx8asHJCcEPNr8azEuvD", "label": "Talk On Indolence", "physics": false, "shape": "dot", "title": "Track number: 9"}, {"group": "Track", "id": "0KtTNo5j8kJZd7d4RJiVb3", "label": "Me And God", "physics": false, "shape": "dot", "title": "Track number: 4"}, {"group": "Track", "id": "0tphIis7POJMu00iqZ441a", "label": "Divorce Separation Blues", "physics": false, "shape": "dot", "title": "Track number: 11"}, {"group": "Track", "id": "7r2eWQSkkfoT5GkSypLD3B", "label": "February Seven - Commentary", "physics": false, "shape": "dot", "title": "Track number: 6"}, {"group": "Track", "id": "0Mfwz6JTTMrwXo2XIj7WGU", "label": "Salina", "physics": false, "shape": "dot", "title": "Track number: 7"}, {"group": "Track", "id": "45ymaKlXzV4guvD2n4HpYc", "label": "Pretty Girl From Michigan", "physics": false, "shape": "dot", "title": "Track number: 4"}, {"group": "Track", "id": "29jXqOJTx3mYfuOiiM8lZ2", "label": "Love Like the Movies", "physics": false, "shape": "dot", "title": "Track number: 2"}, {"group": "Track", "id": "2oHram6VgZDuvWoan6u5Hg", "label": "Offering", "physics": false, "shape": "dot", "title": "Track number: 13"}, {"group": "Track", "id": "253CuoEp6Ax8IrNso1RRNA", "label": "Every Morning Song - Demo", "physics": false, "shape": "dot", "title": "Track number: 13"}, {"group": "Track", "id": "37knHIXTllop4sngQ75MSC", "label": "Distraction #74", "physics": false, "shape": "dot", "title": "Track number: 4"}, {"group": "Track", "id": "0UI7HRtX0t2fkrjE2RcQyy", "label": "Souls Like The Wheels - Commentary Version", "physics": false, "shape": "dot", "title": "Track number: 8"}, {"group": "Track", "id": "40vchayv9Vsd9SzRYs4yrE", "label": "St. Joseph\u0027s", "physics": false, "shape": "dot", "title": "Track number: 6"}, {"group": "Track", "id": "3zwv65wMUVykg8W5ifyfLG", "label": "A Fathers First Spring", "physics": false, "shape": "dot", "title": "Track number: 9"}, {"group": "Track", "id": "4GuVAYvv39tBMVNOSr1tMH", "label": "Bang Bang", "physics": false, "shape": "dot", "title": "Track number: 8"}, {"group": "Track", "id": "4pE6Co348IeUviBvrN3FOR", "label": "Down With The Shine - Commentary", "physics": false, "shape": "dot", "title": "Track number: 8"}, {"group": "Track", "id": "5BfG80S8EaqUndFI8WtIqK", "label": "Pretty Girl from Raliegh", "physics": false, "shape": "dot", "title": "Track number: 16"}]);
+                  edges = new vis.DataSet([{"from": "1IcCiEIz2e98isyYatIjuP", "label": "BELONGS_TO", "to": " north carolina indie"}, {"from": "73IEgQKzdaHtaHQFKiRTEP", "label": "BELONGS_TO", "to": " north carolina indie"}, {"from": "0VWnF27xOG6nSsczlTyt4G", "label": "BELONGS_TO", "to": " north carolina indie"}, {"from": "0wilePbRv6Tuinqn4hthd6", "label": "BELONGS_TO", "to": " north carolina indie"}, {"from": "69hfy6phB2uFR9hHD8dWsr", "label": "BELONGS_TO", "to": " north carolina indie"}, {"from": "0Y8HpMhLQV2GlRBvpbeiq3", "label": "BELONGS_TO", "to": " north carolina indie"}, {"from": "0tK364wBUCSeE8ysRRMutW", "label": "BELONGS_TO", "to": " north carolina indie"}, {"from": "48Jzk86z2hPYCmrMgQ8v4d", "label": "BELONGS_TO", "to": " north carolina indie"}, {"from": "2ARJQ2yUfQ0Y8ZHbNyV8bD", "label": "BELONGS_TO", "to": " north carolina indie"}, {"from": "0vSx8asHJCcEPNr8azEuvD", "label": "BELONGS_TO", "to": " north carolina indie"}, {"from": "0KtTNo5j8kJZd7d4RJiVb3", "label": "BELONGS_TO", "to": " north carolina indie"}, {"from": "0tphIis7POJMu00iqZ441a", "label": "BELONGS_TO", "to": " north carolina indie"}, {"from": "7r2eWQSkkfoT5GkSypLD3B", "label": "BELONGS_TO", "to": " north carolina indie"}, {"from": "0Mfwz6JTTMrwXo2XIj7WGU", "label": "BELONGS_TO", "to": " north carolina indie"}, {"from": "45ymaKlXzV4guvD2n4HpYc", "label": "BELONGS_TO", "to": " north carolina indie"}, {"from": "29jXqOJTx3mYfuOiiM8lZ2", "label": "BELONGS_TO", "to": " north carolina indie"}, {"from": "2oHram6VgZDuvWoan6u5Hg", "label": "BELONGS_TO", "to": " north carolina indie"}, {"from": "253CuoEp6Ax8IrNso1RRNA", "label": "BELONGS_TO", "to": " north carolina indie"}, {"from": "37knHIXTllop4sngQ75MSC", "label": "BELONGS_TO", "to": " north carolina indie"}, {"from": "0UI7HRtX0t2fkrjE2RcQyy", "label": "BELONGS_TO", "to": " north carolina indie"}, {"from": "40vchayv9Vsd9SzRYs4yrE", "label": "BELONGS_TO", "to": " north carolina indie"}, {"from": "3zwv65wMUVykg8W5ifyfLG", "label": "BELONGS_TO", "to": " north carolina indie"}, {"from": "4GuVAYvv39tBMVNOSr1tMH", "label": "BELONGS_TO", "to": " north carolina indie"}, {"from": "4pE6Co348IeUviBvrN3FOR", "label": "BELONGS_TO", "to": " north carolina indie"}, {"from": "5BfG80S8EaqUndFI8WtIqK", "label": "BELONGS_TO", "to": " north carolina indie"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"nodes": {"borderWidth": 2, "borderWidthSelected": 4, "color": {"highlight": {"border": "black", "background": "orange"}}}, "edges": {"color": {"inherit": true}, "smooth": {"type": "continuous"}}, "interaction": {"hover": true, "navigationButtons": true, "multiselect": true}, "physics": {"enabled": true, "barnesHut": {"gravitationalConstant": -2000, "centralGravity": 0.3, "springLength": 100, "springConstant": 0.1}, "forceAtlas2Based": {"gravitationalConstant": -500, "centralGravity": 0.01, "springLength": 50, "springConstant": 0.1}, "repulsion": {"centralGravity": 0.0, "springLength": 100, "springConstant": 0.1, "damping": 0.09}}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

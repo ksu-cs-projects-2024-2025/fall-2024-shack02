@@ -140,7 +140,9 @@ class Neo4jQueryEngine:
                         "weight": record["r1.weight"]
                     }
             if config['genres']:
-                genre_node = record["g"]
+                genre_node = record.get("g1")
+                if genre_node == None:
+                    genre_node = record.get("g2")
                 record_dict['genre'] = {
                         "name": genre_node["name"]
                     }
@@ -224,27 +226,6 @@ class Neo4jQueryEngine:
             network_data = self.parse_query_results(result, artist=True, tracks=tracks, albums=albums, genres=genres)   
 
         return network_data
-
-
-    # #Artist essential track query 
-    # def essential_track(self, artist, node_lim):
-    #     query = f"""
-    #     MATCH (a:Artist {{name: '{artist}'}})-[r:CREATED]->(t:Track)-[r1:HAS_FEATURE]->(f:TrackFeature)
-    #     RETURN a, t, f, r1.weight
-    #     LIMIT {node_lim}
-    #     """
-
-    #     config = {
-    #         'tracks': True,
-    #         'artists': True,
-    #         'albums': False,
-    #         'track_features':True,
-    #         'genres': False,
-    #         'graph_data': True,
-    #         'query': "na"
-    #     }
-
-    #     return self.query_database(query, config)
     
     def calculate_artist_centroid(self, artist):
         query = f"""
@@ -312,15 +293,41 @@ class Neo4jQueryEngine:
             result = result.to_eager_result()
         return self.parse_path_query(result.records, config)
 
-    def get_artists(self):
+    def genre_overlap(self, genre_1, genre_2):
+        query=f"""
+        MATCH (g1:Genre {{name: '{genre_1}'}}), (g2:Genre {{name: '{genre_2}'}})
+        MATCH (t:Track)-[r:BELONGS_TO]->(g1)
+        MATCH (t)-[r1:BELONGS_TO]->(g2)
+        WITH t, g1, g2
+        LIMIT 25
+        RETURN t, g1, g2
+        """
+
+        config = {
+            'tracks': True,
+            'artists': False,
+            'albums': False,
+            'track_features':False,
+            'genres': True,
+            'graph_data': True,
+            "query": "genre_overlap"
+        }
+
+        with self.driver.session() as session:
+            result = session.run(query)
+            result = result.to_eager_result()
+        return self.parse_query_results(result.records, config)
+
+
+    def get_named_values(self, data):
         query = f"""
-        MATCH (a:Artist) WITH a.name as name ORDER BY name ASC RETURN name
+        MATCH (d:{data}) WITH d.name as name ORDER BY name ASC RETURN name
         """
 
         with self.driver.session() as session:
             result = session.run(query)
-            artists = [record["name"] for record in result]
-        return artists
+            list_of_data = [record["name"] for record in result]
+        return list_of_data
 
     def get_track_features(self):
         query = f"""
