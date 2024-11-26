@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Artist to Artist Pathfinding</title>
+    <title>GrooveMapper</title>
 </head>
 <body>
-    <h1>Artist to Artist Pathfinding</h1>
+    <h1>GrooveMapper</h1>
     <div id="mynetwork" style="width: 100%; height: 600px;">
         <iframe src="{{ url_for('static', filename='shortest_path_network.html') }}" width="100%" height="100%" frameborder="0"></iframe>
     </div>
-    <h2>Select Artists</h2>
+    <h2>Artist to Artist Pathfinding</h2>
     <form method="POST">
         <label for="dropdown1">Artist 1: </label>
         <select name="artist_1_dropdown" id="artist_1_dropdown" onchange="updateSecondDropdown()">

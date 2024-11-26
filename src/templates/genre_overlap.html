@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Genre Overlap</title>
+    <title>GrooveMapper</title>
 </head>
 <body>
-    <h1>Genre Overlap</h1>
+    <h1>GrooveMapper</h1>
     <div id="mynetwork" style="width: 100%; height: 600px;">
         <iframe src="{{ url_for('static', filename='genre_overlap_network.html') }}" width="100%" height="100%" frameborder="0"></iframe>
     </div>
-    <h2>Select Artist</h2>
-    <form method="POST">
+    <h2>Genre Overlap</h2>
+    <form method="POST" action="/submit">
         <label for="genre_dropdown_1">Genre 1: </label>
-        <select name="genre_dropdown_1" id="genre_dropdown_1">
+        <select name="genre_dropdown_1" id="genre_dropdown_1" onchange="updateGenreSelection('genre_dropdown_1')">
             {% for genre in genre_options %}
                 <option value = "{{ genre }}" {% if genre == selected_genre %}selected{% endif %}>{{ genre }}</option>
             {% endfor %}
         </select>
         <label for="genre_dropdown_2">Genre 2: </label>
-        <select name="genre_dropdown_2" id="genre_dropdown_2">
+        <select name="genre_dropdown_2" id="genre_dropdown_2" onchange="updateGenreSelection('genre_dropdown_2')">
             {% for genre in genre_options %}
                 <option value = "{{ genre }}" {% if genre == selected_genre %}selected{% endif %}>{{ genre }}</option>
             {% endfor %}
@@ -27,5 +27,40 @@
     {% if selected_artist %}
         <p>You selected: {{ selected_artist }}</p>
     {% endif %}
+
+    <script>
+        function updateGenreSelection(changedDropdown){
+            var dropdown1 = document.getElementById("genre_dropdown_1");
+            var dropdown2 = document.getElementById("genre_dropdown_2");
+            var genre1 = dropdown1.value();
+            var genre2 = dropdown2.value();
+
+            for (var i = 0; i < dropdown1.options.length; i++) {
+            dropdown1.options[i].disabled = false;
+            }
+            for (var i = 0; i < dropdown2.options.length; i++) {
+                dropdown2.options[i].disabled = false;
+            }
+
+            if (changedDropdown === 'genre_dropdown_1') {
+            for (var i = 0; i < dropdown2.options.length; i++) {
+                if (dropdown2.options[i].value === genre1) {
+                    dropdown2.options[i].disabled = true;
+                }
+            }
+            } else {
+                for (var i = 0; i < dropdown1.options.length; i++) {
+                    if (dropdown1.options[i].value === genre2) {
+                        dropdown1.options[i].disabled = true;
+                    }
+                }
+            }
+
+            window.onload = function() {
+                updateGenreSelection('genre_dropdown_1')
+                updateGenreSelection('genre_dropdown_2')
+            };
+        }
+    </script>
 </body>
 </html>

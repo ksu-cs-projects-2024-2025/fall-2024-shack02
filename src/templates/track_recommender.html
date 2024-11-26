@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GrooveMapper</title>
+</head>
+<body>
+    <h1>GrooveMapper</h1>
+    <div id="mynetwork" style="width: 100%; height: 600px;">
+        <iframe src="{{ url_for('static', filename='genre_overlap_network.html') }}" width="100%" height="100%" frameborder="0"></iframe>
+    </div>
+    <h2>Track Recommender</h2>
+    <form method="POST">
+        <h3>Find a track similar to:</h3>
+        <label for="artist_dropdown">Artist: </label>
+        <select name="artist_dropdown" id="artist_dropdown", onchange="fetchTrackOptions()">
+            {% for artist in artist_options %}
+                <option value = "{{ artist }}" {% if artist == selected_artist %}selected{% endif %}>{{ artist }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="track_dropdown">Track: </label>
+        <select name="track_dropdown" id="track_dropdown"></select>
+        </select>
+
+        <h3>With these attributes:</h3>
+        <label for="genre_dropdown">Genre: </label>
+        <select name="genre_dropdown" id="genre_dropdown">
+            {% for genre in genre_options %}
+                <option value = "{{ genre }}" {% if genre == selected_genre %}selected{% endif %}>{{ genre }}</option>
+            {% endfor %}
+        </select>
+
+        <div style="display: inline-block; vertical-align: top; margin-right: 20px;">
+            <label for="track_features_check_boxes">Select Track Features: </label>
+            <div id="track_features_check_boxes" style="margin-top: 5px;">
+            {% for feature in track_feature_options %}
+                <div>
+                    <input type = "checkbox" name="track_features" value="{{ feature }}" id="{{ feature }}">
+                    <label for="{{ feature }}">{{ feature }}</label>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+
+        <div style="display: inline-block; vertical-align: top; margin-right: 20px;">
+            <label for="track_structures_check_boxes">Select Track Structures: </label>
+            <div id="track_features_check_boxes" style="margin-top: 5px;">
+            {% for structure in track_structure_options %}
+                <div>
+                    <input type = "checkbox" name="track_structures" value="{{ structure }}" id="{{ structure }}">
+                    <label for="{{ structure }}">{{ structure }}</label>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+
+        <button type ="submit">Submit</button>
+    </form>
+
+    <script>
+        function fetchTrackOptions() {
+            const artist = document.getElementById("artist_dropdown").value;
+
+            fetch("/artist_track_lists", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams({ artist_dropdown: artist})
+            })
+            .then(response => response.json())
+            .then(data => {
+                const trackDropdown = document.getElementById("track_dropdown");
+
+                trackDropdown.innerHTML = '<option value="">-- Select a Track --</option>';
+
+                data.track_options.forEach(track => {
+                    const option = document.createElement("option");
+                    option.value = track;
+                    option.text = track;
+                    trackDropdown.appendChild(option);
+                });
+            })
+            .catch(error => console.error("Error fetching track options:", error));
+        }
+    </script>
+
+
+
+</body>
+</html>

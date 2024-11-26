@@ -14,19 +14,19 @@ class GraphVisualizer:
         for data in graph_data:
             if 'artist' in data and artist:
                 artist_data = data["artist"]
-                net.add_node(artist_data["id"], label=artist_data["name"], title=f'Popularity: {artist_data["popularity"]}', group='Artist', physics=False)
+                net.add_node(artist_data["id"], label=artist_data["name"], title=f'Popularity: {artist_data["popularity"]}', group='Artist', physics=True)
             if track:
                 track_data = data["track"]       
-                net.add_node(track_data["id"], label=track_data["name"], title=f'Track number: {track_data["track_number"]}', group='Track', physics=False)
+                net.add_node(track_data["id"], label=track_data["name"], title=f'Track number: {track_data["track_number"]}', group='Track', physics=True)
             if album:
                 album_data = data["album"]
-                net.add_node(album_data["id"], label=album_data["name"], title=f'Release date: {album_data["release_date"]}', group='Album', physics=False)
+                net.add_node(album_data["id"], label=album_data["name"], title=f'Release date: {album_data["release_date"]}', group='Album', physics=True)
             if genre:
                 genre_data = data["genre"]
-                net.add_node(genre_data["name"], label=genre_data["name"], title=genre_data["name"], group = 'Genre', physics=False)
+                net.add_node(genre_data["name"], label=genre_data["name"], title=genre_data["name"], group = 'Genre', physics=True)
             if track_features:
                 track_feature_data = data["track_features"]
-                net.add_node(track_feature_data["name"], label=track_feature_data["name"],title=f'{track_feature_data["name"]}',group='TrackFeature', physics=False)
+                net.add_node(track_feature_data["name"], label=track_feature_data["name"],title=f'{track_feature_data["name"]}',group='TrackFeature', physics=True)
             if artist and track:
                 if config["query"] == "essential_track":
                     if track_data['distance'] != 0:
