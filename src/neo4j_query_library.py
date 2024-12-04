@@ -1,4 +1,5 @@
 from neo4j import GraphDatabase
+import neo4j
 import os
 
 class Neo4jQueryEngine:
@@ -15,7 +16,7 @@ class Neo4jQueryEngine:
         query = """
         LOAD CSV WITH HEADERS FROM 'file:///graph_data.csv' AS row
         WITH row
-        LIMIT 1000
+        LIMIT 10000
         UNWIND $features AS feature
         MERGE (f:TrackFeature {
         name: feature
@@ -33,7 +34,7 @@ class Neo4jQueryEngine:
         query ="""
         LOAD CSV WITH HEADERS FROM 'file:///graph_data.csv' AS row
         WITH row
-        LIMIT 1000
+        LIMIT 10000
         UNWIND $structures AS structure
         MERGE (s:TrackStructure {name: structure})
         WITH row, structure, s
@@ -50,7 +51,7 @@ class Neo4jQueryEngine:
         query = """
         LOAD CSV WITH HEADERS FROM 'file:///graph_data.csv' AS row
         WITH row
-        LIMIT 1000
+        LIMIT 10000
         MERGE (t:Track {
             id: row.track_id, 
             name: row.track_name, 
@@ -80,6 +81,7 @@ class Neo4jQueryEngine:
         WITH t, genre
         WHERE genre IS NOT NULL AND genre <> ''
         MERGE (g:Genre {name: genre})
+        SET g.id = toString(id(g))
         MERGE (t)-[:BELONGS_TO]->(g);
         """
         artist_features_query = """
@@ -97,97 +99,55 @@ class Neo4jQueryEngine:
         self.create_track_feature_relationships()
         self.create_track_structure_relationships()
         return
-
-    #parses a query result into graph components that can be displayed with pyvis
-    def parse_query_results(self, result, config):
-        network_data = []
-        for i,record  in enumerate(result):
-            print(f"RECORD {i}")
-            print(i,record)
-            record_dict = {}
-            if config['artists']:
-                artist_node = record["a"]  
-                record_dict['artist'] = {
-                        "id": artist_node["id"],
-                        "name": artist_node["name"],
-                        "followers": artist_node["followers"],
-                        "popularity": artist_node["popularity"]
-                    }
-            if config['tracks']:
-                track_node = record["t"]
-                record_dict['track'] = {
-                        "id": track_node["id"],
-                        "name": track_node["name"],
-                        "duration_ms": track_node["duration_ms"],
-                        "explicit": track_node["explicit"],
-                        "track_number": track_node["track_number"]
-                    }
-                if config['query'] == "essential_track":
-                    record_dict['track']['distance'] = record["distance"]
-                    record_dict['track']['rank'] = i + 1
-            if config['albums']:
-                album_node = record["b"]
-                record_dict['album'] = {
-                        "id": album_node["id"],
-                        "name": album_node["name"],
-                        "release_date": album_node["release_date"]
-                    }
-            if config['track_features']:
-                track_feature_node = record["f"]
-                record_dict['track_features'] = {
-                        "id": track_feature_node["element_id"],
-                        "name": track_feature_node["name"],
-                        "weight": record["r1.weight"]
-                    }
-            if config['genres']:
-                genre_node = record.get("g1")
-                if genre_node == None:
-                    genre_node = record.get("g2")
-                record_dict['genre'] = {
-                        "name": genre_node["name"]
-                    }
-            print(f"RECORD_DICT {i}")
-            print(record_dict)
-            network_data.append(record_dict)
-
-        # print(network_data)
-        return network_data
     
-    def parse_path_query(self, result, config):
-        network_data = []
-        for i,record in enumerate(result):
-            print(f"Record {i}")
-            # print(record)    
-            record_dict = {}
-            record_dict['nodes'] = []
-            for node in record['nodes']:
-                node_dict = {}
-                node_dict["id"] = node["id"]
-                node_dict["type"] = list(node.labels)[0]
-                node_dict["name"] = node["name"]
-                record_dict['nodes'].append(node_dict)
-                print(node_dict)
-            record_dict['edges'] = []
-            for i,edge in enumerate(record['edges']):
-                print(f"edge {i}")
-                # print(edge)
-                edge_dict = {}
-                edge_dict["node_1"] = edge.nodes[0]["id"]
-                edge_dict["node_2"] = edge.nodes[1]["id"]
-                edge_dict["type"] = edge.type
-                print(edge_dict)
-                record_dict['edges'].append(edge_dict)
-            network_data.append(record_dict)
-        return network_data
+
+    #generalized parse query results function, taking a query apart into nodes and edges and returning a graph data dictionary that contains these nodes and edges and a note of what query was made
+    def parse_query_results_v2(self, result, query):
+        graph_data = {
+            'query_name': query,
+            'nodes': [],
+            'edges': []
+        }
+
+        node_set = set()
+        edge_set = set()
+        print("Parse Query Results V2")
+        for record in result:
+            for key, value in record.items():
+                print(key,value)
+                if isinstance(value, neo4j.graph.Node):
+                    node_id = value.element_id
+                    print(node_id,value)
+                    if node_id not in node_set:
+                        graph_data['nodes'].append({
+                            "id": node_id,
+                            "labels": list(value.labels),
+                            "properties": dict(value)
+                        })
+                        node_set.add(node_id)
+                if isinstance(value, neo4j.graph.Relationship):
+                    edge_id = value.id
+                    if edge_id not in edge_set:
+                        graph_data['edges'].append({
+                            "id": edge_id,
+                            "type": value.type,
+                            "source": value.start_node.element_id,
+                            "target": value.end_node.element_id,
+                            "properties": dict(value)
+                        })
+                        edge_set.add(edge_id)
+        print("GRAPH DATA AFTER parse query results v2")
+        print(graph_data)
+        return graph_data
 
 
-
-    #Helper function for making queries and parsing them 
-    def query_database(self, query, config):
+    def query_database_v2(self, query, config, parameters=None):
         with self.driver.session() as session:
-            result = session.run(query)
-            if config['graph_data']:
-                network_data =self.parse_query_results(result, config)
+            result = session.run(query, parameters=parameters)
+            if config:
+                network_data =self.parse_query_results_v2(result, query=config["query_type"])
+                print("******In Query Database V2******")
+                print(network_data)
                 return network_data
             else:
                 return [record["name"] for record in result]
@@ -196,36 +156,30 @@ class Neo4jQueryEngine:
     def fetch_graph_data(self, node_lim):
         query = f"""
         MATCH (a:Artist)-[r:CREATED]->(t:Track)<-[v:INCLUDES]-(b:Album)
-        RETURN a, t, b
+        RETURN a, t, b, r, v
         LIMIT {node_lim};
         """
         config = {
-            'tracks': True,
-            'artists': True,
-            'albums': True,
-            'track_features':False,
-            'genres': False,
-            'graph_data': True,
-            "query" :"na"
+            'node_labels': ['a','b','t'],
+            'edge_labels': ['r','v'],
+            'query_type': "home_query"
         }
 
-        return self.query_database(query, config)
+        return self.query_database_v2(query, config)
 
-
-
-    #Customizable graph query for the home page
-    def home_graph(self, artist, tracks, albums, track_features, genres, node_lim):
-        query = """
-        MATCH (a:Artist {name: $artist})
-        RETURN a
-        LIMIT $node_lim
-        """
+    #TODO: If time, make a query displaying the data model in the graph
+    # def home_graph(self, artist, tracks, albums, track_features, genres, node_lim):
+    #     query = """
+    #     MATCH (a:Artist {name: $artist})
+    #     RETURN a
+    #     LIMIT $node_lim
+    #     """
         
-        with self.driver.session() as session:
-            result = session.run(query, artist=artist, node_lim=node_lim)
-            network_data = self.parse_query_results(result, artist=True, tracks=tracks, albums=albums, genres=genres)   
+    #     with self.driver.session() as session:
+    #         result = session.run(query, artist=artist, node_lim=node_lim)
+    #         network_data = self.parse_query_results(result, artist=True, tracks=tracks, albums=albums, genres=genres)   
 
-        return network_data
+    #     return network_data
     
     def calculate_artist_centroid(self, artist):
         query = """
@@ -240,89 +194,89 @@ class Neo4jQueryEngine:
 
         centroid = {record['feature_name']: record['centroid_weight'] for record in list_records}
         return centroid
-    
+
+
     def essential_track(self, artist):
         centroid = self.calculate_artist_centroid(artist)
         query = """
         MATCH (a:Artist {name: $artist})-[r:CREATED]->(t:Track)
         WHERE EXISTS { MATCH (t)-[:HAS_FEATURE]->(:TrackFeature) }
         MATCH (t)-[r1:HAS_FEATURE]->(f:TrackFeature)
-        WITH t, a, f.name as feature_name, r1.weight as weight, $centroid AS centroid
-        WITH t, a, centroid, collect(feature_name) AS features, collect(weight) AS weights
+        WITH t, a, f.name as feature_name, r1.weight as weight, $centroid AS centroid, r
+        WITH t, a, centroid, collect(feature_name) AS features, collect(weight) AS weights, r
         WHERE size(features) > 0
-        WITH t, a, centroid, 
+        WITH t, a, centroid, r,
             reduce(s = 0.0, i IN range(0, size(features) - 1) | 
                 s + toFloat(weights[i] - centroid[features[i]])^2) AS squared_distance_sum
-        WITH t, a, sqrt(squared_distance_sum) AS distance
-        ORDER BY distance ASC
-        RETURN a, t, distance
+        WITH t, a, sqrt(squared_distance_sum) AS distance, r
+        SET r.distance = distance
+        RETURN a, t, r
+        ORDER BY r.distance ASC
         LIMIT 10
         """
 
         config = {
-            'tracks': True,
-            'artists': True,
-            'albums': False,
-            'track_features':False,
-            'genres': False,
-            'graph_data': True,
-            "query": "essential_track"
+            'node_labels': ['a','t'],
+            'edge_labels': ['r'],
+            'query_type': "essential_track"
         }
 
-        with self.driver.session() as session:
-            result = session.run(query, centroid=centroid, artist=artist)
-            result = result.to_eager_result()
-            print(result.records)
-        return self.parse_query_results(result.records, config)
+        parameters = {
+            'artist': artist,
+            'centroid': centroid
+        }
+
+        return self.query_database_v2(query, config, parameters=parameters)
 
     def shortest_path(self, artist_1, artist_2):
-        query = """
-        MATCH (p1:Artist {name: $artist_1})  MATCH (p2:Artist {name: $artist_2}),
-        p = shortestPath((p1)-[:CREATED|FEATURES*..10]-(p2))
-        WITH p
-        WHERE length(p) > 1
-        RETURN nodes(p) as nodes, relationships(p) as edges
+        query =  """
+        MATCH (p1:Artist {name: $artist_1})
+        MATCH (p2:Artist {name: $artist_2})
+        WITH p1, p2
+        CALL apoc.algo.dijkstra(
+        p1, 
+        p2, 
+        ':CREATED|FEATURES',
+        'weight',
+        1.0
+        ) YIELD path, weight
+        UNWIND nodes(path) AS node
+        UNWIND relationships(path) as edge
+        RETURN node, edge
         """
-
         config = {
-            'tracks': True,
-            'artists': True,
-            'albums': False,
-            'track_features':False,
-            'genres': False,
-            'graph_data': True,
-            "query": "shortest_path"
+            'query_type': "shortest_path"
         }
 
-        with self.driver.session() as session:
-            result = session.run(query, artist_1=artist_1, artist_2=artist_2)
-            result = result.to_eager_result()
-        return self.parse_path_query(result.records, config)
+        parameters = {
+            'artist_1': artist_1,
+            'artist_2': artist_2
+        }
+
+        return self.query_database_v2(query, config, parameters=parameters)
 
     def genre_overlap(self, genre_1, genre_2):
         query="""
         MATCH (g1:Genre {name: $genre_1}), (g2:Genre {name: $genre_2})
         MATCH (t:Track)-[r:BELONGS_TO]->(g1)
         MATCH (t)-[r1:BELONGS_TO]->(g2)
-        WITH t, g1, g2
+        WITH t, g1, g2, r1, r
         LIMIT 25
-        RETURN t, g1, g2
+        RETURN t, g1, g2, r1, r
         """
 
         config = {
-            'tracks': True,
-            'artists': False,
-            'albums': False,
-            'track_features':False,
-            'genres': True,
-            'graph_data': True,
-            "query": "genre_overlap"
+            'node_labels': ['t','g1', 'g2'],
+            'edge_labels': ['r1', 'r'],
+            'query_type': "genre_overlap"
         }
 
-        with self.driver.session() as session:
-            result = session.run(query, genre_1=genre_1, genre_2=genre_2)
-            result = result.to_eager_result()
-        return self.parse_query_results(result.records, config)
+        parameters = {
+            'genre_1': genre_1,
+            'genre_2': genre_2
+        }
+
+        return self.query_database_v2(query, config, parameters=parameters)
 
     def get_track_feature_values(self, track, artist):
         query ="""
@@ -351,6 +305,7 @@ class Neo4jQueryEngine:
         return track_structure_values
 
 
+    #TODO: Fix this query to use new query engine and in general
     def find_track_recommendations(self, track, artist, genre, track_features, track_structures):
         track_feature_values = self.get_track_feature_values(track, artist)
         track_structure_values = self.get_track_structure_values(track, artist)
@@ -418,7 +373,7 @@ class Neo4jQueryEngine:
 
 
 
-
+    #TODO: Finish this query using new parsing engine
     def find_artist_recommendations(self, artist, genre):
         genre_artist_centroids = self.get_genre_artist_centroids(genre)
         artist_centroid = self.calculate_artist_centroid(artist)
@@ -468,6 +423,3 @@ class Neo4jQueryEngine:
             result = session.run(query,artist=artist)
             features = [record["name"] for record in result]
         return features
-
-    #Other querie pages
-    # def 

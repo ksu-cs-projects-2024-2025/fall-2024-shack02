@@ -3,6 +3,14 @@
 <head>
     <title>GrooveMapper</title>
 </head>
+<div class="topnav"></div>
+    <a class="active" href="home">Home</a>
+    <a href="about">About</a>
+    <a href="genre_overlap">Genre Overlap</a>
+    <a href="shortest_path">Shortest Path</a>
+    <a href="essential_song">Essential Track</a>
+    <a href="track_recommender">Track Recommender</a>
+</div>
 <body>
     <h1>GrooveMapper</h1>
     <div id="mynetwork" style="width: 100%; height: 600px;">
@@ -19,7 +27,11 @@
         </select>
 
         <label for="track_dropdown">Track: </label>
-        <select name="track_dropdown" id="track_dropdown"></select>
+        <select name="track_dropdown" id="track_dropdown">
+            {% for track in track_options %}
+                <option value = "{{ track }}" {% if track == selected_track %}selected{% endif %}>{{ track }}</option>
+            {% endfor %}
+        </select>
         </select>
 
         <h3>With these attributes:</h3>
@@ -35,7 +47,7 @@
             <div id="track_features_check_boxes" style="margin-top: 5px;">
             {% for feature in track_feature_options %}
                 <div>
-                    <input type = "checkbox" name="track_features" value="{{ feature }}" id="{{ feature }}">
+                    <input type = "checkbox" name="track_features" value="{{ feature }}" id="{{ feature }}" {% if feature in selected_track_features %}checked{% endif %}>
                     <label for="{{ feature }}">{{ feature }}</label>
                 </div>
             {% endfor %}
@@ -47,7 +59,7 @@
             <div id="track_features_check_boxes" style="margin-top: 5px;">
             {% for structure in track_structure_options %}
                 <div>
-                    <input type = "checkbox" name="track_structures" value="{{ structure }}" id="{{ structure }}">
+                    <input type = "checkbox" name="track_structures" value="{{ structure }}" id="{{ structure }}" {% if structure in selected_track_structures %}checked{% endif %}>
                     <label for="{{ structure }}">{{ structure }}</label>
                 </div>
             {% endfor %}
