@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 600px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"group": "Artist", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:23967", "label": "Richard Wagner", "shape": "dot", "title": "followers: 665065\npopularity: 54\nname: Richard Wagner\nid: 1C1x4MVkql8AiABuTw6DgE"}, {"group": "Artist", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:21592", "label": "Giuseppe Verdi", "shape": "dot", "title": "followers: 679631\npopularity: 61\nname: Giuseppe Verdi\nid: 1JOQXgYdQV2yfrhewqx96o"}, {"group": "Artist", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:23287", "label": "Johann Sebastian Bach", "shape": "dot", "title": "followers: 4425793\npopularity: 76\nname: Johann Sebastian Bach\nid: 5aIqB5nVVvmFsvSdExz408"}, {"group": "Artist", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:23286", "label": "Vincenzo Bellini", "shape": "dot", "title": "followers: 53619\npopularity: 45\nname: Vincenzo Bellini\nid: 6AphpMkKDU4I3Z6XaGu1UV"}, {"group": "Artist", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:23829", "label": "Maurice Ravel", "shape": "dot", "title": "followers: 518111\npopularity: 59\nname: Maurice Ravel\nid: 17hR0sYHpx7VYTMRfFUOmY"}, {"group": "Artist", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:21980", "label": "Gioachino Rossini", "shape": "dot", "title": "followers: 234678\npopularity: 53\nname: Gioachino Rossini\nid: 0roWUeP7Ac4yK4VN6L2gF4"}, {"group": "Artist", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:21331", "label": "Claudio Abbado", "shape": "dot", "title": "followers: 55397\npopularity: 63\nname: Claudio Abbado\nid: 6HclTVD03WSY6GUpN16BkP"}, {"group": "Artist", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:22239", "label": "Gustav Mahler", "shape": "dot", "title": "followers: 340934\npopularity: 56\nname: Gustav Mahler\nid: 2ANtgfhQkKpsW6EYSDqldz"}, {"group": "Artist", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:23149", "label": "Mirella Freni", "shape": "dot", "title": "followers: 25599\npopularity: 41\nname: Mirella Freni\nid: 5dz9lXIYillOvg5xH0t5EN"}, {"group": "Artist", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:21850", "label": "Franz Schubert", "shape": "dot", "title": "followers: 1126682\npopularity: 63\nname: Franz Schubert\nid: 2p0UyoPfYfI76PCStuXfOP"}, {"group": "Artist", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:16173", "label": "The Wailin\u0027 Jennys", "shape": "dot", "title": "followers: 154109\npopularity: 46\nname: The Wailin\u0027 Jennys\nid: 331QVEZKK1yz5KhYiR2pBj"}]);
+                  edges = new vis.DataSet([{"edge_data": {"distance": 0.1276412128906482}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:21592", "label": "1", "title": "distance: 0.1276412128906482", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:23967", "value": 7.8344601822039435}, {"edge_data": {"distance": 0.21929069461029188}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:21592", "label": "2", "title": "distance: 0.21929069461029188", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:23287", "value": 4.560157017957968}, {"edge_data": {"distance": 0.24200912458091314}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:21592", "label": "3", "title": "distance: 0.24200912458091314", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:23286", "value": 4.13207560554462}, {"edge_data": {"distance": 0.2763447483670923}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:21592", "label": "4", "title": "distance: 0.2763447483670923", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:23829", "value": 3.618668369523762}, {"edge_data": {"distance": 0.2855502199621887}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:21592", "label": "5", "title": "distance: 0.2855502199621887", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:21980", "value": 3.50201096021714}, {"edge_data": {"distance": 0.3166914109488378}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:21592", "label": "6", "title": "distance: 0.3166914109488378", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:21331", "value": 3.157647998737649}, {"edge_data": {"distance": 0.34869940826193263}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:21592", "label": "7", "title": "distance: 0.34869940826193263", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:22239", "value": 2.867799532509759}, {"edge_data": {"distance": 0.3625148900752646}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:21592", "label": "8", "title": "distance: 0.3625148900752646", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:23149", "value": 2.7585073810137346}, {"edge_data": {"distance": 0.3882095576500792}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:21592", "label": "9", "title": "distance: 0.3882095576500792", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:21850", "value": 2.5759283363687064}, {"edge_data": {"distance": 0.39417241379385887}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:21592", "label": "10", "title": "distance: 0.39417241379385887", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:16173", "value": 2.5369608958047785}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"nodes": {"borderWidth": 2, "borderWidthSelected": 4, "color": {"highlight": {"border": "black", "background": "orange"}}}, "edges": {"color": {"inherit": true}, "smooth": {"type": "continuous"}, "length": 300}, "interaction": {"hover": true, "navigationButtons": true, "multiselect": true}, "physics": {"enabled": true, "barnesHut": {"gravitationalConstant": -2000, "centralGravity": 0.3, "springLength": 100, "springConstant": 0.1}, "forceAtlas2Based": {"gravitationalConstant": -500, "centralGravity": 0.01, "springLength": 50, "springConstant": 0.1}, "repulsion": {"centralGravity": 0.0, "springLength": 100, "springConstant": 0.1, "damping": 0.09}}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

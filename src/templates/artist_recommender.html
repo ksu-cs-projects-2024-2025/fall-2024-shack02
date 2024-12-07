@@ -14,16 +14,15 @@
 <body>
     <h1>GrooveMapper</h1>
     <div id="mynetwork" style="width: 100%; height: 600px;">
-        <iframe src="{{ url_for('static', filename='essential_track_network.html') }}" width="100%" height="100%" frameborder="0"></iframe>
+        <iframe src="{{ url_for('static', filename='artist_recommender_network.html') }}" width="100%" height="100%" frameborder="0"></iframe>
     </div>
-    <h2>Find Artist Essential Track</h2>
-    <div>
-        <p>An artist's essential track is calculated by averaging the track features of all the artist's tracks and then finding the track with the track features that are closest to average.
-            Choose an artist, then see their top 10 essential tracks. Hover over the edges of the graph to see the track's distance from the artist's average track.
+    <h2>Find Similar Artists</h2>
+    <div></div>
+        <p>Find the 10 most similar artists to your chosen artist. Similar artists are found by calculating an artist centroid from their track lists and then comparing the chosen artist's centroid to all other artist centroids.
         </p>
     </div>
     <form method="POST">
-        <label for="dropdown">Artist: </label>
+        <label for="dropdown">Find Artists Similar to: </label>
         <select name="artist_dropdown" id="artist_dropdown">
             {% for artist in artist_options %}
                 <option value = "{{ artist }}" {% if artist == selected_artist %}selected{% endif %}>{{ artist }}</option>
