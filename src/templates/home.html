@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+<div class="topnav">
+    <a class="active" href="home">Home</a>
+    <a href="genre_overlap">Genre Overlap</a>
+    <a href="shortest_path">Shortest Path</a>
+    <a href="essential_song">Essential Track</a>
+    <a href="artist_recommender">Artist Recommender</a>
+    <a href="track_recommender">Track Recommender</a>
+</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}GrooveMapper{% endblock %}</title>
+</head>
+<h1>GrooveMapper</h1>
+<div id="mynetwork" style="width: 100%; height: 600px;">
+    <iframe src="{{ url_for('static', filename='home_network.html') }}" width="100%" height="100%" frameborder="0"></iframe>
+</div>
+<h2>GrooveMapper Data Model</h2>
+<div>
+    <p>Welcome to GrooveMapper! GrooveMapper is a simple web app for exploring Spotify music data through customizable graph database queries. 
+    Each link at the top of the page contains a different customizable graph query that can be used to find connections and insights into various Spotify music data. 
+    On this page, choose an artist to get an idea of the GrooveMapper graph data model. 
+    Hover over the nodes and connections on the graph to see data about each graph component.
+    </p>
+</div>
+<form method="POST">
+    <label for="dropdown">Artist: </label>
+    <select name="artist_dropdown" id="artist_dropdown">
+        {% for artist in artist_options %}
+            <option value = "{{ artist }}" {% if artist == selected_artist %}selected{% endif %}>{{ artist }}</option>
+        {% endfor %}
+    </select>
+    <button type ="submit">Submit</button>
+</form>
+</html>

@@ -1,0 +1,37 @@
+
+			
+									<h5>Release Date: 26 March 2024</h5>
+				
+									Neo4j 4.4.32 is a maintenance release with many important improvements and fixes.
+
+<h3>Kernel</h3>
+<ul>
+<li>Fixed transaction logs metrics that weren’t incremented in cluster settings</li>
+</ul>
+
+<h3>Docker</h3>
+<ul>
+<li>Added docker default configuration for recovery address to match similar overrides for raft and discovery addresses</li>
+</ul>
+
+<h3>Misc</h3>
+<ul>
+<li>Make sure not to reorder WITH clauses containing expensive or non-deterministic expressions</li>
+<li>CWE-835: Loop with Unreachable Exit Condition (‘Infinite Loop’) <a href="https://cwe.mitre.org/data/definitions/835.html">https://cwe.mitre.org/data/definitions/835.html</a>.</li>
+</ul>
+
+
+<h3>Bundled Packages:</h3>
+Cypher-Shell 4.4.32<br>
+labs/apoc-4.4.0.26-core<br>
+products/bloom-plugin-4.x-2.11.0<br>
+products/neo4j-graph-data-science-2.6.2<br>
+products/neo4j-ops-manager-agent-1.10.0<br>
+
+<br>
+<a href="https://support.neo4j.com/s/article/115013134648-Neo4j-Supported-Versions">4.4 End of Support is June 30, 2025</a><br>
+<a href="https://github.com/neo4j/neo4j/wiki/Neo4j-4.4-changelog">4.4 Changelog</a><br>
+<a href="https://neo4j.com/docs/operations-manual/4.4/">4.4 Operations manual</a>
+
+&nbsp;				
+					

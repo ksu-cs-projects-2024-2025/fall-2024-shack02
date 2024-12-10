@@ -1,0 +1,23 @@
+
+			
+									<h5>Release Date: 3 September 2024</h5>
+				
+									<span style="font-weight: 400;">Neo4j 4.4.37 is a maintenance release with important fixes.</span>
+<h3><b>Kernel</b></h3>
+<ul>
+ 	<li>Prevent interrupted background sampling of a large index on shutdown triggering a blocking resampling on start up. This bug was introduced in 4.4.29</li>
+</ul>
+<h3><b>Bundled Packages:</b></h3>
+<ul>
+ 	<li style="font-weight: 400;"><span style="font-weight: 400;">Cypher-Shell 4.4.37</span></li>
+ 	<li style="font-weight: 400;"><span style="font-weight: 400;">labs/apoc-4.4.0.31-core</span></li>
+ 	<li style="font-weight: 400;"><span style="font-weight: 400;">products/bloom-plugin-4.x-2.14.0</span></li>
+ 	<li style="font-weight: 400;"><span style="font-weight: 400;">products/neo4j-graph-data-science-2.6.5</span></li>
+ 	<li style="font-weight: 400;"><span style="font-weight: 400;">products/neo4j-ops-manager-agent-1.10.4</span></li>
+</ul>
+<pre><a href="https://support.neo4j.com/s/article/115013134648-Neo4j-Supported-Versions"><span style="font-weight: 400;">4.4 End of Support is November 30, 2025</span>
+
+</a><a href="https://github.com/neo4j/neo4j/wiki/Neo4j-4.4-changelog"><span style="font-weight: 400;">4.4 Changelog</span>
+
+</a><a href="https://neo4j.com/docs/operations-manual/4.4/"><span style="font-weight: 400;">4.4 Operations manual</span></a></pre>				
+					

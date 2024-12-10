@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 600px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"group": "Track", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:23071", "label": "Symphony No. 1 in D Major: III. Feierlich und gemessen, ohne zu schleppen", "shape": "dot", "title": "duration_ms: 655066\nexplicit: False\nname: Symphony No. 1 in D Major: III. Feierlich und gemessen, ohne zu schleppen\ntrack_number: 23\nid: 4g4quon0i5NJ12k8T3aPqW\nartist_feature: Staatskapelle Dresden"}, {"group": "Track", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:22717", "label": "Te Deum, H. 118: V. Te ergo quaesumus - Live at St. Alban\u0027s Cathedral, UK, 1981", "shape": "dot", "title": "duration_ms: 422586\nexplicit: False\nname: Te Deum, H. 118: V. Te ergo quaesumus - Live at St. Alban\u0027s Cathedral, UK, 1981\ntrack_number: 66\nid: 7MGrQWCGgEymHz7SYKNPSf\nartist_feature: Robert Schumann"}, {"group": "Artist", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:21331", "label": "Claudio Abbado", "shape": "dot", "title": "followers: 55397\npopularity: 63\nname: Claudio Abbado\nid: 6HclTVD03WSY6GUpN16BkP"}, {"group": "Track", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:22128", "label": "Symphony No. 2 in B-Flat Major, Op. 52, MWV A18 \"Hymn of Praise\": I. Sinfonia: b. Allegretto un poco agitato", "shape": "dot", "title": "explicit: False\nduration_ms: 420333\nname: Symphony No. 2 in B-Flat Major, Op. 52, MWV A18 \"Hymn of Praise\": I. Sinfonia: b. Allegretto un poco agitato\ntrack_number: 10\nid: 4P12kjuXWnNNTtq703HxFW\nartist_feature: Wayne Static"}, {"group": "Artist", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:22238", "label": "Felix Mendelssohn", "shape": "dot", "title": "followers: 545293\npopularity: 62\nname: Felix Mendelssohn\nid: 6MF58APd3YV72Ln2eVg710"}, {"group": "Track", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:25172", "label": "Wagner: Siegfried, Act 2: Vorspiel", "shape": "dot", "title": "explicit: False\nduration_ms: 325466\nname: Wagner: Siegfried, Act 2: Vorspiel\ntrack_number: 14\nid: 1T2gVkYIhag6Q0Du7C7hQv\nartist_feature: Lori McKenna"}, {"group": "Artist", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:23967", "label": "Richard Wagner", "shape": "dot", "title": "followers: 665065\npopularity: 54\nname: Richard Wagner\nid: 1C1x4MVkql8AiABuTw6DgE"}, {"group": "Track", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:24218", "label": "Pell\u00e9as et M\u00e9lisande, Suite, Op. 46: I. At the Castle Gate", "shape": "dot", "title": "duration_ms: 362146\nexplicit: False\nname: Pell\u00e9as et M\u00e9lisande, Suite, Op. 46: I. At the Castle Gate\ntrack_number: 1\nid: 5zm4TXXAKfd9NADMCQzV8l\nartist_feature: Ingrid Michaelson"}, {"group": "Artist", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:23560", "label": "Jean Sibelius", "shape": "dot", "title": "followers: 249954\npopularity: 59\nname: Jean Sibelius\nid: 7jzR5qj8vFnSu5JHaXgFEr"}, {"group": "Track", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:24913", "label": "Mahler: Symphony No. 10 in F-Sharp Major: V. Finale (1972 Cooke Version)", "shape": "dot", "title": "explicit: False\nduration_ms: 1459893\nname: Mahler: Symphony No. 10 in F-Sharp Major: V. Finale (1972 Cooke Version)\ntrack_number: 63\nid: 4Yl2UhEuwnclXPeCmL23f9\nartist_feature: Mary Wells"}, {"group": "Artist", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:22239", "label": "Gustav Mahler", "shape": "dot", "title": "followers: 340934\npopularity: 56\nname: Gustav Mahler\nid: 2ANtgfhQkKpsW6EYSDqldz"}, {"group": "Track", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:16228", "label": "Divine Love", "shape": "dot", "title": "duration_ms: 166009\nexplicit: False\nname: Divine Love\ntrack_number: 17\nid: 59qL7GbtWVBgTosYO7xq7J\nartist_feature: D\u00fcnedain"}, {"group": "Artist", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:16174", "label": "Ingrid Michaelson", "shape": "dot", "title": "followers: 796080\npopularity: 58\nname: Ingrid Michaelson\nid: 2vm8GdHyrJh2O2MfbQFYG0"}, {"group": "Track", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:22319", "label": "Symphony No. 4: III. Ruhevoll, poco adagio", "shape": "dot", "title": "explicit: False\nduration_ms: 1411632\nname: Symphony No. 4: III. Ruhevoll, poco adagio\ntrack_number: 145\nid: 4dsUsRM9fx9PhAYBcGMfCS\nartist_feature: Full Intention"}, {"group": "Track", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:24907", "label": "Mahler: Symphony No. 4 in G Major: III. Ruhevoll", "shape": "dot", "title": "duration_ms: 1362506\nexplicit: False\nname: Mahler: Symphony No. 4 in G Major: III. Ruhevoll\ntrack_number: 57\nid: 5h5QGnwrjPZDdpFysJuwAi\nartist_feature: HOTEI"}, {"group": "Track", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:24478", "label": "Enigma Variations, Op. 36: Var. 1. C.A.E. (L\u0027istesso tempo) - Live", "shape": "dot", "title": "duration_ms: 105066\nexplicit: False\nname: Enigma Variations, Op. 36: Var. 1. C.A.E. (L\u0027istesso tempo) - Live\ntrack_number: 2\nid: 1UYrLquAZqf6d0TkNGgtCh\nartist_feature: Orchestra del Maggio Musicale Fiorentino"}, {"group": "Artist", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:24513", "label": "Edward Elgar", "shape": "dot", "title": "followers: 182782\npopularity: 56\nname: Edward Elgar\nid: 430byzy0c5bPn5opiu0SRd"}, {"group": "Track", "id": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:21475", "label": "No hay caminos, hay que caminar... Andrej Tarkowskij (1987)", "shape": "dot", "title": "duration_ms: 1015545\nexplicit: False\nname: No hay caminos, hay que caminar... Andrej Tarkowskij (1987)\ntrack_number: 218\nid: 5P4vkL1eViG1khsa5ieb87\nartist_feature: HOTEI"}]);
+                  edges = new vis.DataSet([{"edge_data": {"distance": 0.006212367683854421}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:23071", "label": "1", "title": "distance: 0.006212367683854421", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:22717", "value": 160.9692231512538}, {"edge_data": {}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:21331", "label": "CREATED", "title": "", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:22717", "value": 1}, {"edge_data": {"distance": 0.03483762091237499}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:23071", "label": "2", "title": "distance: 0.03483762091237499", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:22128", "value": 28.704600768096103}, {"edge_data": {}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:22238", "label": "CREATED", "title": "", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:22128", "value": 1}, {"edge_data": {"distance": 0.0361884325305893}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:23071", "label": "3", "title": "distance: 0.0361884325305893", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:25172", "value": 27.633139378300555}, {"edge_data": {}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:23967", "label": "CREATED", "title": "", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:25172", "value": 1}, {"edge_data": {"distance": 0.03934581978519296}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:23071", "label": "4", "title": "distance: 0.03934581978519296", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:24218", "value": 25.415660557067124}, {"edge_data": {}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:23560", "label": "CREATED", "title": "", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:24218", "value": 1}, {"edge_data": {"distance": 0.05761227922847038}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:23071", "label": "5", "title": "distance: 0.05761227922847038", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:24913", "value": 17.357410840045848}, {"edge_data": {}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:22239", "label": "CREATED", "title": "", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:24913", "value": 1}, {"edge_data": {"distance": 0.060077312477360846}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:23071", "label": "6", "title": "distance: 0.060077312477360846", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:16228", "value": 16.64521861521075}, {"edge_data": {}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:16174", "label": "CREATED", "title": "", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:16228", "value": 1}, {"edge_data": {"distance": 0.06558063055129172}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:23071", "label": "7", "title": "distance: 0.06558063055129172", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:22319", "value": 15.248404774301203}, {"edge_data": {}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:22239", "label": "CREATED", "title": "", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:22319", "value": 1}, {"edge_data": {"distance": 0.06751730232216023}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:23071", "label": "8", "title": "distance: 0.06751730232216023", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:24907", "value": 14.811018296146948}, {"edge_data": {}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:22239", "label": "CREATED", "title": "", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:24907", "value": 1}, {"edge_data": {"distance": 0.07045531373651485}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:23071", "label": "9", "title": "distance: 0.07045531373651485", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:24478", "value": 14.193393613145325}, {"edge_data": {}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:24513", "label": "CREATED", "title": "", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:24478", "value": 1}, {"edge_data": {"distance": 0.07083183792369493}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:23071", "label": "10", "title": "distance: 0.07083183792369493", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:21475", "value": 14.117945112158049}, {"edge_data": {}, "from": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:21331", "label": "CREATED", "title": "", "to": "4:368d36c9-5b5e-4662-aa34-d0c85a21e9dd:21475", "value": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"nodes": {"borderWidth": 2, "borderWidthSelected": 4, "color": {"highlight": {"border": "black", "background": "orange"}}}, "edges": {"color": {"inherit": true}, "smooth": {"type": "continuous"}, "length": 200}, "interaction": {"hover": true, "navigationButtons": true, "multiselect": true}, "physics": {"enabled": true, "barnesHut": {"gravitationalConstant": -2000, "centralGravity": 0.3, "springLength": 100, "springConstant": 0.1}, "forceAtlas2Based": {"gravitationalConstant": -500, "centralGravity": 0.01, "springLength": 50, "springConstant": 0.1}, "repulsion": {"centralGravity": 0.0, "springLength": 100, "springConstant": 0.1, "damping": 0.09}}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

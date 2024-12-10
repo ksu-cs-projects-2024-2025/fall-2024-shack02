@@ -1,0 +1,427 @@
+
+
+		
+		<em><p class="mt-6 mb-0">The most current release of Neo4j is 5.24.0</p></em>
+
+
+			<!--fwp-loop-->
+
+<div class="row">
+	<div class="small-12 columns">
+		<h3 class="entry-title">
+			<a href="https://neo4j.com/release-notes/database/neo4j-5/">Neo4j 5</a>
+		</h3>
+		<h6>27 September 2024</h6>
+				<h2><b>Release Note for Neo4j 5.24 </b><span style="font-weight: 400;">(</span><span style="font-weight: 400;">27</span><span style="font-weight: 400;"> September 2024)</span></h2>
+<pre><b>Important Notice for Neo4j Java driver users </b></pre>
+<em><span style="font-weight: 400;">We are aware of an issue relating to changes to the qu...</span></em>	</div>
+	<div class="small-12 columns mb-3 mt-0">
+		<a href="https://neo4j.com/release-notes/database/neo4j-5/">Read full notes →</a>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="small-12 columns">
+		<h3 class="entry-title">
+			<a href="https://neo4j.com/release-notes/database/neo4j-4-4-37/">Neo4j 4.4.37</a>
+		</h3>
+		<h6>3 September 2024</h6>
+				<span style="font-weight: 400;">Neo4j 4.4.37 is a maintenance release with important fixes.</span>
+<h3><b>Kernel</b></h3>
+<ul>
+ 	<li>Prevent interrupted background sampling of a large index on shutdown triggeri...</li></ul>	</div>
+	<div class="small-12 columns mb-3 mt-0">
+		<a href="https://neo4j.com/release-notes/database/neo4j-4-4-37/">Read full notes →</a>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="small-12 columns">
+		<h3 class="entry-title">
+			<a href="https://neo4j.com/release-notes/database/neo4j-4-4-36/">Neo4j 4.4.36</a>
+		</h3>
+		<h6>23 July 2024</h6>
+				<span style="font-weight: 400;">Neo4j 4.4.36 is a maintenance release with important fixes.</span>
+<h3><b>Kernel</b></h3>
+<ul>
+ 	<li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Improved the performance of Consistency Checker on stores with many labels</span></li>
+ ...</ul>	</div>
+	<div class="small-12 columns mb-3 mt-0">
+		<a href="https://neo4j.com/release-notes/database/neo4j-4-4-36/">Read full notes →</a>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="small-12 columns">
+		<h3 class="entry-title">
+			<a href="https://neo4j.com/release-notes/database/neo4j-4-4-35-copy/">Neo4j 4.4.35</a>
+		</h3>
+		<h6>4 July 2024</h6>
+				Neo4j 4.4.35 is a maintenance release with important fixes.
+<h3>Kernel</h3>
+<ul>
+ 	<li>Improved the performance of Consistency Checker on stores with many labels</li>
+ ...</ul>	</div>
+	<div class="small-12 columns mb-3 mt-0">
+		<a href="https://neo4j.com/release-notes/database/neo4j-4-4-35-copy/">Read full notes →</a>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="small-12 columns">
+		<h3 class="entry-title">
+			<a href="https://neo4j.com/release-notes/database/neo4j-4-4-34/">Neo4j 4.4.34</a>
+		</h3>
+		<h6>14 May 2024</h6>
+				Neo4j 4.4.34 is a maintenance release with important fixes.
+
+<h3>Clustering</h3>
+<ul>
+<li>Fix a native memory leak caused when reading raft log</li>
+</ul>
+
+<h3>Docker</h3>
+<ul>
+<li>Upda...</li></ul>	</div>
+	<div class="small-12 columns mb-3 mt-0">
+		<a href="https://neo4j.com/release-notes/database/neo4j-4-4-34/">Read full notes →</a>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="small-12 columns">
+		<h3 class="entry-title">
+			<a href="https://neo4j.com/release-notes/database/neo4j-4-4-33/">Neo4j 4.4.33</a>
+		</h3>
+		<h6>24 April 2024</h6>
+				Neo4j 4.4.33 is a maintenance release with important improvements and fixes.
+
+<h3>Clustering</h3>
+<ul>
+<li>Return false in "available" http endpoint, if database is ...</li></ul>	</div>
+	<div class="small-12 columns mb-3 mt-0">
+		<a href="https://neo4j.com/release-notes/database/neo4j-4-4-33/">Read full notes →</a>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="small-12 columns">
+		<h3 class="entry-title">
+			<a href="https://neo4j.com/release-notes/database/neo4j-4-4-32/">Neo4j 4.4.32</a>
+		</h3>
+		<h6>26 March 2024</h6>
+				Neo4j 4.4.32 is a maintenance release with many important improvements and fixes.
+
+<h3>Kernel</h3>
+<ul>
+<li>Fixed transaction logs metrics that weren't incremented ...</li></ul>	</div>
+	<div class="small-12 columns mb-3 mt-0">
+		<a href="https://neo4j.com/release-notes/database/neo4j-4-4-32/">Read full notes →</a>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="small-12 columns">
+		<h3 class="entry-title">
+			<a href="https://neo4j.com/release-notes/database/neo4j-4-4-31/">Neo4j 4.4.31</a>
+		</h3>
+		<h6>28 February 2024</h6>
+				Neo4j 4.4.31 is a maintenance release with many important improvements and fixes.
+
+<h3>Kernel</h3>
+<ul>
+<li>Fixes a bug in <code>neo4j-admin report</code> where the command wou...</li></ul>	</div>
+	<div class="small-12 columns mb-3 mt-0">
+		<a href="https://neo4j.com/release-notes/database/neo4j-4-4-31/">Read full notes →</a>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="small-12 columns">
+		<h3 class="entry-title">
+			<a href="https://neo4j.com/release-notes/database/neo4j-4-4-30/">Neo4j 4.4.30</a>
+		</h3>
+		<h6>25 January 2024</h6>
+				Neo4j 4.4.30 is a maintenance release with many important improvements and fixes.
+
+<h3>Cypher</h3>
+<ul>
+<li>Fix an issue in pipelined runtime that could cause a qu...</li></ul>	</div>
+	<div class="small-12 columns mb-3 mt-0">
+		<a href="https://neo4j.com/release-notes/database/neo4j-4-4-30/">Read full notes →</a>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="small-12 columns">
+		<h3 class="entry-title">
+			<a href="https://neo4j.com/release-notes/database/neo4j-4-4-29/">Neo4j 4.4.29</a>
+		</h3>
+		<h6>21 December 2023</h6>
+				Neo4j 4.4.29 is a maintenance release with many important improvements and fixes.
+
+<h3>Kernel</h3>
+<ul>
+<li>Prevent background sampling of large indexes from block...</li></ul>	</div>
+	<div class="small-12 columns mb-3 mt-0">
+		<a href="https://neo4j.com/release-notes/database/neo4j-4-4-29/">Read full notes →</a>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="small-12 columns">
+		<h3 class="entry-title">
+			<a href="https://neo4j.com/release-notes/database/neo4j-4-4-28/">Neo4j 4.4.28</a>
+		</h3>
+		<h6>16 November 2023</h6>
+				Neo4j 4.4.28 is a maintenance release with many important improvements and fixes.
+
+<h3>Kernel</h3>
+<ul>
+<li>Fixed a bug in the high limit format where records were...</li></ul>	</div>
+	<div class="small-12 columns mb-3 mt-0">
+		<a href="https://neo4j.com/release-notes/database/neo4j-4-4-28/">Read full notes →</a>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="small-12 columns">
+		<h3 class="entry-title">
+			<a href="https://neo4j.com/release-notes/database/neo4j-4-4-27/">Neo4j 4.4.27</a>
+		</h3>
+		<h6>2 November 2023</h6>
+				Neo4j 4.4.27 is a maintenance release with many important improvements and fixes.
+
+<h3>Kernel</h3>
+<ul>
+<li>Fixes an issue where terminating the creation of a Cons...</li></ul>	</div>
+	<div class="small-12 columns mb-3 mt-0">
+		<a href="https://neo4j.com/release-notes/database/neo4j-4-4-27/">Read full notes →</a>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="small-12 columns">
+		<h3 class="entry-title">
+			<a href="https://neo4j.com/release-notes/database/neo4j-4-4-26/">Neo4j 4.4.26</a>
+		</h3>
+		<h6>20 September 2023</h6>
+				Neo4j 4.4.26 is a maintenance release with many important improvements and fixes.
+
+<h3>Cypher</h3>
+<ul>
+<li>Track memory of de-referenced nodes and relationships i...</li></ul>	</div>
+	<div class="small-12 columns mb-3 mt-0">
+		<a href="https://neo4j.com/release-notes/database/neo4j-4-4-26/">Read full notes →</a>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="small-12 columns">
+		<h3 class="entry-title">
+			<a href="https://neo4j.com/release-notes/database/neo4j-4-4-25/">Neo4j 4.4.25</a>
+		</h3>
+		<h6>24 August 2023</h6>
+				Neo4j 4.4.25 is a maintenance release with many important improvements and fixes.
+
+<h3>Kernel</h3>
+<ul>
+<li>Better handle transaction log corruption where header i...</li></ul>	</div>
+	<div class="small-12 columns mb-3 mt-0">
+		<a href="https://neo4j.com/release-notes/database/neo4j-4-4-25/">Read full notes →</a>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="small-12 columns">
+		<h3 class="entry-title">
+			<a href="https://neo4j.com/release-notes/database/neo4j-4-4-24/">Neo4j 4.4.24</a>
+		</h3>
+		<h6>3 August 2023</h6>
+				Neo4j 4.4.24 is a maintenance release with many important improvements and fixes.
+
+<h3>Kernel</h3>
+<ul>
+<li>Upgraded Bouncy Castle to v1.75 to mitigate CVE-2023-33...</li></ul>	</div>
+	<div class="small-12 columns mb-3 mt-0">
+		<a href="https://neo4j.com/release-notes/database/neo4j-4-4-24/">Read full notes →</a>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="small-12 columns">
+		<h3 class="entry-title">
+			<a href="https://neo4j.com/release-notes/database/neo4j-4-4-23/">Neo4j 4.4.23</a>
+		</h3>
+		<h6>6 July 2023</h6>
+				Neo4j 4.4.23 is a maintenance release with many important improvements and fixes.
+
+<h3>Kernel</h3>
+<ul>
+<li>Fix a bug in certain queries using PERIODIC COMMIT that...</li></ul>	</div>
+	<div class="small-12 columns mb-3 mt-0">
+		<a href="https://neo4j.com/release-notes/database/neo4j-4-4-23/">Read full notes →</a>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="small-12 columns">
+		<h3 class="entry-title">
+			<a href="https://neo4j.com/release-notes/database/neo4j-4-4-22/">Neo4j 4.4.22</a>
+		</h3>
+		<h6>27 June 2023</h6>
+				Neo4j 4.4.22 is a maintenance release with many important improvements and fixes.
+
+<h3>Kernel</h3>
+<ul>
+<li>Upgraded jackson to 2.15.2 to mitigate sonatype-2022-64...</li></ul>	</div>
+	<div class="small-12 columns mb-3 mt-0">
+		<a href="https://neo4j.com/release-notes/database/neo4j-4-4-22/">Read full notes →</a>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="small-12 columns">
+		<h3 class="entry-title">
+			<a href="https://neo4j.com/release-notes/database/neo4j-4-4-21/">Neo4j 4.4.21</a>
+		</h3>
+		<h6>24 May 2023</h6>
+				Neo4j 4.4.21 is a maintenance release with many important improvements and fixes.
+
+<h3>Kernel</h3>
+<ul>
+<li>Fix issue where consistency check could take a very lon...</li></ul>	</div>
+	<div class="small-12 columns mb-3 mt-0">
+		<a href="https://neo4j.com/release-notes/database/neo4j-4-4-21/">Read full notes →</a>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="small-12 columns">
+		<h3 class="entry-title">
+			<a href="https://neo4j.com/release-notes/database/neo4j-4-4-20/">Neo4j 4.4.20</a>
+		</h3>
+		<h6>28 April 2023</h6>
+				Neo4j 4.4.20 is a maintenance release with many important improvements and fixes.
+
+<h3>Kernel</h3>
+<ul>
+<li>Upgraded Jettison version to 1.5.4 to fix CVE-2023-1436...</li></ul>	</div>
+	<div class="small-12 columns mb-3 mt-0">
+		<a href="https://neo4j.com/release-notes/database/neo4j-4-4-20/">Read full notes →</a>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="small-12 columns">
+		<h3 class="entry-title">
+			<a href="https://neo4j.com/release-notes/database/neo4j-4-4-19/">Neo4j 4.4.19</a>
+		</h3>
+		<h6>28 March 2023</h6>
+				Neo4j 4.4.19 is a maintenance release with many important improvements and fixes.
+
+<h3>Kernel</h3>
+<ul>
+<li>Fixes an issue where recovery would temporarily hold on...</li></ul>	</div>
+	<div class="small-12 columns mb-3 mt-0">
+		<a href="https://neo4j.com/release-notes/database/neo4j-4-4-19/">Read full notes →</a>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="small-12 columns">
+		<h3 class="entry-title">
+			<a href="https://neo4j.com/release-notes/database/neo4j-4-4-18/">Neo4j 4.4.18</a>
+		</h3>
+		<h6>24 February 2023</h6>
+				Neo4j 4.4.18 is a maintenance release with many important improvements and fixes.
+
+<h3>Cypher</h3>
+<ul>
+<li>Fix bug where planning of <code>IN</code> predicates with empty list...</li></ul>	</div>
+	<div class="small-12 columns mb-3 mt-0">
+		<a href="https://neo4j.com/release-notes/database/neo4j-4-4-18/">Read full notes →</a>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="small-12 columns">
+		<h3 class="entry-title">
+			<a href="https://neo4j.com/release-notes/database/neo4j-4-4-17/">Neo4j 4.4.17</a>
+		</h3>
+		<h6>2 February 2023</h6>
+				Neo4j 4.4.17 is a maintenance release with many important improvements and fixes.
+
+
+<h3>Kernel</h3>
+<ul>
+<li>Fix reporting of JVM memory metrics</li>
+</ul>
+<h3>Cypher</h3>
+<ul>
+<li>Adds...</li></ul>	</div>
+	<div class="small-12 columns mb-3 mt-0">
+		<a href="https://neo4j.com/release-notes/database/neo4j-4-4-17/">Read full notes →</a>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="small-12 columns">
+		<h3 class="entry-title">
+			<a href="https://neo4j.com/release-notes/database/neo4j-4-4-16/">Neo4j 4.4.16</a>
+		</h3>
+		<h6>21 December 2022</h6>
+				Neo4j 4.4.16 is a maintenance release with many important improvements and fixes.
+
+<h3>Kernel</h3>
+<ul>
+<li>Initial checkpoint file version selection</li>
+<li>Bump jettiso...</li></ul>	</div>
+	<div class="small-12 columns mb-3 mt-0">
+		<a href="https://neo4j.com/release-notes/database/neo4j-4-4-16/">Read full notes →</a>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="small-12 columns">
+		<h3 class="entry-title">
+			<a href="https://neo4j.com/release-notes/database/neo4j-4-3-23/">Neo4j 4.3.23</a>
+		</h3>
+		<h6>21 December 2022</h6>
+				Neo4j 4.3.23 is a maintenance release with many important improvements and fixes.
+
+<h3>Kernel</h3>
+<ul>
+<li>Bump jettison to 1.5.3</li>
+</ul>
+<h3>Cypher</h3>
+<ul>
+<li>Introduced eagernes...</li></ul>	</div>
+	<div class="small-12 columns mb-3 mt-0">
+		<a href="https://neo4j.com/release-notes/database/neo4j-4-3-23/">Read full notes →</a>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="small-12 columns">
+		<h3 class="entry-title">
+			<a href="https://neo4j.com/release-notes/database/neo4j-4-4-15/">Neo4j 4.4.15</a>
+		</h3>
+		<h6>25 November 2022</h6>
+				Neo4j 4.4.15 is a maintenance release with many important improvements and fixes.
+<h3>Kernel</h3>
+<ul>
+ 	<li>Upgraded jettison to 1.5.1 to mitigate CVE-2022-40150 a...</li></ul>	</div>
+	<div class="small-12 columns mb-3 mt-0">
+		<a href="https://neo4j.com/release-notes/database/neo4j-4-4-15/">Read full notes →</a>
+	</div>
+</div>
+<hr>
+			<nav id="nav-below" class="navigation" role="navigation">
+    <div id="postnav_container">
+      <div id="prev_entries" class="left"><a href="https://neo4j.com/release-notes/database/page/2/">← [:older]</a></div><!--/#prev_entries-->
+      <div id="next_entries" class="right"></div><!--/#next_entries-->
+      <div class="clearfix"></div><!--/.clearfix-->
+    </div><!--/#postnav_container-->
+</nav>
+		

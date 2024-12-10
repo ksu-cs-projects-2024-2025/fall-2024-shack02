@@ -1,0 +1,31 @@
+
+			
+									<h5>Release Date: 14 May 2024</h5>
+				
+									Neo4j 4.4.34 is a maintenance release with important fixes.
+
+<h3>Clustering</h3>
+<ul>
+<li>Fix a native memory leak caused when reading raft log</li>
+</ul>
+
+<h3>Docker</h3>
+<ul>
+<li>Updated ubi8 deprecation warning and removed option for suppressing the warning</li>
+</ul>
+
+
+<h3>Bundled Packages:</h3>
+Cypher-Shell 4.4.34<br>
+labs/apoc-4.4.0.28-core<br>
+products/bloom-plugin-4.x-2.11.0<br>
+products/neo4j-graph-data-science-2.6.5<br>
+products/neo4j-ops-manager-agent-1.10.2<br>
+
+<br>
+<a href="https://support.neo4j.com/s/article/115013134648-Neo4j-Supported-Versions">4.4 End of Support is June 30, 2025</a><br>
+<a href="https://github.com/neo4j/neo4j/wiki/Neo4j-4.4-changelog">4.4 Changelog</a><br>
+<a href="https://neo4j.com/docs/operations-manual/4.4/">4.4 Operations manual</a>
+
+&nbsp;				
+					
