@@ -29,6 +29,6 @@ Data Flow:
 User Input → groove_mapper → neo4j_query_library → groove_mapper → graph_visualization → groove_mapper → Output to Browser.
 
 ## 4. Contact Information
-Your name: Sean Hackenberg
+Sean Hackenberg
 Email: shack@ksu.edu
 GitHub: https://github.com/shack02
